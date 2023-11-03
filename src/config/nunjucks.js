@@ -7,8 +7,6 @@ module.exports = {
       express: app,
       noCache: true,
     });
-
-
     return nunjucksEnv;
   },
 };
