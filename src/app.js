@@ -14,12 +14,14 @@ const APP_VIEWS = [
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
 app.use(
   "/assets",
-  express.static(path.join(__dirname, "/node_modules/govuk-frontend/govuk/assets"))
+  express.static(
+    path.join(__dirname, "/node_modules/govuk-frontend/govuk/assets"),
+  ),
 );
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("home.njk");
+  res.render("index.njk");
 });
 
 app.listen(port, () => {
