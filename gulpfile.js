@@ -5,7 +5,7 @@ const browserSync = require("browser-sync").create();
 // Watch HTML, CSS, JS files
 gulp.task("watch", () => {
   browserSync.init({
-    proxy: "http://localhost:3000", // Proxy your Express app
+    proxy: "http://localhost:3000",
   });
 
   watch("src/views/*.njk", () => {
