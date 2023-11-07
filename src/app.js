@@ -1,5 +1,4 @@
 const express = require("express");
-const nunjucks = require("nunjucks");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
 const app = express();
