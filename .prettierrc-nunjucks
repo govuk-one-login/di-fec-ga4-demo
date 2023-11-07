@@ -4,6 +4,6 @@
   "trailingComma": "none",
   "arrowParens": "avoid",
   "printWidth": 120,
-  "proseWrap": "always",
+  "proseWrap": "preserve",
   "tabWidth": 1
 }
