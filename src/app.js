@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
 const app = express();
-const port = 3001;
+const port = 3000;
 
 const APP_VIEWS = [
   path.join(__dirname, "views"),
