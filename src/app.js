@@ -1,5 +1,4 @@
 const express = require("express");
-const nunjucks = require("nunjucks");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
 const app = express();
@@ -14,12 +13,26 @@ const APP_VIEWS = [
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
 app.use(
   "/assets",
-  express.static(path.join(__dirname, "/node_modules/govuk-frontend/govuk/assets"))
+  express.static(
+    path.join(__dirname, "/node_modules/govuk-frontend/govuk/assets"),
+  ),
 );
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("home.njk");
+  res.render("index.njk");
+});
+
+app.get("/service-description", (req, res) => {
+  res.render("serviceDescription.njk"); // free text
+});
+
+app.get("/organisation-type", (req, res) => {
+  res.render("organisationType.njk"); // radio button
+});
+
+app.get("/help-request", (req, res) => {
+  res.render("helpRequest.njk"); // checkbox
 });
 
 app.listen(port, () => {

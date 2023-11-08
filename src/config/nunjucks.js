@@ -8,7 +8,6 @@ module.exports = {
       noCache: true,
     });
 
-
     return nunjucksEnv;
   },
 };
