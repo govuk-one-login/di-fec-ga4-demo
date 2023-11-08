@@ -27,6 +27,12 @@
       </div>
     </main>
   </div>
+  <script src="/ga4-assets/analytics.js"></script>
+    <script>
+        window.DI.appInit({
+            ga4ContainerId: '{{ ga4ContainerId }}'
+        })
+    </script>
 {% endblock %} 
 
 {% block footer %} 
