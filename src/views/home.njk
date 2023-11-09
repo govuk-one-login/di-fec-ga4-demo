@@ -1,0 +1,71 @@
+{% extends 'base.njk' %} {% set title = 'Home' %} 
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/details/macro.njk" import govukDetails %} 
+
+
+
+{% block content %} 
+
+
+
+  <h1 class="govuk-heading-xl">Using your GOV.UK One Login</h1>
+<aside >
+          <nav >
+    <h2>
+      Contents
+</h2>
+    <ol class="govuk-list govuk-list--number">
+        <li >
+          Sign in to your GOV.UK One Login
+        </li>
+        <li >
+          <a href="" class="govuk-link">Services you can use with GOV.UK One Login</a>
+        </li>
+        <li >
+          <a href="" class="govuk-link">Proving your identity with GOV.UK One Login</a>
+        </li>
+    </ol>
+</nav>
+      </aside>
+
+      <h1 class="govuk-heading-l">Sign in to your GOV.UK One Login</h1>
+      <p class="govuk-body">You can use your GOV.UK One Login to access some government services.</p>
+       <p class="govuk-body">It does not work with all <a href="#" class="govuk-link"> government accounts and services</a>  yet (for example Government Gateway or Universal Credit).</p>
+<p class="govuk-body">In the future, you’ll be able to use your GOV.UK One Login to access all services on GOV.UK.</p>
+<p class="govuk-body">See the  <a href="#" class="govuk-link"> services you can use with GOV.UK One Login.</a></p>
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "If you need a GOV.UK One Login to use a service, and you do not already have one, you’ll be able to create one when you first use that service."
+}) }}
+
+<p class="govuk-body">Sign in to:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>change your sign in details (email address, password or how you get security codes)</li>
+  <li>see and access the services you’ve used with your GOV.UK One Login</li>
+  <li>delete your GOV.UK One Login</li>
+</ul>
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Sign in",
+  href: "#",
+  isStartButton: true
+}) }}
+
+<h2 class="govuk-heading-m">Report a problem or give feedback</h2>
+<p class="govuk-body">To report a problem with your GOV.UK One Login or give feedback, <a href="https://home.account.gov.uk/contact-gov-uk-one-login" class="govuk-link">contact the GOV.UK One Login team</a>.</p>
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{{ govukPagination({
+  
+  next: {
+    labelText: "Services you can use with GOV.UK One Login",
+    href: "#"
+  }
+}) }}
+
+<div>
+<a href="#" class="govuk-link govuk-link--no-visited-state govuk-body"> View a printable version of the whole guide</a>
+</div>
+{% endblock %}

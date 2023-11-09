@@ -20,7 +20,7 @@ app.use(
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index.njk");
+  res.render("home.njk");
 });
 
 app.get("/service-description", (req, res) => {
