@@ -3,7 +3,7 @@
     "start": "npm-run-all --parallel dev gulp-watch",
     "dev": "node src/app.js",
     "gulp-watch": "gulp watch",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\" && prettier --write \"**/*.njk\" --config .prettierrc-nunjucks",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\" && prettier --write \"**/*.njk\" --config .prettierrc-nunjucks --parser html",
     "serve": "nodemon serve",
     "precommit": "npm run format && git add ."
   },
