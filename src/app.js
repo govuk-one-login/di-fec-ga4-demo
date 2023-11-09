@@ -11,16 +11,24 @@ const APP_VIEWS = [
 ];
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
+
 app.use(
   "/assets",
   express.static(
-    path.join(__dirname, "/node_modules/govuk-frontend/govuk/assets"),
-  ),
+    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
+  )
 );
+
+/**GA4 assets */
+app.use(
+  "/ga4-assets",
+  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
+);
+
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("home.njk");
+  res.render("home.njk", { ga4ContainerId: "GTM-KD86CMZ" });
 });
 
 app.get("/service-description", (req, res) => {
