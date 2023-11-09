@@ -1,21 +1,21 @@
 {% block head %}
-  <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css" />
+  <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css"/>
 {% endblock %}
 
 {% extends "govuk/template.njk" %}
-{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %} 
-{% from "govuk/components/header/macro.njk" import govukHeader %} 
-{% from "govuk/components/footer/macro.njk" import govukFooter %} 
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
-{% block skipLink %} 
-{{ govukSkipLink({ 
+{% block skipLink %}
+  {{ govukSkipLink({ 
   href: "#main-content", 
-  text: 'Skip to main content' }) }} 
-{% endblock %} 
+  text: 'Skip to main content' }) }}
+{% endblock %}
 
-{% block header %} 
-  {{ govukHeader({}) }} 
-{%endblock %} 
+{% block header %}
+  {{ govukHeader({}) }}
+{%endblock %}
 
 {% block main %}
   <div class="govuk-width-container">
@@ -28,14 +28,14 @@
     </main>
   </div>
   <script src="/ga4-assets/analytics.js"></script>
-    <script>
-        window.DI.appInit({
-            ga4ContainerId: '{{ ga4ContainerId }}'
-        })
-    </script>
-{% endblock %} 
+  <script>
+    window
+      .DI
+      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'})
+  </script>
+{% endblock %}
 
-{% block footer %} 
+{% block footer %}
   {{ govukFooter({ 
       meta: { 
         items: [ { 
@@ -46,5 +46,5 @@
               href: "#", 
               text: "Contact" },
   { href: "#", 
-  text: "Terms and conditions" } ] } }) }} 
+  text: "Terms and conditions" } ] } }) }}
 {% endblock %}
