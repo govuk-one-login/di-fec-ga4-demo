@@ -1,5 +1,58 @@
 {% extends 'base.njk' %}
 {% set title = 'Organisation Type' %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% block beforeContent %}
+
+    {{ govukBackLink({
+  text: "Back",
+  href: "/"
+}) }}
+{% endblock %}
 {% block content %}
-    {# placeholder for content #}
+
+    <form method="get" action="#">
+        {{ govukRadios({
+  name: "organisationType",
+  
+  fieldset: {
+    legend: {
+      text: "Organisation type",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      
+    }
+  },
+  items: [
+    {
+      value: "government department or Ministry",
+      text: "Government department or Ministry"
+    },
+    {
+      value: "executive Agency",
+      text: "Executive Agency"
+    },
+    {
+      value: "arms length body",
+      text: "Arms length body"
+    },
+    {
+      value: "other",
+      text: "Other"
+    }
+  ],
+  errorMessage: {
+    text: "Select one option"
+  }
+}) }}
+
+        <div class="govuk-button-group">
+            {{ govukButton({
+    text: "Submit"
+  }) }}
+
+        </div>
+    </form>
+
 {% endblock %}
