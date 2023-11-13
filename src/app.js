@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
+const { validateHelpRequest } = require("./checkboxFormValidation");
 const app = express();
 const port = 3000;
 
@@ -26,6 +27,7 @@ app.use(
 );
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.render("home.njk", { ga4ContainerId: "GTM-KD86CMZ" });
@@ -40,9 +42,19 @@ app.get("/organisation-type", (req, res) => {
 });
 
 app.get("/help-request", (req, res) => {
-  res.render("helpRequest.njk"); // checkbox
+  res.render("helpRequest.njk", { showError: false }); // checkbox
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
+});
+
+app.post("/validate-help-request", (req, res) => {
+  const selectedHelpRequest = req.body.helpWithHint;
+  const result = validateHelpRequest(selectedHelpRequest);
+  if (result.showError) {
+    return res.render("helpRequest.njk", { showError: true });
+  } else if (result.redirect) {
+    return result.redirect;
+  }
 });

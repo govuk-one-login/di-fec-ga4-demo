@@ -1,22 +1,16 @@
 {% extends 'base.njk' %}
 {% set title = 'Help Request' %}
+{% set showBack = true%}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
-{% block beforeContent %}
-
-  {{ govukBackLink({
-  text: "Back",
-  href: "/"
-}) }}
-{% endblock %}
 {% block content %}
 
-  <form method="get" action="#" >
+  <form method="post" action="/validate-help-request" id="helpRequestForm" >
 
     {{ govukCheckboxes({
-  name: "helpWith-hint",
+  name: "helpWithHint",
   fieldset: {
     legend: {
       text: "What would you like help with?",
@@ -29,7 +23,7 @@
   },
    errorMessage: {
     text: "Select one or more options"
-  }, 
+  } if showError, 
   items: [
     {
       value: "gettingAccessToTheIntegrationEnvironmentToTestGOV.UKOneLogin",
@@ -55,7 +49,8 @@
 }) }}
 
     {{ govukButton({
-  text: "Submit"
+  text: "Continue",
+  type: "submit"
 }) }}
   </form>
 {% endblock %}
