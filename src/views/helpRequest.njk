@@ -1,5 +1,61 @@
 {% extends 'base.njk' %}
 {% set title = 'Help Request' %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "/"
+}) }}
+{% endblock %}
 {% block content %}
-    {# placeholder for content #}
+
+  <form method="get" action="#" >
+
+    {{ govukCheckboxes({
+  name: "helpWith-hint",
+  fieldset: {
+    legend: {
+      text: "What would you like help with?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Tick all that apply - this will help us understand your initial needs"
+  },
+   errorMessage: {
+    text: "Select one or more options"
+  }, 
+  items: [
+    {
+      value: "gettingAccessToTheIntegrationEnvironmentToTestGOV.UKOneLogin",
+      text: "Getting access to the integration environment to test GOV.UK One Login"
+    },
+    {
+      value: "havingATechnicalDiscussion",
+      text: "Having a technical discussion"
+    },
+    {
+      value: "walkingThroughTheOnboardingProcess",
+      text: "Walking through the onboarding process"
+    },
+    {
+      value: "understandingTheGOV.UKOneLoginProgrammeInMoreDetail",
+      text: "Understanding the GOV.UK One Login programme in more detail"
+    },
+     {
+      value: "other",
+      text: "Other"
+    }
+  ]
+}) }}
+
+    {{ govukButton({
+  text: "Submit"
+}) }}
+  </form>
 {% endblock %}
