@@ -1,21 +1,13 @@
 {% extends 'base.njk' %}
 {% set title = 'Organisation Type' %}
+{% set showBack = true %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% block beforeContent %}
 
-    {{ govukBackLink({
-  text: "Back",
-  href: "/"
-}) }}
-{% endblock %}
 {% block content %}
-
-    <form method="get" action="#">
-        {{ govukRadios({
+  <form method="post" action="/validate-organisation-type" id="organisationForm">
+    {{ govukRadios({
   name: "organisationType",
-  
   fieldset: {
     legend: {
       text: "Organisation type",
@@ -42,17 +34,15 @@
       text: "Other"
     }
   ],
-  errorMessage: {
-    text: "Select one option"
-  }
+   errorMessage:  { text: "Select one option" }  if showError
 }) }}
 
-        <div class="govuk-button-group">
-            {{ govukButton({
-    text: "Submit"
+    {{ govukButton({
+    text: "Continue",
+    type: 'submit'
+   
   }) }}
 
-        </div>
-    </form>
+  </form>
 
 {% endblock %}

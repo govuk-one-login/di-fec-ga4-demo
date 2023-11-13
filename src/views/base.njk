@@ -6,6 +6,7 @@
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% block skipLink %}
   {{ govukSkipLink({ 
@@ -19,7 +20,12 @@
 
 {% block main %}
   <div class="govuk-width-container">
-    {% block beforeContent %}{% endblock %}
+    {% if showBack%}
+      {{ govukBackLink({
+  text: "Back",
+  href: "/"
+}) }}
+    {% endif %}
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
