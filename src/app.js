@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
-const { validateHelpRequest } = require("./checkboxFormValidation");
+const validateForm = require("./validateForm");
 const app = express();
 const port = 3000;
 
@@ -16,14 +16,14 @@ app.set("view engine", configureNunjucks(app, APP_VIEWS));
 app.use(
   "/assets",
   express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
-  )
+    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets"),
+  ),
 );
 
 /**GA4 assets */
 app.use(
   "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
+  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")),
 );
 
 app.use(express.static("public"));
@@ -50,11 +50,10 @@ app.listen(port, () => {
 });
 
 app.post("/validate-help-request", (req, res) => {
-  const selectedHelpRequest = req.body.helpWithHint;
-  const result = validateHelpRequest(selectedHelpRequest);
+  const result = validateForm(req, res, "helpWithHint", "/service-description");
   if (result.showError) {
-    return res.render("helpRequest.njk", { showError: true });
+    res.render("helpRequest.njk", { showError: true });
   } else if (result.redirect) {
-    return result.redirect;
+    res.redirect(result.redirect);
   }
 });

@@ -19,31 +19,28 @@
 {%endblock %}
 
 {% block main %}
-  <div class="govuk-width-container">
-    {% if showBack%}
-      {{ govukBackLink({
-  text: "Back",
-  href: "/"
-}) }}
-    {% endif %}
-    <main id="main-content" class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          {% block content %}{% endblock %}
-        </div>
-      </div>
-    </main>
-  </div>
-  <script src="/ga4-assets/analytics.js"></script>
-  <script>
-    window
-      .DI
-      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'})
-  </script>
-{% endblock %}
 
-{% block footer %}
-  {{ govukFooter({ 
+  <div class="govuk-width-container">
+    {%block backLink%}
+      {%endblock%}
+      <main id="main-content" class="govuk-main-wrapper">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="/ga4-assets/analytics.js"></script>
+    <script>
+      window
+        .DI
+        .appInit({ga4ContainerId: '{{ ga4ContainerId }}'})
+    </script>
+  {% endblock %}
+
+  {% block footer %}
+    {{ govukFooter({ 
       meta: { 
         items: [ { 
           href: "#",
@@ -54,4 +51,4 @@
               text: "Contact" },
   { href: "#", 
   text: "Terms and conditions" } ] } }) }}
-{% endblock %}
+  {% endblock %}
