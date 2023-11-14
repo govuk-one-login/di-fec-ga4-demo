@@ -6,7 +6,6 @@
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% block skipLink %}
   {{ govukSkipLink({ 
@@ -14,33 +13,43 @@
   text: 'Skip to main content' }) }}
 {% endblock %}
 
+{% block bodyStart %}
+  {% include "./banner.njk" %}
+{% endblock %}
+
 {% block header %}
-  {{ govukHeader({}) }}
-{%endblock %}
+
+  {{ govukHeader({
+}) }}
+
+{% endblock %}
 
 {% block main %}
-
   <div class="govuk-width-container">
-    {%block backLink%}
-      {%endblock%}
-      <main id="main-content" class="govuk-main-wrapper">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            {% block content %}{% endblock %}
-          </div>
+    {% block backLink%}{% endblock %}
+    <main id="main-content" class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {% block content %}{% endblock %}
         </div>
-      </main>
-    </div>
-    <script src="/ga4-assets/analytics.js"></script>
-    <script>
-      window
-        .DI
-        .appInit({ga4ContainerId: '{{ ga4ContainerId }}'})
-    </script>
-  {% endblock %}
+      </div>
+    </main>
+  </div>
+  <script src="/javascript/cookie.js"></script>
+  <script src="/javascript/cookieBanner.js"></script>
+  <script src="/ga4-assets/analytics.js"></script>
+  <script>
+    window
+      .DI
+      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'});
+    window
+      .DI
+      .cookieBannerInit("localhost");
+  </script>
+{% endblock %}
 
-  {% block footer %}
-    {{ govukFooter({ 
+{% block footer %}
+  {{ govukFooter({ 
       meta: { 
         items: [ { 
           href: "#",
@@ -51,4 +60,4 @@
               text: "Contact" },
   { href: "#", 
   text: "Terms and conditions" } ] } }) }}
-  {% endblock %}
+{% endblock %}
