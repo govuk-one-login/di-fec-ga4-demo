@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
+const validateForm = require("./validateForm"); // Import the function
 const app = express();
 const port = 3000;
 
@@ -26,6 +27,7 @@ app.use(
 );
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.render("home.njk", { ga4ContainerId: "GTM-KD86CMZ" });
@@ -36,7 +38,7 @@ app.get("/service-description", (req, res) => {
 });
 
 app.get("/organisation-type", (req, res) => {
-  res.render("organisationType.njk"); // radio button
+  res.render("organisationType.njk", { showError: false }); // radio button
 });
 
 app.get("/help-request", (req, res) => {
@@ -45,4 +47,13 @@ app.get("/help-request", (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
+});
+
+app.post("/validate-organisation-type", (req, res) => {
+  const result = validateForm(req.body.organisationType, "/help-request");
+  if (result.showError) {
+    res.render("organisationType.njk", { showError: true });
+  } else if (result.redirect) {
+    res.redirect(result.redirect);
+  }
 });
