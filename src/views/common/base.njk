@@ -13,9 +13,16 @@
   text: 'Skip to main content' }) }}
 {% endblock %}
 
+{% block bodyStart %}
+  {% include "./banner.njk" %}
+{% endblock %}
+
 {% block header %}
-  {{ govukHeader({}) }}
-{%endblock %}
+
+  {{ govukHeader({
+}) }}
+
+{% endblock %}
 
 {% block main %}
   <div class="govuk-width-container">
@@ -28,11 +35,16 @@
       </div>
     </main>
   </div>
+  <script src="/javascript/cookie.js"></script>
+  <script src="/javascript/cookieBanner.js"></script>
   <script src="/ga4-assets/analytics.js"></script>
   <script>
     window
       .DI
-      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'})
+      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'});
+    window
+      .DI
+      .cookieBannerInit("localhost");
   </script>
 {% endblock %}
 
