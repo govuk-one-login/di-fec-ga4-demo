@@ -1,14 +1,11 @@
 {% extends 'base.njk' %}
 {% set title = 'Help Request' %}
-{% set showBack = true%}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% block backLink %}
-  {% if showBack %}
-    {{ govukBackLink({ text: "Back", href: "/organisation-type" }) }}
-  {% endif %}
+  {{ govukBackLink({ text: "Back", href: "/organisation-type" }) }}
 {% endblock %}
 {% block content %}
 
