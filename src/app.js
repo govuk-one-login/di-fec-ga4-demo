@@ -15,16 +15,11 @@ app.set("view engine", configureNunjucks(app, APP_VIEWS));
 
 app.use(
   "/assets",
-  express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
-  )
+  express.static(path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets"))
 );
 
 /**GA4 assets */
-app.use(
-  "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
-);
+app.use("/ga4-assets", express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")));
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
