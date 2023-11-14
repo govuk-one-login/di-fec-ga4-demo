@@ -1,9 +1,15 @@
 {% extends 'base.njk' %}
 {% set title = 'Organisation Type' %}
-{% set showBack = true %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
+{% block backLink %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "/"
+}) }}
+{% endblock %}
 {% block content %}
   <form method="post" action="/validate-organisation-type" id="organisationForm">
     {{ govukRadios({
