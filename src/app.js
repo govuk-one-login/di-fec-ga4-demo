@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
-const validateForm = require("./validateForm"); // Import the function
+const validateForm = require("./validateForm");
 const app = express();
 const port = 3000;
 
@@ -15,11 +15,16 @@ app.set("view engine", configureNunjucks(app, APP_VIEWS));
 
 app.use(
   "/assets",
-  express.static(path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets"))
+  express.static(
+    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
+  )
 );
 
 /**GA4 assets */
-app.use("/ga4-assets", express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")));
+app.use(
+  "/ga4-assets",
+  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
+);
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -37,7 +42,7 @@ app.get("/organisation-type", (req, res) => {
 });
 
 app.get("/help-request", (req, res) => {
-  res.render("helpRequest.njk"); // checkbox
+  res.render("helpRequest.njk", { showError: false }); // checkbox
 });
 
 app.listen(port, () => {
@@ -48,6 +53,15 @@ app.post("/validate-organisation-type", (req, res) => {
   const result = validateForm(req.body.organisationType, "/help-request");
   if (result.showError) {
     res.render("organisationType.njk", { showError: true });
+  } else if (result.redirect) {
+    res.redirect(result.redirect);
+  }
+});
+
+app.post("/validate-help-request", (req, res) => {
+  const result = validateForm(req.body.helpWithHint, "/service-description");
+  if (result.showError) {
+    res.render("helpRequest.njk", { showError: true });
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
