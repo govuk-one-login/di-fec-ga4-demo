@@ -4,13 +4,13 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
-    {{ govukBackLink({ text: "Back", href: "/help-request" }) }}
+  {{ govukBackLink({ text: "Back", href: "/help-request" }) }}
 {% endblock %}
 {% block content %}
 
-    <form method="post" action="/validate-service-description" id="serviceDescriptionForm">
+  <form method="post" action="/validate-service-description" id="serviceDescriptionForm">
 
-        {{ govukTextarea({
+    {{ govukTextarea({
   name: "serviceDescription",
   id: "service-description",
   label: {
@@ -23,11 +23,11 @@
   },
   errorMessage: {
     text: "Enter a short description of your service"
-  }
+  } if showError
 }) }}
-        {{ govukButton({
+    {{ govukButton({
   text: "Continue",
   type: "submit"
 }) }}
-    </form>
+  </form>
 {% endblock %}
