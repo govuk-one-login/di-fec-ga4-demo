@@ -34,15 +34,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/service-description", (req, res) => {
-  res.render("serviceDescription.njk"); // free text
+  res.render("serviceDescription.njk", { ga4ContainerId: "GTM-KD86CMZ" }); // free text
 });
 
 app.get("/organisation-type", (req, res) => {
-  res.render("organisationType.njk", { showError: false }); // radio button
+  res.render("organisationType.njk", { ga4ContainerId: "GTM-KD86CMZ" }); // radio button
 });
 
 app.get("/help-request", (req, res) => {
-  res.render("helpRequest.njk", { showError: false }); // checkbox
+  res.render("helpRequest.njk", { ga4ContainerId: "GTM-KD86CMZ" }); // checkbox
 });
 
 app.listen(port, () => {
@@ -51,8 +51,12 @@ app.listen(port, () => {
 
 app.post("/validate-organisation-type", (req, res) => {
   const result = validateForm(req.body.organisationType, "/help-request");
+  const renderOptions = {
+    showError: result.showError,
+    ga4ContainerId: "GTM-KD86CMZ",
+  };
   if (result.showError) {
-    res.render("organisationType.njk", { showError: true });
+    res.render("organisationType.njk", renderOptions);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
@@ -60,8 +64,12 @@ app.post("/validate-organisation-type", (req, res) => {
 
 app.post("/validate-help-request", (req, res) => {
   const result = validateForm(req.body.helpWithHint, "/service-description");
+  const renderOptions = {
+    showError: result.showError,
+    ga4ContainerId: "GTM-KD86CMZ",
+  };
   if (result.showError) {
-    res.render("helpRequest.njk", { showError: true });
+    res.render("helpRequest.njk", renderOptions);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
