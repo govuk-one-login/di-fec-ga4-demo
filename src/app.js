@@ -44,7 +44,9 @@ app.get("/organisation-type", (req, res) => {
 app.get("/help-request", (req, res) => {
   res.render("helpRequest.njk", { showError: false }); // checkbox
 });
-
+app.get("/choose-location", (req, res) => {
+  res.render("chooseLocation.njk"); // select
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
@@ -62,6 +64,15 @@ app.post("/validate-help-request", (req, res) => {
   const result = validateForm(req.body.helpWithHint, "/service-description");
   if (result.showError) {
     res.render("helpRequest.njk", { showError: true });
+  } else if (result.redirect) {
+    res.redirect(result.redirect);
+  }
+});
+
+app.post("/validate-choose-location", (req, res) => {
+  const result = validateForm(req.body.chooseLocation, "/", "choose");
+  if (result.showError) {
+    res.render("chooseLocation.njk", { showError: true });
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }

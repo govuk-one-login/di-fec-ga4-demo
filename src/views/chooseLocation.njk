@@ -1,0 +1,74 @@
+{% extends 'common/base.njk' %}
+{% set title = 'Choose Location' %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% block backLink %}
+    {{ govukBackLink({ text: "Back", href: "/service-description" }) }}
+{% endblock %}
+{% block content %}
+
+    <form method="post" action="/validate-choose-location" id="chooseLocationForm">
+
+        {{ govukSelect({
+  id: "choose-location",
+  name: "chooseLocation",
+  label: {
+    text: "Choose location"
+  },
+  hint: {
+    text: "This can be different to where you went before"
+  },
+  errorMessage: {
+    text: "Select a location"
+  }if showError,
+  items: [
+    {
+      value: "choose",
+      text: "Choose location",
+      selected: true
+    },
+    {
+      value: "eastmidlands",
+      text: "East Midlands"
+    },
+    {
+      value: "eastofengland",
+      text: "East of England"
+    },
+    {
+      value: "london",
+      text: "London"
+    },
+    {
+      value: "northeast",
+      text: "North East"
+    },
+    {
+      value: "northwest",
+      text: "North West"
+    },
+    {
+      value: "southeast",
+      text: "South East"
+    },
+    {
+      value: "southwest",
+      text: "South West"
+    },
+    {
+      value: "westmidlands",
+      text: "West Midlands"
+    },
+    {
+      value: "yorkshire",
+      text: "Yorkshire and the Humber"
+    }
+  ]
+}) }}
+        {{ govukButton({
+  text: "Continue",
+  type: "submit"
+}) }}
+    </form>
+{% endblock %}
