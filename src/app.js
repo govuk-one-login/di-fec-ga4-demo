@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
 const validateForm = require("./validateForm");
+const { GA4_CONTAINER_ID } = require("./config/constants");
 const app = express();
 const port = 3000;
 
@@ -30,19 +31,19 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("home.njk", { ga4ContainerId: "GTM-KD86CMZ" });
+  res.render("home.njk", { ga4ContainerId: GA4_CONTAINER_ID });
 });
 
 app.get("/service-description", (req, res) => {
-  res.render("serviceDescription.njk", { ga4ContainerId: "GTM-KD86CMZ" }); // free text
+  res.render("serviceDescription.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // free text
 });
 
 app.get("/organisation-type", (req, res) => {
-  res.render("organisationType.njk", { ga4ContainerId: "GTM-KD86CMZ" }); // radio button
+  res.render("organisationType.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // radio button
 });
 
 app.get("/help-request", (req, res) => {
-  res.render("helpRequest.njk", { ga4ContainerId: "GTM-KD86CMZ" }); // checkbox
+  res.render("helpRequest.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // checkbox
 });
 
 app.listen(port, () => {
@@ -53,7 +54,7 @@ app.post("/validate-organisation-type", (req, res) => {
   const result = validateForm(req.body.organisationType, "/help-request");
   const renderOptions = {
     showError: result.showError,
-    ga4ContainerId: "GTM-KD86CMZ",
+    ga4ContainerId: GA4_CONTAINER_ID,
   };
   if (result.showError) {
     res.render("organisationType.njk", renderOptions);
@@ -66,7 +67,7 @@ app.post("/validate-help-request", (req, res) => {
   const result = validateForm(req.body.helpWithHint, "/service-description");
   const renderOptions = {
     showError: result.showError,
-    ga4ContainerId: "GTM-KD86CMZ",
+    ga4ContainerId: GA4_CONTAINER_ID,
   };
   if (result.showError) {
     res.render("helpRequest.njk", renderOptions);
