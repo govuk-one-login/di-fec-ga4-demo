@@ -68,7 +68,7 @@ app.post("/validate-help-request", (req, res) => {
 });
 
 app.post("/validate-service-description", (req, res) => {
-  const result = validateForm(req.body.serviceDescription, "#");
+  const result = validateForm(req.body.serviceDescription, "/");
   if (result.showError) {
     res.render("serviceDescription.njk", { showError: true });
   } else if (result.redirect) {
