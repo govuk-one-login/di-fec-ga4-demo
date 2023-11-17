@@ -38,11 +38,11 @@ app.get("/service-description", (req, res) => {
 });
 
 app.get("/organisation-type", (req, res) => {
-  res.render("organisationType.njk", { showError: false }); // radio button
+  res.render("organisationType.njk"); // radio button
 });
 
 app.get("/help-request", (req, res) => {
-  res.render("helpRequest.njk", { showError: false }); // checkbox
+  res.render("helpRequest.njk"); // checkbox
 });
 app.get("/choose-location", (req, res) => {
   res.render("chooseLocation.njk"); // select
@@ -64,6 +64,14 @@ app.post("/validate-help-request", (req, res) => {
   const result = validateForm(req.body.helpWithHint, "/service-description");
   if (result.showError) {
     res.render("helpRequest.njk", { showError: true });
+  } else if (result.redirect) {
+    res.redirect(result.redirect);
+  }
+});
+app.post("/validate-service-description", (req, res) => {
+  const result = validateForm(req.body.serviceDescription, "/");
+  if (result.showError) {
+    res.render("serviceDescription.njk", { showError: true });
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
