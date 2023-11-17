@@ -44,6 +44,16 @@
       .appInit({ga4ContainerId: '{{ ga4ContainerId }}'});
     window
       .DI
+      .analyticsGa4
+      .pageViewTracker
+      .trackOnPageLoad({
+        statusCode: 200, englishPageTitle: `english version of the title`, // Replace with the actual page title
+        taxonomy_level1: 'tes tax 1', // Replace with the actual taxonomy level 1
+        taxonomy_level2: 'tes tax 2' // Replace with the actual taxonomy level 2
+      });
+
+    window
+      .DI
       .cookieBannerInit("localhost");
   </script>
 {% endblock %}
