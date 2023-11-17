@@ -1,5 +1,33 @@
 {% extends 'common/base.njk' %}
 {% set title = 'Service Description' %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% block backLink %}
+  {{ govukBackLink({ text: "Back", href: "/help-request" }) }}
+{% endblock %}
 {% block content %}
-    {# placeholder for content #}
+
+  <form method="post" action="/validate-service-description" id="serviceDescriptionForm">
+
+    {{ govukTextarea({
+  name: "serviceDescription",
+  id: "service-description",
+  label: {
+    text: "Service Description",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Describe your service, what it does, who it helps and why? Also tell us if it's a new service that has not launched yet."
+  },
+  errorMessage: {
+    text: "Enter a short description of your service"
+  } if showError
+}) }}
+    {{ govukButton({
+  text: "Continue",
+  type: "submit"
+}) }}
+  </form>
 {% endblock %}
