@@ -75,3 +75,16 @@ app.post("/validate-help-request", (req, res) => {
     res.redirect(result.redirect);
   }
 });
+
+app.post("/validate-service-description", (req, res) => {
+  const result = validateForm(req.body.serviceDescription, "/");
+  const renderOptions = {
+    showError: result.showError,
+    ga4ContainerId: GA4_CONTAINER_ID,
+  };
+  if (result.showError) {
+    res.render("serviceDescription.njk", renderOptions);
+  } else if (result.redirect) {
+    res.redirect(result.redirect);
+  }
+});
