@@ -46,7 +46,7 @@ app.get("/help-request", (req, res) => {
   res.render("helpRequest.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // checkbox
 });
 app.get("/choose-location", (req, res) => {
-  res.render("chooseLocation.njk"); // select
+  res.render("chooseLocation.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // select
 });
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
@@ -78,7 +78,7 @@ app.post("/validate-help-request", (req, res) => {
   }
 });
 app.post("/validate-service-description", (req, res) => {
-  const result = validateForm(req.body.serviceDescription, "/");
+  const result = validateForm(req.body.serviceDescription, "/choose-location");
   const renderOptions = {
     showError: result.showError,
     ga4ContainerId: GA4_CONTAINER_ID,
@@ -92,8 +92,12 @@ app.post("/validate-service-description", (req, res) => {
 
 app.post("/validate-choose-location", (req, res) => {
   const result = validateForm(req.body.chooseLocation, "/");
+  const renderOptions = {
+    showError: result.showError,
+    ga4ContainerId: GA4_CONTAINER_ID,
+  };
   if (result.showError) {
-    res.render("chooseLocation.njk", { showError: true });
+    res.render("chooseLocation.njk", renderOptions);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
