@@ -4,13 +4,13 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
-    {{ govukBackLink({ text: "Back", href: "/service-description" }) }}
+  {{ govukBackLink({ text: "Back", href: "/service-description" }) }}
 {% endblock %}
 {% block content %}
 
-    <form method="post" action="/validate-choose-location" id="chooseLocationForm">
+  <form method="post" action="/validate-choose-location" id="chooseLocationForm">
 
-        {{ govukSelect({
+    {{ govukSelect({
   id: "choose-location",
   name: "chooseLocation",
   label: {
@@ -24,7 +24,7 @@
   }if showError,
   items: [
     {
-      value: "choose",
+      value: "",
       text: "Choose location",
       selected: true
     },
@@ -66,9 +66,9 @@
     }
   ]
 }) }}
-        {{ govukButton({
+    {{ govukButton({
   text: "Continue",
   type: "submit"
 }) }}
-    </form>
+  </form>
 {% endblock %}

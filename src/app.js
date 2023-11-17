@@ -70,7 +70,7 @@ app.post("/validate-help-request", (req, res) => {
 });
 
 app.post("/validate-choose-location", (req, res) => {
-  const result = validateForm(req.body.chooseLocation, "/", "choose");
+  const result = validateForm(req.body.chooseLocation, "/");
   if (result.showError) {
     res.render("chooseLocation.njk", { showError: true });
   } else if (result.redirect) {
