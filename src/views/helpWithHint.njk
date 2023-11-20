@@ -59,33 +59,33 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const storedHelpWithHints = localStorage.getItem("helpWithHint");
+      const form = document.getElementById("helpWithHintForm");
+
       if (storedHelpWithHints) {
         const storedValues = storedHelpWithHints.split("/");
-        const form = document.getElementById("helpWithHintForm");
-
-        form
-          .elements
-          .helpWithHint
-          .forEach((checkbox) => {
-            if (storedValues.includes(checkbox.value)) {
-              checkbox.checked = true;
-            }
-          })
+        storedValues.forEach((value) => {
+          const checkbox = form.querySelector(`input[value="${value}"]`);
+          if (checkbox) {
+            checkbox.checked = true;
+          }
+        });
       }
 
-      const form = document.getElementById("helpWithHintForm");
       form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const helpWithHint = document
+        const helpWithHint = form
           .querySelector('input[name="helpWithHint"]:checked')
           .value;
 
-        const checkedItems = Array.from(document.querySelectorAll('input[type=checkbox]:checked'), (checkbox) => checkbox.value);
+        const checkedItems = Array
+          .from(form.querySelectorAll('input[type=checkbox]:checked'))
+          .map((checkbox) => checkbox.value);
 
         localStorage.setItem("helpWithHint", checkedItems.join("/"));
-      });
 
+        form.submit();
+      });
     });
   </script>
 {% endblock %}
