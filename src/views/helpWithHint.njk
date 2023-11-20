@@ -58,30 +58,34 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const storedHelpWithHint = localStorage.getItem("helpWithHint");
-      const form = document.forms.helpWithHintForm;
+      const storedHelpWithHints = localStorage.getItem("helpWithHint");
+      if (storedHelpWithHints) {
+        const storedValues = storedHelpWithHints.split("/");
+        const form = document.getElementById("helpWithHintForm");
 
-      const checkboxToCheck = Array
-        .from(form.elements.helpWithHint)
-        .find((checkbox) => checkbox.value === storedHelpWithHint);
-
-      if (checkboxToCheck) {
-        checkboxToCheck.checked = true;
+        form
+          .elements
+          .helpWithHint
+          .forEach((checkbox) => {
+            if (storedValues.includes(checkbox.value)) {
+              checkbox.checked = true;
+            }
+          })
       }
-    });
 
-    document
-      .getElementById("helpWithHintForm")
-      .addEventListener("submit", function (event) {
+      const form = document.getElementById("helpWithHintForm");
+      form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        var helpWithHint = document
+        const helpWithHint = document
           .querySelector('input[name="helpWithHint"]:checked')
           .value;
 
-        localStorage.setItem("helpWithHint", helpWithHint);
+        const checkedItems = Array.from(document.querySelectorAll('input[type=checkbox]:checked'), (checkbox) => checkbox.value);
 
-        this.submit();
+        localStorage.setItem("helpWithHint", checkedItems.join("/"));
       });
+
+    });
   </script>
 {% endblock %}
