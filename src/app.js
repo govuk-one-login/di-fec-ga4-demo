@@ -35,8 +35,44 @@ app.use(
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(setGa4ContainerId);
-app.use(setTaxonomyValues);
 app.use(setStatusCode);
+
+const routeInfo = [
+  {
+    path: "/",
+    pageTitle: "Home ",
+    taxonomyLevel1: "HomeTax1",
+    taxonomyLevel2: "HomeTax2",
+  },
+  {
+    path: "/service-description",
+    pageTitle: "Service Description ",
+    taxonomyLevel1: "ServiceTax1",
+    taxonomyLevel2: "ServiceTax2",
+  },
+  {
+    path: "/organisation-type",
+    pageTitle: "Organisation Type ",
+    taxonomyLevel1: "OrganisationTax1",
+    taxonomyLevel2: "OrganisationTax2",
+  },
+
+  {
+    path: "/choose-location",
+    pageTitle: "Choose Location",
+    taxonomyLevel1: "ChooseLocation1",
+    taxonomyLevel2: "ChooseLocation2",
+  },
+];
+routeInfo.forEach((route) => {
+  app.use(route.path, (req, res, next) => {
+    setTaxonomyValues(
+      route.pageTitle,
+      route.taxonomyLevel1,
+      route.taxonomyLevel2
+    )(req, res, next);
+  });
+});
 
 app.get("/", (req, res) => {
   res.render("home.njk");

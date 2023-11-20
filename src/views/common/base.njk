@@ -30,6 +30,8 @@
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+          <h1>
+            {{res.locals.statusCode}}</h1>
           {% block content %}{% endblock %}
         </div>
       </div>
@@ -47,15 +49,17 @@
       .analyticsGa4
       .pageViewTracker
       .trackOnPageLoad({
-        statusCode: '{{ res.locals.statusCode }}', // Access status code
-        englishPageTitle: `english version of the title`, // Replace with the actual page title
-        taxonomy_level1: '{{ res.locals.taxonomyLevel1 }}', // Access taxonomy level 1
-        taxonomy_level2: '{{ res.locals.taxonomyLevel2 }}' // Access taxonomy level 2
+        statusCode: '{{statusCode}}', // Access status code
+        englishPageTitle: '{{englishPageTitle}}',
+        taxonomy_level1: '{{ taxonomyLevel1 }}', // Access taxonomy level 1
+        taxonomy_level2: '{{ taxonomyLevel2 }}', // Access taxonomy level 2
       });
 
     window
       .DI
       .cookieBannerInit("localhost");
+
+    console.log(window.dataLayer);
   </script>
 {% endblock %}
 
