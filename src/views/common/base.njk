@@ -47,9 +47,10 @@
       .analyticsGa4
       .pageViewTracker
       .trackOnPageLoad({
-        statusCode: 200, englishPageTitle: `english version of the title`, // Replace with the actual page title
-        taxonomy_level1: 'tes tax 1', // Replace with the actual taxonomy level 1
-        taxonomy_level2: 'tes tax 2' // Replace with the actual taxonomy level 2
+        statusCode: '{{ res.locals.statusCode }}', // Access status code
+        englishPageTitle: `english version of the title`, // Replace with the actual page title
+        taxonomy_level1: '{{ res.locals.taxonomyLevel1 }}', // Access taxonomy level 1
+        taxonomy_level2: '{{ res.locals.taxonomyLevel2 }}' // Access taxonomy level 2
       });
 
     window

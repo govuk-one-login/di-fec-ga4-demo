@@ -2,7 +2,12 @@ const express = require("express");
 const path = require("path");
 const { configureNunjucks } = require("./config/nunjucks");
 const validateForm = require("./validateForm");
-const { GA4_CONTAINER_ID } = require("./config/constants");
+const {
+  setGa4ContainerId,
+  setStatusCode,
+  setTaxonomyValues,
+} = require("./config/gtmMiddleware");
+
 const app = express();
 const port = 3000;
 
@@ -29,24 +34,27 @@ app.use(
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(setGa4ContainerId);
+app.use(setTaxonomyValues);
+app.use(setStatusCode);
 
 app.get("/", (req, res) => {
-  res.render("home.njk", { ga4ContainerId: GA4_CONTAINER_ID });
+  res.render("home.njk");
 });
 
 app.get("/service-description", (req, res) => {
-  res.render("serviceDescription.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // free text
+  res.render("serviceDescription.njk"); // free text
 });
 
 app.get("/organisation-type", (req, res) => {
-  res.render("organisationType.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // radio button
+  res.render("organisationType.njk"); // radio button
 });
 
 app.get("/help-request", (req, res) => {
-  res.render("helpRequest.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // checkbox
+  res.render("helpRequest.njk"); // checkbox
 });
 app.get("/choose-location", (req, res) => {
-  res.render("chooseLocation.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // select
+  res.render("chooseLocation.njk"); // select
 });
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
@@ -56,7 +64,6 @@ app.post("/validate-organisation-type", (req, res) => {
   const result = validateForm(req.body.organisationType, "/help-request");
   const renderOptions = {
     showError: result.showError,
-    ga4ContainerId: GA4_CONTAINER_ID,
   };
   if (result.showError) {
     res.render("organisationType.njk", renderOptions);
@@ -69,7 +76,6 @@ app.post("/validate-help-request", (req, res) => {
   const result = validateForm(req.body.helpWithHint, "/service-description");
   const renderOptions = {
     showError: result.showError,
-    ga4ContainerId: GA4_CONTAINER_ID,
   };
   if (result.showError) {
     res.render("helpRequest.njk", renderOptions);
@@ -81,7 +87,6 @@ app.post("/validate-service-description", (req, res) => {
   const result = validateForm(req.body.serviceDescription, "/choose-location");
   const renderOptions = {
     showError: result.showError,
-    ga4ContainerId: GA4_CONTAINER_ID,
   };
   if (result.showError) {
     res.render("serviceDescription.njk", renderOptions);
@@ -94,7 +99,6 @@ app.post("/validate-choose-location", (req, res) => {
   const result = validateForm(req.body.chooseLocation, "/");
   const renderOptions = {
     showError: result.showError,
-    ga4ContainerId: GA4_CONTAINER_ID,
   };
   if (result.showError) {
     res.render("chooseLocation.njk", renderOptions);
