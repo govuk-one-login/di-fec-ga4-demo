@@ -1,5 +1,6 @@
 {% block head %}
   <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css"/>
+
 {% endblock %}
 
 {% extends "govuk/template.njk" %}
@@ -30,8 +31,6 @@
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h1>
-            {{res.locals.statusCode}}</h1>
           {% block content %}{% endblock %}
         </div>
       </div>
@@ -58,8 +57,6 @@
     window
       .DI
       .cookieBannerInit("localhost");
-
-    console.log(window.dataLayer);
   </script>
 {% endblock %}
 

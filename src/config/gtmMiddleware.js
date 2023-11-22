@@ -1,4 +1,5 @@
 const { GA4_CONTAINER_ID } = require("./constants");
+const { routeInfo } = require("./constants");
 
 // This function makes sure that the GA4 Container ID is accessible to all pages, so we don't have to repeat it in every route
 
@@ -14,14 +15,32 @@ const setStatusCode = (req, res, next) => {
   next();
 };
 
-// Middleware to instantiate the values for taxonomy levels 1 and 2  and pageTitle for the On Page Load tracker
-const setTaxonomyValues =
-  (pageTitle, taxLevel1, taxLevel2) => (req, res, next) => {
-    console.log("Middleware executed:", { pageTitle, taxLevel1, taxLevel2 });
-    res.locals.englishPageTitle = pageTitle;
-    res.locals.taxonomyLevel1 = taxLevel1;
-    res.locals.taxonomyLevel2 = taxLevel2;
-    next(); // Pass control to the next middleware function
-  };
+// Middleware to instantiate the values for taxonomy levels 1 and 2 for the On Page Load tracker
+const setTaxonomyValues = (req, res, next) => {
+  const url = req.url;
+  const pathFound = routeInfo.find((route) => route.path === url);
+  if (pathFound) {
+    res.locals.taxonomyLevel1 = pathFound.taxonomyLevel1;
+    res.locals.taxonomyLevel2 = pathFound.taxonomyLevel2;
+  }
 
-module.exports = { setGa4ContainerId, setStatusCode, setTaxonomyValues };
+  next();
+};
+
+// Middleware to instantiate the value for the pageTitle for the On Page Load tracker
+const setPageTitle = (req, res, next) => {
+  const url = req.url;
+  console.log(url);
+  const pathFound = routeInfo.find((route) => route.path === url);
+  if (pathFound) {
+    res.locals.englishPageTitle = pathFound.pageTitle;
+  }
+
+  next();
+};
+module.exports = {
+  setGa4ContainerId,
+  setStatusCode,
+  setTaxonomyValues,
+  setPageTitle,
+};
