@@ -1,6 +1,6 @@
 const GA4_CONTAINER_ID = "GTM-KD86CMZ";
 
-const routeInfo = [
+const ROUTE_INFO = [
   {
     id: 1,
     path: "/",
@@ -65,4 +65,4 @@ const routeInfo = [
     taxonomyLevel2: "ErrorChooseLocation2",
   },
 ];
-module.exports = { GA4_CONTAINER_ID, routeInfo };
+module.exports = { GA4_CONTAINER_ID, ROUTE_INFO };
