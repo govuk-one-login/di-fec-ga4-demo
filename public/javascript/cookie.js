@@ -8,7 +8,9 @@ window.DI = window.DI || {};
   var cookies = {
     hasConsentForAnalytics: function () {
       var COOKIES_PREFERENCES_SET = "cookies_preferences_set";
-      var cookieConsent = JSON.parse(decodeURIComponent(this.getCookie(COOKIES_PREFERENCES_SET)));
+      var cookieConsent = JSON.parse(
+        decodeURIComponent(this.getCookie(COOKIES_PREFERENCES_SET)),
+      );
       return cookieConsent ? cookieConsent.analytics === true : false;
     },
 
@@ -34,12 +36,17 @@ window.DI = window.DI || {};
         options = {};
       }
 
-      var cookieString = name + "=" + encodeURIComponent(JSON.stringify(values));
+      var cookieString =
+        name + "=" + encodeURIComponent(JSON.stringify(values));
       if (options.days) {
         var date = new Date();
         date.setTime(date.getTime() + options.days * 24 * 60 * 60 * 1000);
         cookieString =
-          cookieString + "; Expires=" + date.toUTCString() + "; Path=/; Domain=" + domain;
+          cookieString +
+          "; Expires=" +
+          date.toUTCString() +
+          "; Path=/; Domain=" +
+          domain;
       }
 
       if (document.location.protocol === "https:") {

@@ -14,18 +14,10 @@ const APP_VIEWS = [
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
 
-app.use(
-  "/assets",
-  express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
-  )
-);
+app.use("/assets", express.static(path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")));
 
 /**GA4 assets */
-app.use(
-  "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
-);
+app.use("/ga4-assets", express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")));
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -42,18 +34,24 @@ app.get("/organisation-type", (req, res) => {
   res.render("organisationType.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // radio button
 });
 
-app.get("/help-request", (req, res) => {
-  res.render("helpRequest.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // checkbox
+app.get("/help-with-hint", (req, res) => {
+  res.render("helpWithHint.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // checkbox
 });
+
 app.get("/choose-location", (req, res) => {
   res.render("chooseLocation.njk", { ga4ContainerId: GA4_CONTAINER_ID }); // select
 });
+
+app.get("/confirmation-page", (req, res) => {
+  res.render("confirmationPage.njk");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
 app.post("/validate-organisation-type", (req, res) => {
-  const result = validateForm(req.body.organisationType, "/help-request");
+  const result = validateForm(req.body.organisationType, "/help-with-hint");
   const renderOptions = {
     showError: result.showError,
     ga4ContainerId: GA4_CONTAINER_ID,
@@ -65,14 +63,14 @@ app.post("/validate-organisation-type", (req, res) => {
   }
 });
 
-app.post("/validate-help-request", (req, res) => {
+app.post("/validate-help-with-hint", (req, res) => {
   const result = validateForm(req.body.helpWithHint, "/service-description");
   const renderOptions = {
     showError: result.showError,
     ga4ContainerId: GA4_CONTAINER_ID,
   };
   if (result.showError) {
-    res.render("helpRequest.njk", renderOptions);
+    res.render("helpWithHint.njk", renderOptions);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
@@ -91,7 +89,7 @@ app.post("/validate-service-description", (req, res) => {
 });
 
 app.post("/validate-choose-location", (req, res) => {
-  const result = validateForm(req.body.chooseLocation, "/");
+  const result = validateForm(req.body.chooseLocation, "/confirmation-page");
   const renderOptions = {
     showError: result.showError,
     ga4ContainerId: GA4_CONTAINER_ID,

@@ -4,7 +4,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
-  {{ govukBackLink({ text: "Back", href: "/help-request" }) }}
+  {{ govukBackLink({ text: "Back", href: "/help-with-hint" }) }}
 {% endblock %}
 {% block content %}
 
@@ -30,4 +30,26 @@
   type: "submit"
 }) }}
   </form>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const storedServiceDescription = localStorage.getItem("serviceDescription");
+      const textField = document.getElementById("service-description");
+
+      textField.value = storedServiceDescription ?? null;
+    });
+
+    document
+      .getElementById("serviceDescriptionForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const serviceDescription = document
+          .getElementById("service-description")
+          .value;
+
+        localStorage.setItem("serviceDescription", serviceDescription);
+
+        this.submit();
+      });
+  </script>
 {% endblock %}

@@ -1,14 +1,11 @@
-### Description ###
+### Description
 
+### Tickets
 
-### Tickets ###
 (DFC-**)[https://govukverify.atlassian.net/browse/DFC-**]
 
-### Steps to Reproduce ###
+### Steps to Reproduce
 
+### Co-Authored By
 
-### Co-Authored By ###
-
-
-### Additional Information ###
-
+### Additional Information

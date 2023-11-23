@@ -10,11 +10,16 @@
 
   <form method="post" action="/validate-choose-location" id="chooseLocationForm">
 
+    <h1 class="govuk-heading-l">Choose your location</h1>
+
     {{ govukSelect({
   id: "choose-location",
   name: "chooseLocation",
-  label: {
-    text: "Choose location"
+  fieldset: {
+    legend: {
+      text: "Choose your location",
+      classes: "govuk-fieldset__legend--l"
+    }
   },
   hint: {
     text: "This can be different to where you went before"
@@ -71,4 +76,30 @@
   type: "submit"
 }) }}
   </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const storedChooseLocation = localStorage.getItem("chooseLocation");
+      const dropdownToSelect = document.getElementById("choose-location");
+
+      // if check must remain, else default text does not show
+      if (storedChooseLocation) {
+        dropdownToSelect.value = storedChooseLocation;
+      }
+    });
+
+    document
+      .getElementById("chooseLocationForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const chooseLocation = document
+          .getElementById("choose-location")
+          .value;
+
+        localStorage.setItem("chooseLocation", chooseLocation);
+
+        this.submit();
+      });
+  </script>
 {% endblock %}
