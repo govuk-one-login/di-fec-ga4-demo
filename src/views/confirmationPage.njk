@@ -1,0 +1,10 @@
+{% extends 'common/base.njk' %}
+{% set title = 'Confirmation Page' %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% block backLink %}
+  {{ govukBackLink({ text: "Back", href: "/choose-location" }) }}
+{% endblock %}
+
+<p>placeholder</p>
+{% block content %}{% endblock %}

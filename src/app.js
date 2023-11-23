@@ -54,9 +54,15 @@ app.get("/organisation-type", (req, res) => {
 app.get("/help-with-hint", (req, res) => {
   res.render("helpWithHint.njk"); // checkbox
 });
+
 app.get("/choose-location", (req, res) => {
   res.render("chooseLocation.njk"); // select
 });
+
+app.get("/confirmation-page", (req, res) => {
+  res.render("confirmationPage.njk");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
@@ -97,7 +103,7 @@ app.post("/validate-service-description", (req, res) => {
 });
 
 app.post("/validate-choose-location", (req, res) => {
-  const result = validateForm(req.body.chooseLocation, "/");
+  const result = validateForm(req.body.chooseLocation, "/confirmation-page");
   const renderOptions = {
     showError: result.showError,
   };

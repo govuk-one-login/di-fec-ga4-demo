@@ -14,6 +14,7 @@
   <form method="post" action="/validate-organisation-type" id="organisationForm">
     {{ govukRadios({
   name: "organisationType",
+  id: "organisation-type",
   fieldset: {
     legend: {
       text: "Organisation type",
@@ -46,9 +47,36 @@
     {{ govukButton({
     text: "Continue",
     type: 'submit'
-   
   }) }}
 
   </form>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const storedOrganisationType = localStorage.getItem("organisationType");
+
+      const form = document.forms.organisationForm
+
+      if (storedOrganisationType) {
+        Array
+          .from(form.elements.organisationType)
+          .find((radio) => radio.value === storedOrganisationType)
+          .checked = true
+      }
+    });
+
+    document
+      .getElementById("organisationForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const organisationType = document
+          .querySelector('input[name="organisationType"]:checked')
+          .value;
+
+        localStorage.setItem("organisationType", organisationType);
+
+        this.submit();
+      });
+  </script>
 {% endblock %}

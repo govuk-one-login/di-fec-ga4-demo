@@ -55,4 +55,37 @@
   type: "submit"
 }) }}
   </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const storedHelpWithHints = localStorage.getItem("helpWithHint");
+      const form = document.getElementById("helpWithHintForm");
+
+      if (storedHelpWithHints) {
+        const storedValues = storedHelpWithHints.split("/");
+        storedValues.forEach((value) => {
+          const checkbox = form.querySelector(`input[value="${value}"]`);
+          if (checkbox) {
+            checkbox.checked = true;
+          }
+        });
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const helpWithHint = form
+          .querySelector('input[name="helpWithHint"]:checked')
+          .value;
+
+        const checkedItems = Array
+          .from(form.querySelectorAll('input[type=checkbox]:checked'))
+          .map((checkbox) => checkbox.value);
+
+        localStorage.setItem("helpWithHint", checkedItems.join("/"));
+
+        form.submit();
+      });
+    });
+  </script>
 {% endblock %}
