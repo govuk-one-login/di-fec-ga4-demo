@@ -2,6 +2,30 @@
 {% set title = 'Confirmation Page' %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
+{% set organisationTypeHtml %}
+<script>
+  document.write(localStorage.getItem("organisationType"));
+</script>
+{% endset %}
+
+{% set helpWithHintsHtml %}
+<script>
+  document.write(localStorage.getItem("helpWithHint").split("/"));
+</script>
+{% endset %}
+
+{% set serviceDescriptionHtml %}
+<script>
+  document.write(localStorage.getItem("serviceDescription"));
+</script>
+{% endset %}
+
+{% set serviceDescriptionHtml %}
+<script>
+  document.write(localStorage.getItem("chooseLocation"));
+</script>
+{% endset %}
+
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
   {{ govukBackLink({ text: "Back", href: "/enter-email" }) }}
@@ -10,6 +34,7 @@
 {% block content %}
 
   {{ govukSummaryList({
+    classes: "govuk-summary-list__row--no-actions",
       fieldset: {
     legend: {
       text: "What would you like help with?",
@@ -20,10 +45,10 @@
   rows: [
     {
       key: {
-        text: "Describe your service"
+        text: "What is your organisation type?"
       },
-      value: {
-        text: "Sarah Philips"
+    value: {
+        html:  organisationTypeHtml 
       }
     },
     {
@@ -31,15 +56,15 @@
         text: "What would you like help with?"
       },
       value: {
-        text: "5 January 1978"
+        html: helpWithHintsHtml
       }
     },
     {
       key: {
-        text: "Address"
+        text: "Describe your service"
       },
       value: {
-        html: "72 Guild Street<br>London<br>SE23 6FH"
+        html: serviceDescriptionHtml
       }
     },
     {
@@ -47,7 +72,8 @@
         text: "Contact details"
       },
       value: {
-        html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+        html: '<p class="govuk-body">07700 900457</p>
+  <p class="govuk-body">sarah.phillips@example.com</p>'
       }
     }
   ]

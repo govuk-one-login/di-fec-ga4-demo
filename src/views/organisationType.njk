@@ -61,8 +61,8 @@
         Array
           .from(form.elements.organisationType)
           .find(
-            (radio) => radio.value
-            ? ===storedOrganisationType)
+            (radio) => radio
+            ?.value === storedOrganisationType)
           .checked = true
       }
     });
@@ -72,11 +72,12 @@
       .addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const organisationType = document
-          .querySelector('input[name="organisationType"]:checked')
-          .value;
+        const organisationType = document.querySelector('input[name="organisationType"]:checked')
+          ?.value;
 
-        localStorage.setItem("organisationType", organisationType);
+        if (organisationType) {
+          localStorage.setItem("organisationType", organisationType);
+        }
 
         this.submit();
       });
