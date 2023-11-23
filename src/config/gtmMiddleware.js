@@ -20,8 +20,8 @@ const setTaxonomyValues = (req, res, next) => {
   const url = req.url;
   const pathFound = ROUTE_INFO.find((route) => route.path === url);
   if (pathFound) {
-    res.locals.taxonomyLevel1 = pathFound.taxonomyLevel1;
-    res.locals.taxonomyLevel2 = pathFound.taxonomyLevel2;
+    res.locals.taxonomyLevel1 = pathFound.taxonomyLevel1 || "undefined";
+    res.locals.taxonomyLevel2 = pathFound.taxonomyLevel2 || "undefined";
   } else {
     console.log("Path not found");
     res.locals.taxonomyLevel1 = "undefined";
@@ -37,7 +37,7 @@ const setPageTitle = (req, res, next) => {
   console.log(url);
   const pathFound = ROUTE_INFO.find((route) => route.path === url);
   if (pathFound) {
-    res.locals.englishPageTitle = pathFound.pageTitle;
+    res.locals.englishPageTitle = pathFound.pageTitle || "undefined";
   } else {
     console.log("Path not found");
     res.locals.englishPageTitle = "undefined";
