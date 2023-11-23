@@ -63,7 +63,7 @@ app.get("/choose-location", (req, res) => {
 });
 
 app.get("/confirmation-page", (req, res) => {
-  res.render("confirmationPage.njk");
+  res.render("confirmationPage.njk", { ga4ContainerId: GA4_CONTAINER_ID });
 });
 
 app.listen(port, () => {

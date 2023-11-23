@@ -1,47 +1,37 @@
 {% extends 'common/base.njk' %}
 {% set title = 'Confirmation Page' %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
   {{ govukBackLink({ text: "Back", href: "/enter-email" }) }}
 {% endblock %}
 
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% block content %}
 
-{{ govukSummaryList({
+  {{ govukSummaryList({
+      fieldset: {
+    legend: {
+      text: "What would you like help with?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
   rows: [
     {
       key: {
-        text: "Name"
+        text: "Describe your service"
       },
       value: {
         text: "Sarah Philips"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
       }
     },
     {
       key: {
-        text: "Date of birth"
+        text: "What would you like help with?"
       },
       value: {
         text: "5 January 1978"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
       }
     },
     {
@@ -50,15 +40,6 @@
       },
       value: {
         html: "72 Guild Street<br>London<br>SE23 6FH"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "address"
-          }
-        ]
       }
     },
     {
@@ -67,22 +48,9 @@
       },
       value: {
         html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Add",
-            visuallyHiddenText: "contact details"
-          },
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "contact details"
-          }
-        ]
       }
     }
   ]
 }) }}
-{% block content %}{% endblock %}
+
+{% endblock %}
