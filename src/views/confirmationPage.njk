@@ -1,16 +1,35 @@
 {% extends 'common/base.njk' %}
 {% set title = 'Confirmation Page' %}
+
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {% set organisationTypeHtml %}
 <script>
-  document.write(localStorage.getItem("organisationType"));
+  document.write(organisationTypes["governmentDepartmentOrMinistry"])
 </script>
 {% endset %}
 
 {% set helpWithHintsHtml %}
 <script>
-  document.write(localStorage.getItem("helpWithHint").split("/"));
+
+  const helpWithHint = {
+    "gettingAccessToTheIntegrationEnvironmentToTestGOV.UKOneLogin": "Getting access to the integration environment to test GOV.UK One Login",
+    "havingATechnicalDiscussion": "Having a technical discussion",
+    "walkingThroughTheOnboardingProcess": "Walking through the onboarding process",
+    "understandingTheGOV.UKOneLoginProgrammeInMoreDetail": "Understanding the GOV.UK One Login programme in more detail",
+    "other": "Other"
+  };
+  const localStorageValue = localStorage.getItem("helpWithHint");
+
+  if (localStorageValue) {
+    const values = localStorageValue
+      .split('/')
+      .map(el => {
+        return ` ${helpWithHint[el]}`;
+      });
+
+    document.write(values)
+  }
 </script>
 {% endset %}
 
@@ -20,9 +39,22 @@
 </script>
 {% endset %}
 
-{% set serviceDescriptionHtml %}
+{% set chooseLocationHtml %}
 <script>
-  document.write(localStorage.getItem("chooseLocation"));
+
+  const locations = {
+    "eastmidlands": "East Midlands",
+    "eastofengland": "East of England",
+    "london": "London",
+    "northeast": "North East",
+    "northwest": "North West",
+    "southeast": "South East",
+    "southwest": "South West",
+    "westmidlands": "West Midlands",
+    "yorkshire": "Yorkshire and the Humber"
+  };
+
+  document.write(locations[localStorage.getItem("chooseLocation")]);
 </script>
 {% endset %}
 
@@ -33,11 +65,13 @@
 
 {% block content %}
 
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-3">Check answers</h1>
+
   {{ govukSummaryList({
     classes: "govuk-summary-list__row--no-actions",
       fieldset: {
     legend: {
-      text: "What would you like help with?",
+      text: "Check answers",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
@@ -69,11 +103,10 @@
     },
     {
       key: {
-        text: "Contact details"
+        text: "Choose your location"
       },
       value: {
-        html: '<p class="govuk-body">07700 900457</p>
-  <p class="govuk-body">sarah.phillips@example.com</p>'
+        html:  chooseLocationHtml
       }
     }
   ]
