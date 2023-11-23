@@ -60,7 +60,9 @@
       if (storedOrganisationType) {
         Array
           .from(form.elements.organisationType)
-          .find((radio) => radio.value === storedOrganisationType)
+          .find(
+            (radio) => radio.value
+            ? ===storedOrganisationType)
           .checked = true
       }
     });
