@@ -1,5 +1,6 @@
 {% block head %}
   <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css"/>
+
 {% endblock %}
 
 {% extends "govuk/template.njk" %}
@@ -47,9 +48,10 @@
       .analyticsGa4
       .pageViewTracker
       .trackOnPageLoad({
-        statusCode: 200, englishPageTitle: `english version of the title`, // Replace with the actual page title
-        taxonomy_level1: 'tes tax 1', // Replace with the actual taxonomy level 1
-        taxonomy_level2: 'tes tax 2' // Replace with the actual taxonomy level 2
+        statusCode: '{{statusCode}}', // Access status code
+        englishPageTitle: '{{englishPageTitle}}',
+        taxonomy_level1: '{{ taxonomyLevel1 }}', // Access taxonomy level 1
+        taxonomy_level2: '{{ taxonomyLevel2 }}', // Access taxonomy level 2
       });
 
     window
