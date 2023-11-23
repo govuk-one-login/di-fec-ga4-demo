@@ -1,0 +1,50 @@
+{% extends 'common/base.njk' %}
+{% set title = 'Enter Email' %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% block backLink %}
+  {{ govukBackLink({ text: "Back", href: "/choose-location" }) }}
+{% endblock %}
+{%block content%}
+
+  <form method="post"action="/validate-enter-email" id="enterEmailForm">
+    {{ govukInput({
+  label: {
+    text: "Enter your email address",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  id: "enter-email",
+  name: "enterEmail",
+  errorMessage: {
+    text: "Enter your email address"
+  } if showError
+}) }}
+    {{ govukButton({
+  text: "Continue",
+  type: "submit"
+}) }}
+  </form>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const storedEmail = localStorage.getItem("enterEmail");
+      const textField = document.getElementById("enter-email");
+
+      textField.value = storedEmail ?? null;
+    });
+    document
+      .getElementById("enterEmailForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const enterEmail = document
+          .getElementById("enter-email")
+          .value;
+
+        localStorage.setItem("enterEmail", enterEmail);
+
+        this.submit();
+      });
+  </script>
+  {%endblock%}
