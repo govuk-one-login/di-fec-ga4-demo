@@ -1,5 +1,5 @@
 {% extends 'common/base.njk' %}
-{% set title = 'Help Request' %}
+{% set title = 'Help With Hint' %}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
@@ -9,7 +9,7 @@
 {% endblock %}
 {% block content %}
 
-  <form method="post" action="/validate-help-request" id="helpRequestForm" >
+  <form method="post" action="/validate-help-with-hint" id="helpWithHintForm" >
 
     {{ govukCheckboxes({
   name: "helpWithHint",

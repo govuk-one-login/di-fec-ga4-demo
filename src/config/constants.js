@@ -31,10 +31,10 @@ const ROUTE_INFO = [
   },
   {
     id: 5,
-    path: "/help-request",
-    pageTitle: "Help Request",
-    taxonomyLevel1: "HelpReqTax1",
-    taxonomyLevel2: "HelpReqTax2",
+    path: "/help-with-hint",
+    pageTitle: "Help With Hint",
+    taxonomyLevel1: "HelpWithHintTax1",
+    taxonomyLevel2: "HelpWithHintTax2",
   },
   {
     id: 6,
@@ -45,8 +45,8 @@ const ROUTE_INFO = [
   },
   {
     id: 7,
-    path: "/validate-help-request",
-    pageTitle: "Help Request",
+    path: "/validate-help-with-hint",
+    pageTitle: "Help With Hint",
     taxonomyLevel1: "ErrorHelpTax1",
     taxonomyLevel2: "ErrorHelpTax2",
   },
