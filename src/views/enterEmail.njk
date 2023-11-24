@@ -8,7 +8,7 @@
 {% endblock %}
 {%block content%}
 
-  <form method="post"action="/validate-enter-email" id="enterEmailForm">
+  <form method="post" action="/validate-enter-email" id="enterEmailForm">
     {{ govukInput({
   label: {
     text: "Enter your email address",
@@ -42,9 +42,12 @@
           .getElementById("enter-email")
           .value;
 
-        localStorage.setItem("enterEmail", enterEmail);
+        if (enterEmail) {
+          localStorage.setItem("enterEmail", enterEmail);
+        }
 
         this.submit();
       });
   </script>
+
   {%endblock%}
