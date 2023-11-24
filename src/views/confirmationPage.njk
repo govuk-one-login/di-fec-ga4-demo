@@ -5,33 +5,19 @@
 
 {% set organisationTypeHtml %}
 <script>
-  const organisationTypes = {
-    "governmentDepartmentOrMinistry": "Government department or Ministry",
-    "executiveAgency": "Executive Agency",
-    "armsLengthBody": "Arms length body",
-    "other": "Other"
-  };
-  document.write(organisationTypes[localStorage.getItem("organisationType")]);
+  document.write(localStorage.getItem("organisationType"));
 </script>
 {% endset %}
 
 {% set helpWithHintsHtml %}
 <script>
-
-  const helpWithHint = {
-    "gettingAccessToTheIntegrationEnvironmentToTestGOV.UKOneLogin": "Getting access to the integration environment to test GOV.UK One Login",
-    "havingATechnicalDiscussion": "Having a technical discussion",
-    "walkingThroughTheOnboardingProcess": "Walking through the onboarding process",
-    "understandingTheGOV.UKOneLoginProgrammeInMoreDetail": "Understanding the GOV.UK One Login programme in more detail",
-    "other": "Other"
-  };
   const localStorageValue = localStorage.getItem("helpWithHint");
 
   if (localStorageValue) {
     const values = localStorageValue
       .split('/')
       .map(el => {
-        return ` ${helpWithHint[el]}`;
+        return ` ${el}`;
       });
 
     document.write(values)
@@ -47,20 +33,7 @@
 
 {% set chooseLocationHtml %}
 <script>
-
-  const locations = {
-    "eastmidlands": "East Midlands",
-    "eastofengland": "East of England",
-    "london": "London",
-    "northeast": "North East",
-    "northwest": "North West",
-    "southeast": "South East",
-    "southwest": "South West",
-    "westmidlands": "West Midlands",
-    "yorkshire": "Yorkshire and the Humber"
-  };
-
-  document.write(locations[localStorage.getItem("chooseLocation")]);
+  document.write(localStorage.getItem("chooseLocation"));
 </script>
 {% endset %}
 
