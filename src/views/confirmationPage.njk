@@ -5,7 +5,13 @@
 
 {% set organisationTypeHtml %}
 <script>
-  document.write(organisationTypes["governmentDepartmentOrMinistry"]);
+  const organisationTypes = {
+    "governmentDepartmentOrMinistry": "Government department or Ministry",
+    "executiveAgency": "Executive Agency",
+    "armsLengthBody": "Arms length body",
+    "other": "Other"
+  };
+  document.write(organisationTypes[localStorage.getItem("organisationType")]);
 </script>
 {% endset %}
 
