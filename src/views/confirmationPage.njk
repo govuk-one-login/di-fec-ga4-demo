@@ -37,6 +37,12 @@
 </script>
 {% endset %}
 
+{% set enterEmailHtml %}
+<script>
+  document.write(localStorage.getItem("enterEmail"));
+</script>
+{% endset %}
+
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
   {{ govukBackLink({ text: "Back", href: "/enter-email" }) }}
@@ -86,6 +92,14 @@
       },
       value: {
         html:  chooseLocationHtml
+      }
+    },
+     {
+      key: {
+        text: "What is your email"
+      },
+      value: {
+        html:  enterEmailHtml
       }
     }
   ]

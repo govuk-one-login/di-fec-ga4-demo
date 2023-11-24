@@ -15,18 +15,10 @@ const APP_VIEWS = [
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
 
-app.use(
-  "/assets",
-  express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets"),
-  ),
-);
+app.use("/assets", express.static(path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")));
 
 /**GA4 assets */
-app.use(
-  "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")),
-);
+app.use("/ga4-assets", express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")));
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -58,7 +50,7 @@ app.get("/choose-location", (req, res) => {
 });
 
 app.get("/confirmation-page", (req, res) => {
-  res.render("confirmationPage.njk", { ga4ContainerId: GA4_CONTAINER_ID });
+  res.render("confirmationPage.njk");
 });
 
 app.listen(port, () => {
@@ -88,6 +80,7 @@ app.post("/validate-help-with-hint", (req, res) => {
     res.redirect(result.redirect);
   }
 });
+
 app.post("/validate-service-description", (req, res) => {
   const result = validateForm(req.body.serviceDescription, "/choose-location");
   const renderOptions = {
