@@ -43,6 +43,9 @@ app.use(setPageTitle);
 app.get("/", (req, res) => {
   res.render("home.njk");
 });
+app.get("/enter-email", (req, res) => {
+  res.render("enterEmail.njk");
+});
 app.get("/service-description", (req, res) => {
   res.render("serviceDescription.njk"); // free text
 });
@@ -103,12 +106,24 @@ app.post("/validate-service-description", (req, res) => {
 });
 
 app.post("/validate-choose-location", (req, res) => {
-  const result = validateForm(req.body.chooseLocation, "/confirmation-page");
+  const result = validateForm(req.body.chooseLocation, "/enter-email");
   const renderOptions = {
     showError: result.showError,
   };
   if (result.showError) {
     res.render("chooseLocation.njk", renderOptions);
+  } else if (result.redirect) {
+    res.redirect(result.redirect);
+  }
+});
+
+app.post("/validate-enter-email", (req, res) => {
+  const result = validateForm(req.body.enterEmail, "/confirmation-page");
+  const renderOptions = {
+    showError: result.showError,
+  };
+  if (result.showError) {
+    res.render("enterEmail.njk", renderOptions);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
