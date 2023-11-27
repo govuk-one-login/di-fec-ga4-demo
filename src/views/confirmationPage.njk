@@ -2,45 +2,26 @@
 {% set title = 'Confirmation Page' %}
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set organisationTypeHtml %}
-<script>
-  document.write(localStorage.getItem("organisationType"));
-</script>
+<div id="organisationTypeContainer"></div>
 {% endset %}
 
 {% set helpWithHintsHtml %}
-<script>
-  const localStorageValue = localStorage.getItem("helpWithHint");
-
-  if (localStorageValue) {
-    const values = localStorageValue
-      .split('/')
-      .map(el => {
-        return ` ${el}`;
-      });
-
-    document.write(values)
-  }
-</script>
+<div id="helpWithHintContainer"></div>
 {% endset %}
 
 {% set serviceDescriptionHtml %}
-<script>
-  document.write(localStorage.getItem("serviceDescription"));
-</script>
+<div id="serviceDescriptionContainer"></div>
 {% endset %}
 
 {% set chooseLocationHtml %}
-<script>
-  document.write(localStorage.getItem("chooseLocation"));
-</script>
+<div id="chooseLocationContainer"></div>
 {% endset %}
 
 {% set enterEmailHtml %}
-<script>
-  document.write(localStorage.getItem("enterEmail"));
-</script>
+<div id="enterEmailContainer"></div>
 {% endset %}
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
@@ -50,7 +31,7 @@
 
 {% block content %}
 
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-3">Check answers</h1>
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-5">Check answers</h1>
 
   {{ govukSummaryList({
     classes: "govuk-summary-list__row--no-actions",
@@ -104,5 +85,42 @@
     }
   ]
 }) }}
+
+  {{ govukButton({
+  text: "Submit",
+  type: "submit"
+}) }}
+
+  <script>
+    document
+      .getElementById("organisationTypeContainer")
+      .textContent = localStorage.getItem("organisationType");
+
+    const storedHelpWithHints = localStorage.getItem("helpWithHint");
+
+    if (storedHelpWithHints) {
+      const values = storedHelpWithHints
+        .split('/')
+        .map(el => {
+          return `<p>${el}</p>`;
+        });
+
+      document
+        .getElementById("helpWithHintContainer")
+        .innerHTML = values.join('');
+    }
+
+    document
+      .getElementById("serviceDescriptionContainer")
+      .textContent = localStorage.getItem("serviceDescription");
+
+    document
+      .getElementById("chooseLocationContainer")
+      .textContent = localStorage.getItem("chooseLocation");
+
+    document
+      .getElementById("enterEmailContainer")
+      .textContent = localStorage.getItem("enterEmail");
+  </script>
 
 {% endblock %}
