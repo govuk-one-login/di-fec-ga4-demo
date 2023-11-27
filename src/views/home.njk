@@ -58,6 +58,10 @@ service." }) }}
     </div>
 
     <script>
-        localStorage.clear();
+        document.addEventListener("DOMContentLoaded", function () {
+            const validJourney = localStorage.setItem('validJourney', 'true');
+            console.log('user has started journey, variable is set')
+        });
+        localStorage.clear()
     </script>
 {% endblock %}

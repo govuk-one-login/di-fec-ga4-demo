@@ -11,7 +11,8 @@
 }) }}
 {% endblock %}
 {% block content %}
-  <form method="post" action="/validate-organisation-type" id="organisationForm">
+
+  <form method="post" action="/validate-organisation-type" id="organisationForm" style="display: none">
     {{ govukRadios({
   name: "organisationType",
   id: "organisation-type",
@@ -51,17 +52,36 @@
 
   </form>
 
+  <div id="sorryMessage" style="display: none;">
+    <h1 class="govuk-heading-l">Sorry, you can not access OneLogin GOV.UK from this page </h1>
+    <p class="govuk-body">
+      <a href="/" class="govuk-link"> Go to the GOV.UK OneLogin homepage</a> to find the service you need.
+</p>
+  </div>
+
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
-      const storedOrganisationType = localStorage.getItem("organisationType");
+      const validJourney = localStorage.getItem("validJourney");
+      console.log(validJourney);
 
-      const form = document.forms.organisationForm
+      if (validJourney === 'true') {
 
-      if (storedOrganisationType) {
-        Array
-          .from(form.elements.organisationType)
-          .find((radio) => radio.value === storedOrganisationType)
-          .checked = true
+        const form = document.forms.organisationForm;
+        const storedOrganisationType = localStorage.getItem("organisationType");
+
+        if (storedOrganisationType) {
+          Array
+            .from(form.elements.organisationType)
+            .find((radio) => radio.value === storedOrganisationType)
+            .checked = true
+        }
+        form.style.display = 'block';
+      } else {
+        document
+          .getElementById('sorryMessage')
+          .style
+          .display = 'block';
       }
     });
 
@@ -79,4 +99,5 @@
         this.submit();
       });
   </script>
+
 {% endblock %}
