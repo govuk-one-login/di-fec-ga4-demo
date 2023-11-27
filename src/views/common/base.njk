@@ -28,15 +28,12 @@
 
 {% block main %}
   <div class="govuk-width-container">
-    {% if doNotShowPhaseBanner %}
-    {% else %}
-      {{ govukPhaseBanner({
+    {{ govukPhaseBanner({
   tag: {
     text: "Alpha"
   },
   html: 'This is a new service - your <a class="govuk-link" href="https://signin.dev.account.gov.uk/contact-us" target="blank">feedback</a> will help us to improve it.'
 }) }}
-    {% endif %}
     {% block backLink%}{% endblock %}
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
