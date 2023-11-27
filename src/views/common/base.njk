@@ -7,6 +7,7 @@
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
 {% block skipLink %}
   {{ govukSkipLink({ 
@@ -27,6 +28,15 @@
 
 {% block main %}
   <div class="govuk-width-container">
+    {% if doNotShowPhaseBanner %}
+    {% else %}
+      {{ govukPhaseBanner({
+  tag: {
+    text: "Alpha"
+  },
+  html: 'This is a new service - your <a class="govuk-link" href="https://signin.dev.account.gov.uk/contact-us" target="blank">feedback</a> will help us to improve it.'
+}) }}
+    {% endif %}
     {% block backLink%}{% endblock %}
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
