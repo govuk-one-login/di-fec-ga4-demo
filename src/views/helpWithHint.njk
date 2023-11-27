@@ -28,23 +28,23 @@
   } if showError, 
   items: [
     {
-      value: "gettingAccessToTheIntegrationEnvironmentToTestGOV.UKOneLogin",
+      value: "Getting access to the integration environment to test GOV.UK One Login",
       text: "Getting access to the integration environment to test GOV.UK One Login"
     },
     {
-      value: "havingATechnicalDiscussion",
+      value: "Having a technical discussion",
       text: "Having a technical discussion"
     },
     {
-      value: "walkingThroughTheOnboardingProcess",
+      value: "Walking through the onboarding process",
       text: "Walking through the onboarding process"
     },
     {
-      value: "understandingTheGOV.UKOneLoginProgrammeInMoreDetail",
+      value: "Understanding the GOV.UK One Login programme in more detail",
       text: "Understanding the GOV.UK One Login programme in more detail"
     },
      {
-      value: "other",
+      value: "Other",
       text: "Other"
     }
   ]
@@ -74,13 +74,11 @@
       form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const helpWithHint = form
-          .querySelector('input[name="helpWithHint"]:checked')
-          .value;
-
         const checkedItems = Array
           .from(form.querySelectorAll('input[type=checkbox]:checked'))
-          .map((checkbox) => checkbox.value);
+          .map(
+            (checkbox) => checkbox
+            ?.value);
 
         localStorage.setItem("helpWithHint", checkedItems.join("/"));
 

@@ -17,7 +17,7 @@
   id: "organisation-type",
   fieldset: {
     legend: {
-      text: "Organisation type",
+      text: "What is your organisation type?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
       
@@ -25,19 +25,19 @@
   },
   items: [
     {
-      value: "governmentDepartmentOrMinistry",
+      value: "Government department or Ministry",
       text: "Government department or Ministry"
     },
     {
-      value: "executiveAgency",
+      value: "Executive Agency",
       text: "Executive Agency"
     },
     {
-      value: "armsLengthBody",
+      value: "Arms length body",
       text: "Arms length body"
     },
     {
-      value: "other",
+      value: "Other",
       text: "Other"
     }
   ],
@@ -60,7 +60,9 @@
       if (storedOrganisationType) {
         Array
           .from(form.elements.organisationType)
-          .find((radio) => radio.value === storedOrganisationType)
+          .find(
+            (radio) => radio
+            ?.value === storedOrganisationType)
           .checked = true
       }
     });
@@ -70,11 +72,12 @@
       .addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const organisationType = document
-          .querySelector('input[name="organisationType"]:checked')
-          .value;
+        const organisationType = document.querySelector('input[name="organisationType"]:checked')
+          ?.value;
 
-        localStorage.setItem("organisationType", organisationType);
+        if (organisationType) {
+          localStorage.setItem("organisationType", organisationType);
+        }
 
         this.submit();
       });

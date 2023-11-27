@@ -1,10 +1,126 @@
 {% extends 'common/base.njk' %}
 {% set title = 'Confirmation Page' %}
 
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set organisationTypeHtml %}
+<div id="organisationTypeContainer"></div>
+{% endset %}
+
+{% set helpWithHintsHtml %}
+<div id="helpWithHintContainer"></div>
+{% endset %}
+
+{% set serviceDescriptionHtml %}
+<div id="serviceDescriptionContainer"></div>
+{% endset %}
+
+{% set chooseLocationHtml %}
+<div id="chooseLocationContainer"></div>
+{% endset %}
+
+{% set enterEmailHtml %}
+<div id="enterEmailContainer"></div>
+{% endset %}
+
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
   {{ govukBackLink({ text: "Back", href: "/enter-email" }) }}
 {% endblock %}
 
-<p>placeholder</p>
-{% block content %}{% endblock %}
+{% block content %}
+
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-5">Check answers</h1>
+
+  {{ govukSummaryList({
+    classes: "govuk-summary-list__row--no-actions",
+      fieldset: {
+    legend: {
+      text: "Check answers",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  rows: [
+    {
+      key: {
+        text: "What is your organisation type?"
+      },
+    value: {
+        html:  organisationTypeHtml 
+      }
+    },
+    {
+      key: {
+        text: "What would you like help with?"
+      },
+      value: {
+        html: helpWithHintsHtml
+      }
+    },
+    {
+      key: {
+        text: "Describe your service"
+      },
+      value: {
+        html: serviceDescriptionHtml
+      }
+    },
+    {
+      key: {
+        text: "Choose your location"
+      },
+      value: {
+        html:  chooseLocationHtml
+      }
+    },
+     {
+      key: {
+        text: "What is your email"
+      },
+      value: {
+        html:  enterEmailHtml
+      }
+    }
+  ]
+}) }}
+
+  {{ govukButton({
+  text: "Submit",
+  type: "submit"
+}) }}
+
+  <script>
+    document
+      .getElementById("organisationTypeContainer")
+      .textContent = localStorage.getItem("organisationType");
+
+    const storedHelpWithHints = localStorage.getItem("helpWithHint");
+
+    if (storedHelpWithHints) {
+      const values = storedHelpWithHints
+        .split('/')
+        .map(el => {
+          return `${el}</br>`;
+        });
+
+      document
+        .getElementById("helpWithHintContainer")
+        .innerHTML = values.join('');
+    }
+
+    document
+      .getElementById("serviceDescriptionContainer")
+      .textContent = localStorage.getItem("serviceDescription");
+
+    document
+      .getElementById("chooseLocationContainer")
+      .textContent = localStorage.getItem("chooseLocation");
+
+    document
+      .getElementById("enterEmailContainer")
+      .textContent = localStorage.getItem("enterEmail");
+  </script>
+
+{% endblock %}
