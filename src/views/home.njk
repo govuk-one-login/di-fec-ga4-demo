@@ -56,12 +56,7 @@ service." }) }}
     <div>
         <a href="#" class="govuk-link govuk-link--no-visited-state govuk-body"> View a printable version of the whole guide</a>
     </div>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const validJourney = localStorage.setItem('validJourney', 'true');
-            console.log('user has started journey, variable is set')
-        });
-        localStorage.clear()
+        localStorage.clear();
     </script>
 {% endblock %}
