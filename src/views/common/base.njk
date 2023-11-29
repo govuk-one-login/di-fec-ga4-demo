@@ -36,13 +36,11 @@
       </div>
     </main>
   </div>
-  <script src="/javascript/cookie.js"></script>
-  <script src="/javascript/cookieBanner.js"></script>
   <script src="/ga4-assets/analytics.js"></script>
   <script>
     window
       .DI
-      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'});
+      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'},{disableGa4Tracking: true, disableFormFreeTextTracking:true});
     window
       .DI
       .analyticsGa4
@@ -53,10 +51,6 @@
         taxonomy_level1: '{{ taxonomyLevel1 }}', // Access taxonomy level 1
         taxonomy_level2: '{{ taxonomyLevel2 }}', // Access taxonomy level 2
       });
-
-    window
-      .DI
-      .cookieBannerInit("localhost");
   </script>
 {% endblock %}
 

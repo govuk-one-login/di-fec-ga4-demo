@@ -4,7 +4,7 @@ const ROUTE_INFO = [
   {
     id: 1,
     path: "/",
-    pageTitle: "Home ",
+    pageTitle: "Home",
     taxonomyLevel1: "HomeTax1",
     taxonomyLevel2: "HomeTax2",
   },

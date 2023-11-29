@@ -15,11 +15,10 @@
     {{ govukSelect({
   id: "choose-location",
   name: "chooseLocation",
-  fieldset: {
-    legend: {
-      text: "Choose your location",
-      classes: "govuk-fieldset__legend--l"
-    }
+  label: {
+    text: "Choose your location",
+    classes: "govuk-label--l",
+    isPageHeading: true
   },
   hint: {
     text: "This can be different to where you went before"
