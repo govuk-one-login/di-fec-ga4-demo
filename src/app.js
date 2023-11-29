@@ -36,10 +36,10 @@ app.use(
 );
 app.use(
   session({
-    secret: "your-secret-key", // Change this to a secure secret
+    secret: "your-secret-key", // Should I make this more secure?
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }, // Set to true if using HTTPS
+    cookie: { secure: false },
   })
 );
 
@@ -50,7 +50,7 @@ app.use(setStatusCode);
 app.use(setTaxonomyValues);
 app.use(setPageTitle);
 app.use(checkSessionAndRedirect);
-app.get("/", (req, res) => {
+app.get("/welcome", (req, res) => {
   res.render("home.njk");
 });
 
