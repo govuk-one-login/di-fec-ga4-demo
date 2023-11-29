@@ -8,9 +8,8 @@ const {
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,
-  checkSessionAndRedirect,
 } = require("./config/gtmMiddleware");
-
+const { checkSessionAndRedirect } = require("./config/middleware");
 const app = express();
 const port = 3000;
 
