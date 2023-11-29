@@ -46,35 +46,6 @@ const setPageTitle = (req, res, next) => {
   next();
 };
 
-const checkSessionAndRedirect = (req, res, next) => {
-  console.log("Middleware executed");
-  // Check if the user has an active session
-  const hasSession =
-    req.session &&
-    req.session.userSession &&
-    req.session.userSession.startedJourney;
-
-  console.log("User Session:", hasSession);
-
-  // Check if the user is on the homepage
-  const isOnHomepage = req.path === "/welcome";
-
-  // If the user is on the Home Page and does not have a session, set it
-  if (isOnHomepage && !hasSession) {
-    console.log("Setting session for the homepage");
-    req.session.userSession = {
-      startedJourney: true,
-    };
-  }
-
-  // If the user doesn't have a session and is not on the homepage, redirect to Journey Guard Page
-  if (!hasSession && !isOnHomepage) {
-    console.log("Redirecting to Journey Guard");
-    return res.render("journeyGuard.njk");
-  }
-
-  next();
-};
 module.exports = {
   setGa4ContainerId,
   setStatusCode,
