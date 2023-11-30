@@ -46,7 +46,6 @@ const setPageTitle = (req, res, next) => {
   next();
 };
 
-
 // Middleware to instantiate the value for the pageTitle for the On Page Load tracker
 const setContentId = (req, res, next) => {
   const url = req.url;
@@ -61,6 +60,7 @@ const setContentId = (req, res, next) => {
 
   next();
 };
+
 module.exports = {
   setGa4ContainerId,
   setStatusCode,

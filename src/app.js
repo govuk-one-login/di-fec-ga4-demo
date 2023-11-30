@@ -1,7 +1,10 @@
 const express = require("express");
 const path = require("path");
+const session = require("express-session");
 const { configureNunjucks } = require("./config/nunjucks");
 const validateForm = require("./validateForm");
+const crypto = require("crypto");
+const sessionId = crypto.randomBytes(16).toString("hex");
 const {
   setGa4ContainerId,
   setStatusCode,
@@ -9,7 +12,7 @@ const {
   setPageTitle,
   setContentId,
 } = require("./config/gtmMiddleware");
-
+const { checkSessionAndRedirect } = require("./config/middleware");
 const app = express();
 const port = 3000;
 
@@ -33,6 +36,14 @@ app.use(
   "/ga4-assets",
   express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")),
 );
+app.use(
+  session({
+    secret: sessionId, // Should I make this more secure?
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -41,10 +52,12 @@ app.use(setStatusCode);
 app.use(setTaxonomyValues);
 app.use(setPageTitle);
 app.use(setContentId);
+app.use(checkSessionAndRedirect);
 
-app.get("/", (req, res) => {
+app.get("/welcome", (req, res) => {
   res.render("home.njk");
 });
+
 app.get("/enter-email", (req, res) => {
   res.render("enterEmail.njk");
 });

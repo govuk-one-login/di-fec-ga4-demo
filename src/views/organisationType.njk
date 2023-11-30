@@ -7,11 +7,12 @@
 {% block backLink %}
   {{ govukBackLink({
   text: "Back",
-  href: "/"
+  href: "/welcome"
 }) }}
 {% endblock %}
 {% block content %}
-  <form method="post" action="/validate-organisation-type" id="organisationForm">
+
+  <form method="post" action="/validate-organisation-type" id="organisationForm" >
     {{ govukRadios({
   name: "organisationType",
   id: "organisation-type",
@@ -52,6 +53,7 @@
   </form>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const storedOrganisationType = localStorage.getItem("organisationType");
 
@@ -82,4 +84,5 @@
         this.submit();
       });
   </script>
+
 {% endblock %}
