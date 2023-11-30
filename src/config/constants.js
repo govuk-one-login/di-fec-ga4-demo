@@ -3,7 +3,7 @@ const GA4_CONTAINER_ID = "GTM-KD86CMZ";
 const ROUTE_INFO = [
   {
     id: 1,
-    path: "/",
+    path: "/welcome",
     pageTitle: "Home ",
     taxonomyLevel1: "HomeTax1",
     taxonomyLevel2: "HomeTax2",

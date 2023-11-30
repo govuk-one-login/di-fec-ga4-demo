@@ -45,6 +45,7 @@ const setPageTitle = (req, res, next) => {
 
   next();
 };
+
 module.exports = {
   setGa4ContainerId,
   setStatusCode,
