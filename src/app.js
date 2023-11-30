@@ -10,6 +10,7 @@ const {
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,
+  setContentId,
 } = require("./config/gtmMiddleware");
 const { checkSessionAndRedirect } = require("./config/middleware");
 const app = express();
@@ -50,7 +51,9 @@ app.use(setGa4ContainerId);
 app.use(setStatusCode);
 app.use(setTaxonomyValues);
 app.use(setPageTitle);
+app.use(setContentId);
 app.use(checkSessionAndRedirect);
+
 app.get("/welcome", (req, res) => {
   res.render("home.njk");
 });
