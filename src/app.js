@@ -3,6 +3,8 @@ const path = require("path");
 const session = require("express-session");
 const { configureNunjucks } = require("./config/nunjucks");
 const validateForm = require("./validateForm");
+const crypto = require("crypto");
+const sessionId = crypto.randomBytes(16).toString("hex");
 const {
   setGa4ContainerId,
   setStatusCode,
@@ -35,7 +37,7 @@ app.use(
 );
 app.use(
   session({
-    secret: "your-secret-key", // Should I make this more secure?
+    secret: sessionId, // Should I make this more secure?
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
