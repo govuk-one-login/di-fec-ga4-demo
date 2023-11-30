@@ -7,7 +7,7 @@ const validateForm = (formData, reqQuery, nextPage) => {
     return { showError: true };
   } else if (editMode) {
     console.log(`Option selected. Redirecting to summary page`);
-    return { summaryPage: "/summary-page" };
+    return { redirect: "/summary-page" };
   } else {
     console.log(`Option selected. Redirecting to ${nextPage}`);
     return { redirect: nextPage };

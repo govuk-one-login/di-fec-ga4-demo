@@ -97,8 +97,6 @@ app.post("/validate-organisation-type", (req, res) => {
 
   if (result.showError) {
     res.render("organisationType.njk", renderOptions);
-  } else if (result.summaryPage) {
-    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
@@ -117,8 +115,6 @@ app.post("/validate-help-with-hint", (req, res) => {
 
   if (result.showError) {
     res.render("helpWithHint.njk", renderOptions);
-  } else if (result.summaryPage) {
-    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
@@ -137,8 +133,6 @@ app.post("/validate-service-description", (req, res) => {
 
   if (result.showError) {
     res.render("serviceDescription.njk", renderOptions);
-  } else if (result.summaryPage) {
-    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
@@ -157,8 +151,6 @@ app.post("/validate-choose-location", (req, res) => {
 
   if (result.showError) {
     res.render("chooseLocation.njk", renderOptions);
-  } else if (result.summaryPage) {
-    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
@@ -173,8 +165,6 @@ app.post("/validate-enter-email", (req, res) => {
 
   if (result.showError) {
     res.render("enterEmail.njk", renderOptions);
-  } else if (result.summaryPage) {
-    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
