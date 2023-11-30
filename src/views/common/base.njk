@@ -40,7 +40,7 @@
   <script>
     window
       .DI
-      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'},{disableGa4Tracking: true, disableFormFreeTextTracking:true});
+      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'});
     window
       .DI
       .analyticsGa4
@@ -50,6 +50,9 @@
         englishPageTitle: '{{englishPageTitle}}',
         taxonomy_level1: '{{ taxonomyLevel1 }}', // Access taxonomy level 1
         taxonomy_level2: '{{ taxonomyLevel2 }}', // Access taxonomy level 2
+        content_id: '{{contentId}}',
+        logged_in_status: false,
+        dynamic: false,
       });
   </script>
 {% endblock %}

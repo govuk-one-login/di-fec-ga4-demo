@@ -7,6 +7,7 @@ const {
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,
+  setContentId,
 } = require("./config/gtmMiddleware");
 
 const app = express();
@@ -39,6 +40,7 @@ app.use(setGa4ContainerId);
 app.use(setStatusCode);
 app.use(setTaxonomyValues);
 app.use(setPageTitle);
+app.use(setContentId);
 
 app.get("/", (req, res) => {
   res.render("home.njk");
