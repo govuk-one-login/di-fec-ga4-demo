@@ -27,14 +27,14 @@ app.set("view engine", configureNunjucks(app, APP_VIEWS));
 app.use(
   "/assets",
   express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets"),
-  ),
+    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
+  )
 );
 
 /**GA4 assets */
 app.use(
   "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")),
+  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
 );
 app.use(
   session({
@@ -77,8 +77,8 @@ app.get("/choose-location", (req, res) => {
   res.render("chooseLocation.njk"); // select
 });
 
-app.get("/confirmation-page", (req, res) => {
-  res.render("confirmationPage.njk");
+app.get("/summary-page", (req, res) => {
+  res.render("summaryPage.njk");
 });
 
 app.listen(port, () => {
@@ -86,60 +86,95 @@ app.listen(port, () => {
 });
 
 app.post("/validate-organisation-type", (req, res) => {
-  const result = validateForm(req.body.organisationType, "/help-with-hint");
+  const result = validateForm(
+    req.body.organisationType,
+    req.query,
+    "/help-with-hint"
+  );
   const renderOptions = {
     showError: result.showError,
   };
+
   if (result.showError) {
     res.render("organisationType.njk", renderOptions);
+  } else if (result.summaryPage) {
+    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
 });
 
 app.post("/validate-help-with-hint", (req, res) => {
-  const result = validateForm(req.body.helpWithHint, "/service-description");
+  const result = validateForm(
+    req.body.helpWithHint,
+    req.query,
+    "/service-description"
+  );
+
   const renderOptions = {
     showError: result.showError,
   };
+
   if (result.showError) {
     res.render("helpWithHint.njk", renderOptions);
+  } else if (result.summaryPage) {
+    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
 });
 
 app.post("/validate-service-description", (req, res) => {
-  const result = validateForm(req.body.serviceDescription, "/choose-location");
+  const result = validateForm(
+    req.body.serviceDescription,
+    req.query,
+    "/choose-location"
+  );
+
   const renderOptions = {
     showError: result.showError,
   };
+
   if (result.showError) {
     res.render("serviceDescription.njk", renderOptions);
+  } else if (result.summaryPage) {
+    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
 });
 
 app.post("/validate-choose-location", (req, res) => {
-  const result = validateForm(req.body.chooseLocation, "/enter-email");
+  const result = validateForm(
+    req.body.chooseLocation,
+    req.query,
+    "/enter-email"
+  );
+
   const renderOptions = {
     showError: result.showError,
   };
+
   if (result.showError) {
     res.render("chooseLocation.njk", renderOptions);
+  } else if (result.summaryPage) {
+    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }
 });
 
 app.post("/validate-enter-email", (req, res) => {
-  const result = validateForm(req.body.enterEmail, "/confirmation-page");
+  const result = validateForm(req.body.enterEmail, req.query, "/summary-page");
+
   const renderOptions = {
     showError: result.showError,
   };
+
   if (result.showError) {
     res.render("enterEmail.njk", renderOptions);
+  } else if (result.summaryPage) {
+    res.redirect(result.summaryPage);
   } else if (result.redirect) {
     res.redirect(result.redirect);
   }

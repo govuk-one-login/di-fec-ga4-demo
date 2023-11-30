@@ -4,6 +4,8 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
+{% set title = 'Organisation Type' %}
+
 {% block backLink %}
   {{ govukBackLink({
   text: "Back",
@@ -11,8 +13,7 @@
 }) }}
 {% endblock %}
 {% block content %}
-
-  <form method="post" action="/validate-organisation-type" id="organisationForm" >
+  <form method="post" id="organisationForm">
     {{ govukRadios({
   name: "organisationType",
   id: "organisation-type",
@@ -80,6 +81,14 @@
         if (organisationType) {
           localStorage.setItem("organisationType", organisationType);
         }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const editModeQuery = urlParams.get("editMode") === "true"
+          ? "?editMode=true"
+          : ""
+        document
+          .getElementById("organisationForm")
+          .action = `/validate-organisation-type${editModeQuery}`
 
         this.submit();
       });

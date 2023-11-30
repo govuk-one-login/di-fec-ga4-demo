@@ -9,7 +9,7 @@
 {% endblock %}
 {% block content %}
 
-  <form method="post" action="/validate-help-with-hint" id="helpWithHintForm" >
+  <form method="post" id="helpWithHintForm" >
 
     {{ govukCheckboxes({
   name: "helpWithHint",
@@ -81,6 +81,12 @@
             ?.value);
 
         localStorage.setItem("helpWithHint", checkedItems.join("/"));
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const editModeQuery = urlParams.get("editMode") === "true"
+          ? "?editMode=true"
+          : ""
+        form.action = `/validate-help-with-hint${editModeQuery}`
 
         form.submit();
       });

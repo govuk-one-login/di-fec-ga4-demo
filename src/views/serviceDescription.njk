@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 
-  <form method="post" action="/validate-service-description" id="serviceDescriptionForm">
+  <form method="post" id="serviceDescriptionForm">
 
     {{ govukTextarea({
   name: "serviceDescription",
@@ -48,6 +48,14 @@
           .value;
 
         localStorage.setItem("serviceDescription", serviceDescription);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const editModeQuery = urlParams.get("editMode") === "true"
+          ? "?editMode=true"
+          : ""
+        document
+          .getElementById("serviceDescriptionForm")
+          .action = `/validate-service-description${editModeQuery}`
 
         this.submit();
       });

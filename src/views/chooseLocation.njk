@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 
-  <form method="post" action="/validate-choose-location" id="chooseLocationForm">
+  <form method="post" id="chooseLocationForm">
 
     {{ govukSelect({
   id: "choose-location",
@@ -95,6 +95,14 @@
           .value;
 
         localStorage.setItem("chooseLocation", chooseLocation);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const editModeQuery = urlParams.get("editMode") === "true"
+          ? "?editMode=true"
+          : ""
+        document
+          .getElementById("chooseLocationForm")
+          .action = `/validate-choose-location${editModeQuery}`
 
         this.submit();
       });
