@@ -51,10 +51,10 @@ const ROUTE_INFO = [
   },
   {
     id: 7,
-    path: "/confirmation-page",
-    pageTitle: "Confirmation Page",
-    taxonomyLevel1: "ConfirmationPageTax1",
-    taxonomyLevel2: "ConfirmationPageTax2",
+    path: "/summary-page",
+    pageTitle: "Summary Page",
+    taxonomyLevel1: "SummaryPageTax1",
+    taxonomyLevel2: "SummaryPageTax2",
     contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a88>",
   },
   {

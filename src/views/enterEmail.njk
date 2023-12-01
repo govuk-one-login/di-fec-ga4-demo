@@ -8,7 +8,7 @@
 {% endblock %}
 {%block content%}
 
-  <form method="post" action="/validate-enter-email" id="enterEmailForm">
+  <form method="post" id="enterEmailForm">
     {{ govukInput({
   label: {
     text: "Enter your email address",
@@ -45,6 +45,14 @@
         if (enterEmail) {
           localStorage.setItem("enterEmail", enterEmail);
         }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const editModeQuery = urlParams.get("editMode") === "true"
+          ? "?editMode=true"
+          : ""
+        document
+          .getElementById("enterEmailForm")
+          .action = `/validate-enter-email${editModeQuery}`
 
         this.submit();
       });
