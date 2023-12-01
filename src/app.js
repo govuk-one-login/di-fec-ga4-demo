@@ -12,7 +12,7 @@ const {
   setPageTitle,
   setContentId,
 } = require("./config/gtmMiddleware");
-const { journeyGuard } = require("./config/middleware");
+const { checkSessionAndRedirect } = require("./config/middleware");
 const app = express();
 const port = 3000;
 
@@ -52,26 +52,9 @@ app.use(setStatusCode);
 app.use(setTaxonomyValues);
 app.use(setPageTitle);
 app.use(setContentId);
-app.use(
-  [
-    "/enter-email",
-    "/service-description",
-    "/organisation-type",
-    "/help-with-hint",
-    "/choose-location",
-    "/confirmation-page",
-  ],
-  journeyGuard
-);
-app.get("/", (req, res) => {
-  console.log("entering through / redirecting to /welcome");
-  res.redirect("/welcome");
-});
+app.use(checkSessionAndRedirect);
+
 app.get("/welcome", (req, res) => {
-  console.log("setting session ID");
-  req.session.userSession = {
-    startedJourney: true,
-  };
   res.render("home.njk");
 });
 
