@@ -25,7 +25,7 @@ const setTaxonomyValues = (req, res, next) => {
     res.locals.taxonomyLevel1 = pathFound.taxonomyLevel1 || "undefined";
     res.locals.taxonomyLevel2 = pathFound.taxonomyLevel2 || "undefined";
   } else {
-    console.log("Path not found");
+    // console.log("Path not found");
     res.locals.taxonomyLevel1 = "undefined";
     res.locals.taxonomyLevel2 = "undefined";
   }
@@ -43,7 +43,7 @@ const setPageTitle = (req, res, next) => {
   if (pathFound) {
     res.locals.englishPageTitle = pathFound.pageTitle || "undefined";
   } else {
-    console.log("Path not found");
+    // console.log("Path not found");
     res.locals.englishPageTitle = "undefined";
   }
 
@@ -61,7 +61,7 @@ const setContentId = (req, res, next) => {
     console.log(pathFound.path);
     res.locals.contentId = pathFound.contentId || "undefined";
   } else {
-    console.log("Path not found");
+    // console.log("Path not found");
     res.locals.englishPageTitle = "undefined";
   }
 
