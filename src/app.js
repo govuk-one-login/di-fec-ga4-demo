@@ -2,7 +2,15 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const { configureNunjucks } = require("./config/nunjucks");
-const validateForm = require("./validateForm");
+const {
+  validateOrganisationType,
+} = require("./journeys/organisationTypeService");
+const { validateHelpWithHint } = require("./journeys/helpWithHintService");
+const {
+  validateServiceDescription,
+} = require("./journeys/serviceDescriptionService");
+const { validateChooseLocation } = require("./journeys/chooseLocationService");
+const { validateEnterEmail } = require("./journeys/enterEmailService");
 const crypto = require("crypto");
 const sessionId = crypto.randomBytes(16).toString("hex");
 const {
@@ -13,6 +21,7 @@ const {
   setContentId,
 } = require("./config/gtmMiddleware");
 const { checkSessionAndRedirect } = require("./config/middleware");
+
 const app = express();
 const port = 3000;
 
@@ -85,87 +94,12 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-app.post("/validate-organisation-type", (req, res) => {
-  const result = validateForm(
-    req.body.organisationType,
-    req.query,
-    "/help-with-hint"
-  );
-  const renderOptions = {
-    showError: result.showError,
-  };
+app.post("/validate-organisation-type", validateOrganisationType);
 
-  if (result.showError) {
-    res.render("organisationType.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
+app.post("/validate-help-with-hint", validateHelpWithHint);
 
-app.post("/validate-help-with-hint", (req, res) => {
-  const result = validateForm(
-    req.body.helpWithHint,
-    req.query,
-    "/service-description"
-  );
+app.post("/validate-service-description", validateServiceDescription);
 
-  const renderOptions = {
-    showError: result.showError,
-  };
+app.post("/validate-choose-location", validateChooseLocation);
 
-  if (result.showError) {
-    res.render("helpWithHint.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
-
-app.post("/validate-service-description", (req, res) => {
-  const result = validateForm(
-    req.body.serviceDescription,
-    req.query,
-    "/choose-location"
-  );
-
-  const renderOptions = {
-    showError: result.showError,
-  };
-
-  if (result.showError) {
-    res.render("serviceDescription.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
-
-app.post("/validate-choose-location", (req, res) => {
-  const result = validateForm(
-    req.body.chooseLocation,
-    req.query,
-    "/enter-email"
-  );
-
-  const renderOptions = {
-    showError: result.showError,
-  };
-
-  if (result.showError) {
-    res.render("chooseLocation.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
-
-app.post("/validate-enter-email", (req, res) => {
-  const result = validateForm(req.body.enterEmail, req.query, "/summary-page");
-
-  const renderOptions = {
-    showError: result.showError,
-  };
-
-  if (result.showError) {
-    res.render("enterEmail.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
+app.post("/validate-enter-email", validateEnterEmail);
