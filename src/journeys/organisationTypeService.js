@@ -24,7 +24,7 @@ function validateOrganisationType(req, res) {
     }
   } catch (error) {
     console.error(error);
-    throw error; // Rethrow the error for debugging purposes
+    res.status(500).send("Internal Server Error");
   }
 }
 
