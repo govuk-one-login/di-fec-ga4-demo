@@ -6,11 +6,7 @@ function validateEnterEmail(req, res) {
 
     if (enterEmail && enterEmail !== "") {
       // Check if in edit mode and redirect accordingly
-      if (editMode) {
-        res.redirect("/summary-page");
-      } else {
-        res.redirect("/summary-page");
-      }
+      res.redirect("/summary-page");
     } else {
       // Handle validation error, render the form with an error state
       res.render("enterEmail.njk", {

@@ -4,12 +4,7 @@ function validateOrganisationType(req, res) {
     const queryParams = req.query;
     const editMode = queryParams.editMode;
 
-    if (
-      organisationType === "Government department or Ministry" ||
-      organisationType === "Executive Agency" ||
-      organisationType === "Arms length body" ||
-      organisationType === "Other"
-    ) {
+    if (organisationType && organisationType != null) {
       // Check if in edit mode and redirect accordingly
       if (editMode) {
         res.redirect("/summary-page");
