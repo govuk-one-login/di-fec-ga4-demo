@@ -1,14 +1,12 @@
 {% extends 'common/base.njk' %}
-{% set title = 'Organisation Type' %}
+{% set title = 'pages.organisationType.title' %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set title = 'Organisation Type' %}
-
 {% block backLink %}
   {{ govukBackLink({
-  text: "Back",
+  text: "general.govuk.backLink" | translate,
   href: "/welcome"
 }) }}
 {% endblock %}
@@ -19,7 +17,7 @@
   id: "organisation-type",
   fieldset: {
     legend: {
-      text: "What is your organisation type?",
+      text: "pages.organisationType.content.header" | translate,
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
       
@@ -28,26 +26,26 @@
   items: [
     {
       value: "Government department or Ministry",
-      text: "Government department or Ministry"
+      text: "pages.organisationType.content.options.governmentDepartmentOrMinistry" | translate
     },
     {
       value: "Executive Agency",
-      text: "Executive Agency"
+      text: "pages.organisationType.content.options.executiveAgency" | translate
     },
     {
       value: "Arms length body",
-      text: "Arms length body"
+      text: "pages.organisationType.content.options.armsLengthBody" | translate
     },
     {
       value: "Other",
-      text: "Other"
+      text: "pages.organisationType.content.options.other" | translate
     }
   ],
-   errorMessage:  { text: "Select one option" }  if showError
+   errorMessage:  { text: "pages.organisationType.content.errors.validationError" | translate}  if showError
 }) }}
 
     {{ govukButton({
-    text: "Continue",
+    text: "general.buttons.continue" | translate,
     type: 'submit'
   }) }}
 

@@ -12,7 +12,7 @@
 {% block skipLink %}
   {{ govukSkipLink({ 
   href: "#main-content", 
-  text: 'Skip to main content' }) }}
+  text: "general.govuk.skipLink" | translate }) }}
 {% endblock %}
 
 {% block bodyStart %}
@@ -30,9 +30,9 @@
   <div class="govuk-width-container">
     {{ govukPhaseBanner({
   tag: {
-    text: "Alpha"
+    text: "general.govuk.phaseBanner.tag" | translate
   },
-  html: 'This is a new service - your <a class="govuk-link" href="https://signin.dev.account.gov.uk/contact-us" target="blank">feedback</a> will help us to improve it. For more information, please <a href="/">restart</a> your journey'
+  html:"general.govuk.phaseBanner.content" | translate | safe
 }) }}
     {% block backLink%}{% endblock %}
     <main id="main-content" class="govuk-main-wrapper">
@@ -59,7 +59,7 @@
         taxonomy_level2: '{{ taxonomyLevel2 }}', // Access taxonomy level 2
         content_id: '{{contentId}}',
         logged_in_status: false,
-        dynamic: false,
+        dynamic: false
       });
   </script>
 {% endblock %}
@@ -69,11 +69,11 @@
       meta: { 
         items: [ { 
           href: "#",
-          text: "Help" }, { 
+          text: "general.footer.help.linkText" | translate }, { 
             href: "#", 
-            text: "Cookies" }, { 
+            text: "general.footer.cookies.linkText" | translate }, { 
               href: "#", 
-              text: "Contact" },
+              text: "general.footer.contact.linkText" | translate},
   { href: "#", 
-  text: "Terms and conditions" } ] } }) }}
+  text: "general.footer.terms.linkText" | translate } ] } }) }}
 {% endblock %}

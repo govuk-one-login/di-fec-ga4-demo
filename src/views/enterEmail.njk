@@ -1,28 +1,28 @@
 {% extends 'common/base.njk' %}
-{% set title = 'Enter Email' %}
+{% set title = 'pages.enterEmail.title' %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
-  {{ govukBackLink({ text: "Back", href: "/choose-location" }) }}
+  {{ govukBackLink({ text: "general.govuk.backLink" | translate, href: "/choose-location" }) }}
 {% endblock %}
 {%block content%}
 
   <form method="post" id="enterEmailForm">
     {{ govukInput({
   label: {
-    text: "Enter your email address",
+    text: "pages.enterEmail.content.header" | translate,
     classes: "govuk-label--l",
     isPageHeading: true
   },
   id: "enter-email",
   name: "enterEmail",
   errorMessage: {
-    text: "Enter your email address"
+    text: "pages.enterEmail.content.errors.validationError" | translate
   } if showError
 }) }}
     {{ govukButton({
-  text: "Continue",
+  text: "general.buttons.continue" | translate,
   type: "submit"
 }) }}
   </form>

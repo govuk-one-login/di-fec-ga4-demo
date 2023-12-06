@@ -21,7 +21,10 @@ const {
   setContentId,
 } = require("./config/gtmMiddleware");
 const { checkSessionAndRedirect } = require("./config/middleware");
-
+const i18next = require("i18next");
+const Backend = require("i18next-fs-backend");
+const i18nextMiddleware = require("i18next-http-middleware");
+const { i18nextConfigurationOptions } = require("./config/i18next");
 const app = express();
 const port = 3000;
 
@@ -32,6 +35,16 @@ const APP_VIEWS = [
 ];
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
+i18next
+  .use(Backend)
+  .use(i18nextMiddleware.LanguageDetector)
+  .init(
+    i18nextConfigurationOptions(
+      path.join(__dirname, "locales/{{lng}}/{{ns}}.json")
+    )
+  );
+
+app.use(i18nextMiddleware.handle(i18next));
 
 app.use(
   "/assets",
@@ -53,7 +66,14 @@ app.use(
     cookie: { secure: false },
   })
 );
-
+app.use((req, res, next) => {
+  if (req.i18n) {
+    res.locals.htmlLang = req.i18n.language;
+    res.locals.pageTitleLang = req.i18n.language;
+    res.locals.mainLang = req.i18n.language;
+    next();
+  }
+});
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(setGa4ContainerId);
