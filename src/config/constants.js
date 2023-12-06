@@ -1,4 +1,5 @@
 const GA4_CONTAINER_ID = "GTM-KD86CMZ";
+const UA_CONTAINER_ID = "GTM-TK92W68";
 
 const ROUTE_INFO = [
   {
@@ -86,4 +87,4 @@ const ROUTE_INFO = [
     taxonomyLevel2: "ErrorEnterEmail2",
   },
 ];
-module.exports = { GA4_CONTAINER_ID, ROUTE_INFO };
+module.exports = { GA4_CONTAINER_ID, UA_CONTAINER_ID, ROUTE_INFO };
