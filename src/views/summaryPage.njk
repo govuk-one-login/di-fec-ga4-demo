@@ -1,8 +1,7 @@
 {% extends 'common/base.njk' %}
-{% set title = 'Confirmation Page' %}
+{% set title = 'pages.summaryPage.title' %}
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set organisationTypeHtml %}
 <div id="organisationTypeContainer"></div>
@@ -26,7 +25,7 @@
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
-  {{ govukBackLink({ text: "Back", href: "/enter-email" }) }}
+  {{ govukBackLink({ text: "general.govuk.backLink" | translate, href: "/enter-email" }) }}
 {% endblock %}
 
 {% block content %}
@@ -37,7 +36,7 @@
     classes: "govuk-summary-list__row--no-actions",
       fieldset: {
     legend: {
-      text: "Check answers",
+      text: "pages.summaryPage.content.header" | translate,
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
@@ -45,50 +44,90 @@
   rows: [
     {
       key: {
-        text: "What is your organisation type?"
+        text: "pages.organisationType.content.header" | translate
       },
     value: {
         html:  organisationTypeHtml 
+      },
+    actions: {
+        items: [
+          {
+            href: "/organisation-type?editMode=true",
+            text: "pages.summaryPage.content.changeLink" | translate,
+            visuallyHiddenText: "organisationType"
+          }
+        ]
       }
     },
     {
       key: {
-        text: "What would you like help with?"
+        text: "pages.helpWithHint.content.header" | translate
       },
       value: {
         html: helpWithHintsHtml
+      },
+      actions: {
+        items: [
+          {
+            href: "/help-with-hint?editMode=true",
+            text: "pages.summaryPage.content.changeLink" | translate,
+            visuallyHiddenText: "helpWithHint"
+          }
+        ]
       }
     },
     {
       key: {
-        text: "Describe your service"
+        text: "pages.serviceDescription.content.header" | translate
       },
       value: {
         html: serviceDescriptionHtml
+      },
+      actions: {
+        items: [
+          {
+            href: "/service-description?editMode=true",
+            text: "pages.summaryPage.content.changeLink" | translate,
+            visuallyHiddenText: "Service description"
+          }
+        ]
       }
     },
     {
       key: {
-        text: "Choose your location"
+        text: "pages.chooseLocation.content.header" | translate
       },
       value: {
         html:  chooseLocationHtml
+      },
+      actions: {
+        items: [
+          {
+            href: "/choose-location?editMode=true",
+            text: "pages.summaryPage.content.changeLink" | translate,
+            visuallyHiddenText: "Choose location"
+          }
+        ]
       }
     },
      {
       key: {
-        text: "What is your email"
+        text: "pages.enterEmail.content.header" | translate
       },
       value: {
         html:  enterEmailHtml
+      },
+      actions: {
+        items: [
+          {
+            href: "/enter-email?editMode=true",
+            text: "pages.summaryPage.content.changeLink" | translate,
+            visuallyHiddenText: "Enter email"
+          }
+        ]
       }
     }
   ]
-}) }}
-
-  {{ govukButton({
-  text: "Submit",
-  type: "submit"
 }) }}
 
   <script>
@@ -107,7 +146,7 @@
 
       document
         .getElementById("helpWithHintContainer")
-        .innerHTML = values.join('');
+        .innerHTML = values.join("");
     }
 
     document

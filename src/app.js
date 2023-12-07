@@ -2,7 +2,15 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const { configureNunjucks } = require("./config/nunjucks");
-const validateForm = require("./validateForm");
+const {
+  validateOrganisationType,
+} = require("./journeys/organisationTypeService");
+const { validateHelpWithHint } = require("./journeys/helpWithHintService");
+const {
+  validateServiceDescription,
+} = require("./journeys/serviceDescriptionService");
+const { validateChooseLocation } = require("./journeys/chooseLocationService");
+const { validateEnterEmail } = require("./journeys/enterEmailService");
 const crypto = require("crypto");
 const sessionId = crypto.randomBytes(16).toString("hex");
 const {
@@ -11,8 +19,13 @@ const {
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,
+  setContentId,
 } = require("./config/gtmMiddleware");
 const { checkSessionAndRedirect } = require("./config/middleware");
+const i18next = require("i18next");
+const Backend = require("i18next-fs-backend");
+const i18nextMiddleware = require("i18next-http-middleware");
+const { i18nextConfigurationOptions } = require("./config/i18next");
 const app = express();
 const port = 3000;
 
@@ -23,18 +36,28 @@ const APP_VIEWS = [
 ];
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
+i18next
+  .use(Backend)
+  .use(i18nextMiddleware.LanguageDetector)
+  .init(
+    i18nextConfigurationOptions(
+      path.join(__dirname, "locales/{{lng}}/{{ns}}.json")
+    )
+  );
+
+app.use(i18nextMiddleware.handle(i18next));
 
 app.use(
   "/assets",
   express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets"),
-  ),
+    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
+  )
 );
 
 /**GA4 assets */
 app.use(
   "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib")),
+  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
 );
 app.use(
   session({
@@ -44,7 +67,14 @@ app.use(
     cookie: { secure: false },
   })
 );
-
+app.use((req, res, next) => {
+  if (req.i18n) {
+    res.locals.htmlLang = req.i18n.language;
+    res.locals.pageTitleLang = req.i18n.language;
+    res.locals.mainLang = req.i18n.language;
+    next();
+  }
+});
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(setGa4ContainerId);
@@ -52,7 +82,9 @@ app.use(setUaContainerId);
 app.use(setStatusCode);
 app.use(setTaxonomyValues);
 app.use(setPageTitle);
+app.use(setContentId);
 app.use(checkSessionAndRedirect);
+
 app.get("/welcome", (req, res) => {
   res.render("home.njk");
 });
@@ -76,70 +108,20 @@ app.get("/choose-location", (req, res) => {
   res.render("chooseLocation.njk"); // select
 });
 
-app.get("/confirmation-page", (req, res) => {
-  res.render("confirmationPage.njk");
+app.get("/summary-page", (req, res) => {
+  res.render("summaryPage.njk");
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-app.post("/validate-organisation-type", (req, res) => {
-  const result = validateForm(req.body.organisationType, "/help-with-hint");
-  const renderOptions = {
-    showError: result.showError,
-  };
-  if (result.showError) {
-    res.render("organisationType.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
+app.post("/validate-organisation-type", validateOrganisationType);
 
-app.post("/validate-help-with-hint", (req, res) => {
-  const result = validateForm(req.body.helpWithHint, "/service-description");
-  const renderOptions = {
-    showError: result.showError,
-  };
-  if (result.showError) {
-    res.render("helpWithHint.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
+app.post("/validate-help-with-hint", validateHelpWithHint);
 
-app.post("/validate-service-description", (req, res) => {
-  const result = validateForm(req.body.serviceDescription, "/choose-location");
-  const renderOptions = {
-    showError: result.showError,
-  };
-  if (result.showError) {
-    res.render("serviceDescription.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
+app.post("/validate-service-description", validateServiceDescription);
 
-app.post("/validate-choose-location", (req, res) => {
-  const result = validateForm(req.body.chooseLocation, "/enter-email");
-  const renderOptions = {
-    showError: result.showError,
-  };
-  if (result.showError) {
-    res.render("chooseLocation.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
+app.post("/validate-choose-location", validateChooseLocation);
 
-app.post("/validate-enter-email", (req, res) => {
-  const result = validateForm(req.body.enterEmail, "/confirmation-page");
-  const renderOptions = {
-    showError: result.showError,
-  };
-  if (result.showError) {
-    res.render("enterEmail.njk", renderOptions);
-  } else if (result.redirect) {
-    res.redirect(result.redirect);
-  }
-});
+app.post("/validate-enter-email", validateEnterEmail);

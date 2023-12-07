@@ -8,6 +8,7 @@ const ROUTE_INFO = [
     pageTitle: "Home ",
     taxonomyLevel1: "HomeTax1",
     taxonomyLevel2: "HomeTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a58>",
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ const ROUTE_INFO = [
     pageTitle: "Service Description ",
     taxonomyLevel1: "ServiceTax1",
     taxonomyLevel2: "ServiceTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a59>",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const ROUTE_INFO = [
     pageTitle: "Organisation Type ",
     taxonomyLevel1: "OrganisationTax1",
     taxonomyLevel2: "OrganisationTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a68>",
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ const ROUTE_INFO = [
     pageTitle: "Choose Location",
     taxonomyLevel1: "ChooseLocTax1",
     taxonomyLevel2: "ChooseLocTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a69>",
   },
   {
     id: 5,
@@ -36,6 +40,7 @@ const ROUTE_INFO = [
     pageTitle: "Help With Hint",
     taxonomyLevel1: "HelpWithHintTax1",
     taxonomyLevel2: "HelpWithHintTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a78>",
   },
   {
     id: 6,
@@ -43,13 +48,15 @@ const ROUTE_INFO = [
     pageTitle: "Enter Email",
     taxonomyLevel1: "EnterEmailTax1",
     taxonomyLevel2: "EnterEmailTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a79>",
   },
   {
     id: 7,
-    path: "/confirmation-page",
-    pageTitle: "Confirmation Page",
-    taxonomyLevel1: "ConfirmationPageTax1",
-    taxonomyLevel2: "ConfirmationPageTax2",
+    path: "/summary-page",
+    pageTitle: "Summary Page",
+    taxonomyLevel1: "SummaryPageTax1",
+    taxonomyLevel2: "SummaryPageTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a88>",
   },
   {
     id: 8,
@@ -57,6 +64,7 @@ const ROUTE_INFO = [
     pageTitle: "Organisation Type",
     taxonomyLevel1: "ErrorOrgTax1",
     taxonomyLevel2: "ErorOrgTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a89>",
   },
   {
     id: 9,
@@ -64,6 +72,7 @@ const ROUTE_INFO = [
     pageTitle: "Help With Hint",
     taxonomyLevel1: "ErrorHelpTax1",
     taxonomyLevel2: "ErrorHelpTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a98>",
   },
   {
     id: 10,
@@ -71,6 +80,7 @@ const ROUTE_INFO = [
     pageTitle: "Service Description",
     taxonomyLevel1: "ErrorSerivceTax1",
     taxonomyLevel2: "ErrorServiceTax2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7a99>",
   },
   {
     id: 11,
@@ -78,6 +88,7 @@ const ROUTE_INFO = [
     pageTitle: "Choose Location",
     taxonomyLevel1: "ErrorChooseLocation1",
     taxonomyLevel2: "ErrorChooseLocation2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7b08>",
   },
   {
     id: 12,
@@ -85,6 +96,7 @@ const ROUTE_INFO = [
     pageTitle: "Enter Email",
     taxonomyLevel1: "ErrorEnterEmail1",
     taxonomyLevel2: "ErrorEnterEmail2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7b09>",
   },
 ];
 module.exports = { GA4_CONTAINER_ID, UA_CONTAINER_ID, ROUTE_INFO };
