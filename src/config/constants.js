@@ -1,4 +1,5 @@
 const GA4_CONTAINER_ID = "GTM-KD86CMZ";
+const UA_CONTAINER_ID = "GTM-TK92W68";
 
 const ROUTE_INFO = [
   {
@@ -98,4 +99,4 @@ const ROUTE_INFO = [
     contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7b09>",
   },
 ];
-module.exports = { GA4_CONTAINER_ID, ROUTE_INFO };
+module.exports = { GA4_CONTAINER_ID, UA_CONTAINER_ID, ROUTE_INFO };

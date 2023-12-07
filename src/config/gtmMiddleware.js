@@ -1,11 +1,18 @@
-const { GA4_CONTAINER_ID } = require("./constants");
-const { ROUTE_INFO } = require("./constants");
+const { GA4_CONTAINER_ID, UA_CONTAINER_ID, ROUTE_INFO } = require("./constants");
 
 // This function makes sure that the GA4 Container ID is accessible to all pages, so we don't have to repeat it in every route
 
 const setGa4ContainerId = (req, res, next) => {
   //     Set the GA4 Container ID in (locals) that all pages can see.
   res.locals.ga4ContainerId = GA4_CONTAINER_ID;
+  next(); // Pass control to the next middleware function
+};
+
+// This function makes sure that the UA Container ID is accessible to all pages, so we don't have to repeat it in every route
+
+const setUaContainerId = (req, res, next) => {
+  //     Set the UA Container ID in (locals) that all pages can see.
+  res.locals.uaContainerId = UA_CONTAINER_ID;
   next(); // Pass control to the next middleware function
 };
 
@@ -63,6 +70,7 @@ const setContentId = (req, res, next) => {
 
 module.exports = {
   setGa4ContainerId,
+  setUaContainerId,
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,

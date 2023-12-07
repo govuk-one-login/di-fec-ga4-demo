@@ -15,6 +15,7 @@ const crypto = require("crypto");
 const sessionId = crypto.randomBytes(16).toString("hex");
 const {
   setGa4ContainerId,
+  setUaContainerId,
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(setGa4ContainerId);
+app.use(setUaContainerId);
 app.use(setStatusCode);
 app.use(setTaxonomyValues);
 app.use(setPageTitle);

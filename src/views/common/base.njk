@@ -43,11 +43,12 @@
       </div>
     </main>
   </div>
+  <script src="/javascript/ua/init.js"></script>
   <script src="/ga4-assets/analytics.js"></script>
   <script>
     window
       .DI
-      .appInit({ga4ContainerId: '{{ ga4ContainerId }}'});
+      .appInit({uaContainerId:'{{ uaContainerId }}',ga4ContainerId: '{{ ga4ContainerId }}'},{});
     window
       .DI
       .analyticsGa4
@@ -59,7 +60,7 @@
         taxonomy_level2: '{{ taxonomyLevel2 }}', // Access taxonomy level 2
         content_id: '{{contentId}}',
         logged_in_status: false,
-        dynamic: false
+        dynamic: false,
       });
   </script>
 {% endblock %}
