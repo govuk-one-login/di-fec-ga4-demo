@@ -1,5 +1,5 @@
 {% extends 'common/base.njk' %}
-{% set title = 'Summary page' %}
+{% set title = 'pages.summaryPage.title' %}
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
@@ -25,7 +25,7 @@
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% block backLink %}
-  {{ govukBackLink({ text: "Back", href: "/enter-email" }) }}
+  {{ govukBackLink({ text: "general.govuk.backLink" | translate, href: "/enter-email" }) }}
 {% endblock %}
 
 {% block content %}
@@ -36,7 +36,7 @@
     classes: "govuk-summary-list__row--no-actions",
       fieldset: {
     legend: {
-      text: "Check answers",
+      text: "pages.summaryPage.content.header" | translate,
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
@@ -44,7 +44,7 @@
   rows: [
     {
       key: {
-        text: "What is your organisation type?"
+        text: "pages.organisationType.content.header" | translate
       },
     value: {
         html:  organisationTypeHtml 
@@ -53,7 +53,7 @@
         items: [
           {
             href: "/organisation-type?editMode=true",
-            text: "Change",
+            text: "pages.summaryPage.content.changeLink" | translate,
             visuallyHiddenText: "organisationType"
           }
         ]
@@ -61,7 +61,7 @@
     },
     {
       key: {
-        text: "What would you like help with?"
+        text: "pages.helpWithHint.content.header" | translate
       },
       value: {
         html: helpWithHintsHtml
@@ -70,15 +70,15 @@
         items: [
           {
             href: "/help-with-hint?editMode=true",
-            text: "Change",
-            visuallyHiddenText: "helpWithHints"
+            text: "pages.summaryPage.content.changeLink" | translate,
+            visuallyHiddenText: "helpWithHint"
           }
         ]
       }
     },
     {
       key: {
-        text: "Describe your service"
+        text: "pages.serviceDescription.content.header" | translate
       },
       value: {
         html: serviceDescriptionHtml
@@ -87,7 +87,7 @@
         items: [
           {
             href: "/service-description?editMode=true",
-            text: "Change",
+            text: "pages.summaryPage.content.changeLink" | translate,
             visuallyHiddenText: "Service description"
           }
         ]
@@ -95,7 +95,7 @@
     },
     {
       key: {
-        text: "Choose your location"
+        text: "pages.chooseLocation.content.header" | translate
       },
       value: {
         html:  chooseLocationHtml
@@ -104,7 +104,7 @@
         items: [
           {
             href: "/choose-location?editMode=true",
-            text: "Change",
+            text: "pages.summaryPage.content.changeLink" | translate,
             visuallyHiddenText: "Choose location"
           }
         ]
@@ -112,7 +112,7 @@
     },
      {
       key: {
-        text: "What is your email"
+        text: "pages.enterEmail.content.header" | translate
       },
       value: {
         html:  enterEmailHtml
@@ -121,7 +121,7 @@
         items: [
           {
             href: "/enter-email?editMode=true",
-            text: "Change",
+            text: "pages.summaryPage.content.changeLink" | translate,
             visuallyHiddenText: "Enter email"
           }
         ]
