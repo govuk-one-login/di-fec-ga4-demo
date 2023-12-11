@@ -2,7 +2,7 @@ function validateServiceDescription(req, res) {
   try {
     const { serviceDescription } = req.body;
     const queryParams = req.query;
-    const editMode = queryParams.editMode;
+    const editMode = queryParams.edit;
 
     if (serviceDescription && serviceDescription.trim() !== "") {
       // Check if in edit mode and redirect accordingly

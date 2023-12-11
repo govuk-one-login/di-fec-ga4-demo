@@ -2,7 +2,7 @@ function validateHelpWithHint(req, res) {
   try {
     const { helpWithHint } = req.body;
     const queryParams = req.query;
-    const editMode = queryParams.editMode;
+    const editMode = queryParams.edit;
 
     // Assuming helpWithHint is an array containing selected values
     if (helpWithHint && helpWithHint.length > 0) {
