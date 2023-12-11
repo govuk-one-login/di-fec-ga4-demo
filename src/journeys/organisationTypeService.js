@@ -2,7 +2,7 @@ function validateOrganisationType(req, res) {
   try {
     const { organisationType } = req.body;
     const queryParams = req.query;
-    const editMode = queryParams.editMode;
+    const editMode = queryParams.edit;
 
     if (organisationType && organisationType != null) {
       // Check if in edit mode and redirect accordingly

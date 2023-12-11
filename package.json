@@ -15,7 +15,7 @@
     "i18next": "^23.7.7",
     "i18next-fs-backend": "^2.3.0",
     "i18next-http-middleware": "^3.5.0",
-    "one-login-ga4": "^0.0.21",
+    "one-login-ga4": "^0.0.22",
     "path": "^0.12.7"
   },
   "engines": {
