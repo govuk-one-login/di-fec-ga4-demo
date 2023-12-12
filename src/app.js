@@ -57,7 +57,7 @@ app.use(
 /**GA4 assets */
 app.use(
   "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/one-login-ga4/lib"))
+  express.static(path.join(__dirname, "../node_modules/@govuk-one-login/one-login-analytics/lib"))
 );
 app.use(
   session({
