@@ -83,10 +83,10 @@
         localStorage.setItem("helpWithHint", checkedItems.join("/"));
 
         const urlParams = new URLSearchParams(window.location.search);
-        const editModeQuery = urlParams.get("editMode") === "true"
-          ? "?editMode=true"
+        const editQuery = urlParams.get("edit") === "true"
+          ? "?edit=true"
           : ""
-        form.action = `/validate-help-with-hint${editModeQuery}`
+        form.action = `/validate-help-with-hint${editQuery}`
 
         form.submit();
       });

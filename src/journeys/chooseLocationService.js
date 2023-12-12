@@ -2,7 +2,7 @@ function validateChooseLocation(req, res) {
   try {
     const { chooseLocation } = req.body;
     const queryParams = req.query;
-    const editMode = queryParams.editMode;
+    const editMode = queryParams.edit;
 
     if (chooseLocation && chooseLocation !== "") {
       // Check if in edit mode and redirect accordingly

@@ -81,12 +81,12 @@
         }
 
         const urlParams = new URLSearchParams(window.location.search);
-        const editModeQuery = urlParams.get("editMode") === "true"
-          ? "?editMode=true"
+        const editQuery = urlParams.get("edit") === "true"
+          ? "?edit=true"
           : ""
         document
           .getElementById("organisationForm")
-          .action = `/validate-organisation-type${editModeQuery}`
+          .action = `/validate-organisation-type${editQuery}`
 
         this.submit();
       });
