@@ -1,5 +1,11 @@
 {
   "general": {
+    "header": {
+      "menuLink1": "Menu link 1",
+      "menuLink2": "Menu link 2",
+      "menuLink3": "Menu link 3"
+
+    },
     "buttons": {
       "startNow": "Start Now",
       "continue": "Continue"
@@ -9,7 +15,7 @@
       "skipLink": "Skip to main content",
       "phaseBanner": {
         "tag": "Alpha",
-        "content": "This is a new service - your <a class=\"govuk-link\" rel=\"noopener\" target=\"_blank\" href=\"https://signin.dev.account.gov.uk/contact-us\">feedback</a>  will help us to improve it. For more information, please <a href=\"/\">restart</a> your journey"
+        "content": "This is a new service - your <a class=\"govuk-link\" rel=\"noopener\" target=\"_blank\" href=\"https://signin.dev.account.gov.uk/contact-us\">feedback</a>  will help us to improve it. For more information, please <a rel=\"noopener\" class=\"govuk-link\" href=\"/welcome\">restart</a>  your journey"
       }
     },
     "cookie": {
