@@ -1,6 +1,11 @@
-const { GA4_CONTAINER_ID, UA_CONTAINER_ID, ROUTE_INFO } = require("./constants");
+const {
+  GA4_CONTAINER_ID,
+  UA_CONTAINER_ID,
+  ROUTE_INFO
+} = require("./constants");
 
-// This function makes sure that the GA4 Container ID is accessible to all pages, so we don't have to repeat it in every route
+// This function makes sure that the GA4 Container ID is accessible to all pages,
+// so we don't have to repeat it in every route
 
 const setGa4ContainerId = (req, res, next) => {
   //     Set the GA4 Container ID in (locals) that all pages can see.
@@ -8,7 +13,8 @@ const setGa4ContainerId = (req, res, next) => {
   next(); // Pass control to the next middleware function
 };
 
-// This function makes sure that the UA Container ID is accessible to all pages, so we don't have to repeat it in every route
+// This function makes sure that the UA Container ID is accessible to all pages,
+//so we don't have to repeat it in every route
 
 const setUaContainerId = (req, res, next) => {
   //     Set the UA Container ID in (locals) that all pages can see.
@@ -25,7 +31,9 @@ const setStatusCode = (req, res, next) => {
 // Middleware to instantiate the values for taxonomy levels 1 and 2 for the On Page Load tracker
 const setTaxonomyValues = (req, res, next) => {
   const url = req.url;
-  const pathFound = ROUTE_INFO.find((route) => route.path === url.split("?")[0]);
+  const pathFound = ROUTE_INFO.find(
+    (route) => route.path === url.split("?")[0]
+  );
   if (pathFound) {
     res.locals.taxonomyLevel1 = pathFound.taxonomyLevel1 || "undefined";
     res.locals.taxonomyLevel2 = pathFound.taxonomyLevel2 || "undefined";
@@ -41,7 +49,9 @@ const setTaxonomyValues = (req, res, next) => {
 // Middleware to instantiate the value for the pageTitle for the On Page Load tracker
 const setPageTitle = (req, res, next) => {
   const url = req.url;
-  const pathFound = ROUTE_INFO.find((route) => route.path === url.split("?")[0]);
+  const pathFound = ROUTE_INFO.find(
+    (route) => route.path === url.split("?")[0]
+  );
 
   if (pathFound) {
     res.locals.englishPageTitle = pathFound.pageTitle || "undefined";
@@ -56,7 +66,9 @@ const setPageTitle = (req, res, next) => {
 // Middleware to instantiate the value for the pageTitle for the On Page Load tracker
 const setContentId = (req, res, next) => {
   const url = req.url;
-  const pathFound = ROUTE_INFO.find((route) => route.path === url.split("?")[0]);
+  const pathFound = ROUTE_INFO.find(
+    (route) => route.path === url.split("?")[0]
+  );
 
   if (pathFound) {
     res.locals.contentId = pathFound.contentId || "undefined";
@@ -74,5 +86,5 @@ module.exports = {
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,
-  setContentId,
+  setContentId
 };

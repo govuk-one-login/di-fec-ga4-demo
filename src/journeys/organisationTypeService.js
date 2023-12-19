@@ -13,7 +13,7 @@ function validateOrganisationType(req, res) {
       }
     } else {
       res.render("organisationType.njk", {
-        showError: true,
+        showError: true
         // Add any other variables needed in your template
       });
     }

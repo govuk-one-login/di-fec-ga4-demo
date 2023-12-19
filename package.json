@@ -3,7 +3,7 @@
     "start": "npm-run-all --parallel dev gulp-watch",
     "dev": "node src/app.js",
     "gulp-watch": "gulp watch",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
+    "format": "npx eslint src/**/*.js --fix",
     "serve": "nodemon serve",
     "precommit": "npm run format && git add ."
   },
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.29.3",
-    "eslint": "^8.52.0",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "gulp": "^4.0.2",
     "gulp-watch": "^5.0.1",

@@ -1,3 +1,21 @@
 {
-  "extends": "airbnb/base"
+  "extends": "eslint:recommended",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "__dirname": true
+  },
+  "rules": {
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "never"],
+    "max-len": ["error", { "code": 120, "ignorePattern": "^\\s*\\.{3}" }],
+    "object-curly-newline": ["error", { "multiline": true, "consistent": true }]
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.js"]
+    }
+  ]
 }

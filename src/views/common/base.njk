@@ -31,7 +31,7 @@
         text: 'general.header.menuLink2' | translate
       },
       {
-        href: "/organisation-type",
+        href: "/xDncNmqheVoQoeOTnVmwUnsuByWwKwwAPUZAWRYBnzgrDOCObSzFqMpwAxQRpHMUehzTfzGJjuFJOtWyQBdHQbtpEpxmopVEnghdxyz",
         text: 'general.header.menuLink3' | translate
       }]
 }) }}
@@ -60,7 +60,10 @@
   <script>
     window
       .DI
-      .appInit({uaContainerId:'{{ uaContainerId }}',ga4ContainerId: '{{ ga4ContainerId }}'},{});
+      .appInit({
+        uaContainerId: '{{ uaContainerId }}',
+        ga4ContainerId: '{{ ga4ContainerId }}'
+      }, {});
     window
       .DI
       .analyticsGa4
@@ -72,7 +75,7 @@
         taxonomy_level2: '{{ taxonomyLevel2 }}', // Access taxonomy level 2
         content_id: '{{contentId}}',
         logged_in_status: false,
-        dynamic: false,
+        dynamic: false
       });
   </script>
 {% endblock %}

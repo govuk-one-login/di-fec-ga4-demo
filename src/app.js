@@ -3,11 +3,11 @@ const path = require("path");
 const session = require("express-session");
 const { configureNunjucks } = require("./config/nunjucks");
 const {
-  validateOrganisationType,
+  validateOrganisationType
 } = require("./journeys/organisationTypeService");
 const { validateHelpWithHint } = require("./journeys/helpWithHintService");
 const {
-  validateServiceDescription,
+  validateServiceDescription
 } = require("./journeys/serviceDescriptionService");
 const { validateChooseLocation } = require("./journeys/chooseLocationService");
 const { validateEnterEmail } = require("./journeys/enterEmailService");
@@ -19,7 +19,7 @@ const {
   setStatusCode,
   setTaxonomyValues,
   setPageTitle,
-  setContentId,
+  setContentId
 } = require("./config/gtmMiddleware");
 const { checkSessionAndRedirect } = require("./config/middleware");
 const i18next = require("i18next");
@@ -32,7 +32,7 @@ const port = 3000;
 const APP_VIEWS = [
   path.join(__dirname, "views"),
   path.resolve("node_modules/govuk-frontend/"),
-  path.resolve("node_modules/@govuk-prototype-kit/templates"),
+  path.resolve("node_modules/@govuk-prototype-kit/templates")
 ];
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
@@ -54,17 +54,22 @@ app.use(
   )
 );
 
-/**GA4 assets */
+/** GA4 assets */
 app.use(
   "/ga4-assets",
-  express.static(path.join(__dirname, "../node_modules/@govuk-one-login/one-login-analytics/lib"))
+  express.static(
+    path.join(
+      __dirname,
+      "../node_modules/@govuk-one-login/one-login-analytics/lib"
+    )
+  )
 );
 app.use(
   session({
     secret: sessionId, // Should I make this more secure?
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
+    cookie: { secure: false }
   })
 );
 app.use((req, res, next) => {
@@ -111,6 +116,13 @@ app.get("/choose-location", (req, res) => {
 app.get("/summary-page", (req, res) => {
   res.render("summaryPage.njk");
 });
+
+app.get(
+  "/xDncNmqheVoQoeOTnVmwUnsuByWwKwwAPUZAWRYBnzgrDOCObSzFqMpwAxQRpHMUehzTfzGJjuFJOtWyQBdHQbtpEpxmopVEnghdxyz",
+  (req, res) => {
+    res.render("characterExample.njk");
+  }
+);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
