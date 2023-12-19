@@ -13,7 +13,7 @@ function validateServiceDescription(req, res) {
       }
     } else {
       res.render("serviceDescription.njk", {
-        showError: true,
+        showError: true
         // Add any other variables needed in your template
       });
     }

@@ -4,7 +4,6 @@
       "menuLink1": "Menu link 1",
       "menuLink2": "Menu link 2",
       "menuLink3": "Menu link 3"
-
     },
     "buttons": {
       "startNow": "Start Now",
@@ -167,6 +166,12 @@
       "content": {
         "header": "Check answers",
         "changeLink": "Change"
+      }
+    },
+    "characterPage": {
+      "title": "xDncNmqheVoQoeOTnVmwUnsuByWwKwwAPUZAWRYBnzgrDOCObSzFqMpwAxQRpHMUehzTfzGJjuFJOtWyQBdHQbtpEpxmopVEnghdxyz",
+      "content": {
+        "header": "xDncNmqheVoQoeOTnVmwUnsuByWwKwwAPUZAWRYBnzgrDOCObSzFqMpwAxQRpHMUehzTfzGJjuFJOtWyQBdHQbtpEpxmopVEnghdxyz"
       }
     }
   }
