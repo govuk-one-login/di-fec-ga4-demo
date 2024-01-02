@@ -11,6 +11,8 @@ const {
 } = require("./journeys/serviceDescriptionService");
 const { validateChooseLocation } = require("./journeys/chooseLocationService");
 const { validateEnterEmail } = require("./journeys/enterEmailService");
+const { validateFeedback } = require("./journeys/feedbackService");
+
 const crypto = require("crypto");
 const sessionId = crypto.randomBytes(16).toString("hex");
 const {
@@ -117,6 +119,10 @@ app.get("/summary-page", (req, res) => {
   res.render("summaryPage.njk");
 });
 
+app.get("/feedback", (req, res) => {
+  res.render("feedback.njk");
+});
+
 app.get(
   "/xDncNmqheVoQoeOTnVmwUnsuByWwKwwAPUZAWRYBnzgrDOCObSzFqMpwAxQRpHMUehzTfzGJjuFJOtWyQBdHQbtpEpxmopVEnghdxyz",
   (req, res) => {
@@ -137,3 +143,5 @@ app.post("/validate-service-description", validateServiceDescription);
 app.post("/validate-choose-location", validateChooseLocation);
 
 app.post("/validate-enter-email", validateEnterEmail);
+
+app.post("/validate-feedback", validateFeedback);

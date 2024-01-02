@@ -7,7 +7,8 @@
     },
     "buttons": {
       "startNow": "Dechrau Nawr",
-      "continue": "Parhau"
+      "continue": "Parhau",
+      "send": "Lorem Ipsum"
     },
     "govuk": {
       "backLink": "Yn ôl",
@@ -81,7 +82,7 @@
         "list5": "gweld a chael mynediad at y gwasanaethau rydych wedi'u defnyddio gyda'ch Mewngofnod One Login GOV.UK",
         "list6": "dileu eich Mewngofnod One Login GOV.UK",
         "subheading2": "Adrodd problem neu roi adborth",
-        "paragraph6": "I adrodd problem gyda'ch Mewngofnod One Login GOV.UK neu roi adborth, <a href=\"https://home.account.gov.uk/contact-gov-uk-one-login\" class=\"govuk-link\">cysylltwch â thîm Mewngofnod One Login GOV.UK</a>.",
+        "paragraph6": "I adrodd problem gyda'ch Mewngofnod One Login GOV.UK neu roi adborth, <a href=\"/feedback\" class=\"govuk-link\">cysylltwch â thîm Mewngofnod One Login GOV.UK</a>.",
         "pagination": {
           "text": "Gwasanaethau y gallwch eu defnyddio gyda Mewngofnod One Login GOV.UK"
         },
@@ -100,6 +101,49 @@
         },
         "errors": {
           "validationError": "Dewiswch un opsiwn"
+        }
+      }
+    },
+    "feedback": {
+      "title": "Lorem ipsum dolor sit amet",
+      "content": {
+        "feedbackType": {
+          "label":"Lorem ipsum dolor sit amet?",
+          "options": {
+            "bug": "Lorem ipsum dolor sit amet",
+            "request": "Lorem ipsum dolor sit amet"
+          },
+          "errors": {
+            "validationError": "Lorem ipsum dolor sit amet"
+          }
+        },
+        "feedbackDescription": {
+          "label":"Lorem ipsum dolor sit amet",
+          "hint": "Lorem ipsum dolor sit amet",
+          "errors": {
+            "validationError": "Lorem ipsum dolor sit amet"
+          }
+        },
+        "feedbackConsent": {
+          "label":"Lorem ipsum dolor sit amet",
+          "hint": "Lorem ipsum dolor sit amet",
+          "options": {
+            "consent": "Lorem ipsum dolor sit amet"
+          },
+          "errors": {
+            "validationError": "Lorem ipsum dolor sit amet"
+          }
+        },
+        "feedbackEntity": {
+          "label":"Lorem ipsum dolor sit amet",
+          "hint": "Lorem ipsum dolor sit amet",
+          "options": {
+            "person": "Lorem ipsum dolor sit amet",
+            "company": "Lorem ipsum dolor sit amet"
+          },
+          "errors": {
+            "validationError": "Lorem ipsum dolor sit amet"
+          }
         }
       }
     },
