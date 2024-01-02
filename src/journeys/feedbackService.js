@@ -9,7 +9,6 @@ function validateFeedback(req, res) {
 
     //Check feedbackEntity field value
     if (!feedbackEntity || feedbackEntity === "") {
-      // Check if in edit mode and redirect accordingly
       showFeedbackEntityError = true;
     }
 
@@ -23,6 +22,7 @@ function validateFeedback(req, res) {
       showFeedbackDescriptionError = true;
     }
 
+    //Check feedbackConsent field value
     if (!feedbackConsent || feedbackConsent === "") {
       showFeedbackConsentError = true;
     }
