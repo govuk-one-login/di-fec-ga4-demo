@@ -7,7 +7,8 @@
     },
     "buttons": {
       "startNow": "Start Now",
-      "continue": "Continue"
+      "continue": "Continue",
+      "send": "Send"
     },
     "govuk": {
       "backLink": "Back",
@@ -81,7 +82,7 @@
         "list5": "see and access the services you've used with your GOV.UK One Login",
         "list6": "delete your GOV.UK One Login",
         "subheading2": "Report a problem or give feedback",
-        "paragraph6": "To report a problem with your GOV.UK One Login or give feedback,<a href=\"https://home.account.gov.uk/contact-gov-uk-one-login\" class=\"govuk-link\">contact the GOV.UK One Login team</a >.",
+        "paragraph6": "To report a problem with your GOV.UK One Login or give feedback,<a href=\"/feedback\" class=\"govuk-link\">contact the GOV.UK One Login team</a >.",
         "pagination": {
           "text": "Services you can use with GOV.UK One Login"
         },
@@ -100,6 +101,49 @@
         },
         "errors": {
           "validationError": "Select one option"
+        }
+      }
+    },
+    "feedback": {
+      "title": "Contact GOV.UK One Login",
+      "content": {
+        "feedbackType": {
+          "label":"What is the type of feedback?",
+          "options": {
+            "bug": "Bug",
+            "request": "Request"
+          },
+          "errors": {
+            "validationError": "Select one option"
+          }
+        },
+        "feedbackDescription": {
+          "label":"Give us your feedback",
+          "hint": "Add your comments here",
+          "errors": {
+            "validationError": "Please give us your feedback"
+          }
+        },
+        "feedbackConsent": {
+          "label":"Data protection consent",
+          "hint": "It's mandatory",
+          "options": {
+            "consent": "Yes, I want to share my feedback with GOV.UK One Login"
+          },
+          "errors": {
+            "validationError": "Please give us your consent"
+          }
+        },
+        "feedbackEntity": {
+          "label":"Who are you",
+          "hint": "It's mandatory",
+          "options": {
+            "person": "Person",
+            "company": "Company"
+          },
+          "errors": {
+            "validationError": "Please give us your consent"
+          }
         }
       }
     },
