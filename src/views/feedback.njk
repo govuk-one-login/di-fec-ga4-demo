@@ -8,16 +8,16 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block backLink %}
-  {{ govukBackLink({
+    {{ govukBackLink({
   text: "general.govuk.backLink" | translate,
   href: "/welcome"
 }) }}
 {% endblock %}
 {% block content %}
-  <h1 class="govuk-heading-xl">{{"pages.feedback.title"| translate}}</h1>
-  <form method="post" id="feedbackForm" action="/validate-feedback">
+    <h1 class="govuk-heading-xl">{{"pages.feedback.title"| translate}}</h1>
+    <form method="post" id="feedbackForm" action="/validate-feedback">
 
-    {{ govukSelect({
+        {{ govukSelect({
         id: "feedback-entity",
         name: "feedbackEntity",
         label: {
@@ -48,7 +48,7 @@
         ]
     }) }}
 
-    {{ govukRadios({
+        {{ govukRadios({
         name: "feedbackType",
         id: "feedback-type",
         fieldset: {
@@ -71,7 +71,7 @@
         errorMessage:  { text: "pages.feedback.content.feedbackType.errors.validationError" | translate}  if showFeedbackTypeError
     }) }}
 
-    {{ govukTextarea({
+        {{ govukTextarea({
         name: "feedbackDescription",
         id: "feedback-description",
         label: {
@@ -88,7 +88,7 @@
         })
     }}
 
-    {{ govukCheckboxes({
+        {{ govukCheckboxes({
         name: "feedbackConsent",
         fieldset: {
             legend: {
@@ -111,12 +111,11 @@
         ]
     }) }}
 
-
-    {{ govukButton({
+        {{ govukButton({
         text: "general.buttons.send" | translate,
         type: 'submit'
     }) }}
 
-  </form>
+    </form>
 
 {% endblock %}
