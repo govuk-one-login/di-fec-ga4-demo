@@ -97,6 +97,22 @@ const ROUTE_INFO = [
     taxonomyLevel1: "ErrorEnterEmail1",
     taxonomyLevel2: "ErrorEnterEmail2",
     contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7b09>"
+  },
+  {
+    id: 13,
+    path: "/validate-feedback",
+    pageTitle: "Contact GOV.UK One Login",
+    taxonomyLevel1: "ErrorFeedback1",
+    taxonomyLevel2: "ErrorFeedback2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7b77>"
+  },
+  {
+    id: 14,
+    path: "/feedback",
+    pageTitle: "Contact GOV.UK One Login",
+    taxonomyLevel1: "ErrorFeedback1",
+    taxonomyLevel2: "ErrorFeedback2",
+    contentId: "<e4a3603d-2d3c-4ff1-9b80-d72c1e6b7b88>"
   }
 ];
 module.exports = { GA4_CONTAINER_ID, UA_CONTAINER_ID, ROUTE_INFO };
