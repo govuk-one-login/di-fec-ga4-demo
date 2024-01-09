@@ -8,6 +8,7 @@
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "language-select/macro.njk" import oneloginLanguageSelect %}
 
 {% block skipLink %}
   {{ govukSkipLink({ 
@@ -50,6 +51,33 @@
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+          {{
+            oneloginLanguageSelect({
+              language: 'cy',
+              en: {
+                href: '?lng=en',
+              },
+              cy: {
+                href: '?lng=cy'
+              }
+            })
+          }}
+
+          {# WIP {{
+            oneloginLanguageSelect({
+              language: 'en', // first item is the active language
+              languages: [en: { // second item is an array of config
+                href: '?lng=en',
+                text: 'English',
+                ariaHiddenText: 'switch to english' 
+              },
+              cy: {
+                href: '?lng=cy',
+                text: 'ymraeg',
+                ariaHiddenText: 'Newid yr iaith ir Gymraeg'
+              }]
+            })
+          ]} #}
           {% block content %}{% endblock %}
         </div>
       </div>

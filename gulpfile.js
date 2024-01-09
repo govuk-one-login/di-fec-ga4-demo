@@ -23,4 +23,8 @@ gulp.task("watch", () => {
   watch("public/*.css", () => {
     browserSync.reload();
   });
+
+  watch("public/*.scss", () => {
+    browserSync.reload();
+  });
 });
