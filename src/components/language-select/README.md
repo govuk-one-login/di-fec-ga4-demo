@@ -108,13 +108,15 @@ The package is owned by the DI Frontend Capability team, part of the development
     ```
 
 [!NOTE]
-- Language property contains the code of your i18next active language
-- class property lets you add any css class to the nunjuck component.
-- Languages property is an array of all the languages you support in your application.
+- ariaLabel is a brief description of the purpose of the navigation, omitting the term "navigation", as the screen reader will read both the role and the contents of the label.
+- Language contains the code of your i18next active language
+- class lets you add any css class to the nunjuck component.
+- Languages is an array of all the languages you support in your application.
 [!NOTE]
 
 ### Prerequisites
 
 - Having set the local variable htmlLang in your app.js file or in a middleware function.
+- Having define translation value for ariaLabel property.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

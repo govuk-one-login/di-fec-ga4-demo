@@ -5,6 +5,9 @@
       "menuLink2": "dewislen 2",
       "menuLink3": "dewislen 3"
     },
+    "languageSelect":{
+      "ariaLabel":"Lorem ipsum"
+    },
     "buttons": {
       "startNow": "Dechrau Nawr",
       "continue": "Parhau",

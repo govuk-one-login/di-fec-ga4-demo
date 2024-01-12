@@ -115,7 +115,6 @@ app.get("/service-description", (req, res) => {
 });
 
 app.get("/organisation-type", (req, res) => {
-  console.log("set cookies:", req.cookies.language);
   res.render("organisationType.njk"); // radio button
 });
 

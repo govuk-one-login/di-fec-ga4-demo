@@ -1,6 +1,6 @@
 {
     "name": "one-login-language-toggle",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Reusable language toggle for GDS One Login",
     "main": "",
     "type": "module",
