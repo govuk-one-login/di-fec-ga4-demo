@@ -1,6 +1,6 @@
 {% block head %}
   <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css"/>
-
+  <link rel="stylesheet" href="/language-select/styles.css"/>
 {% endblock %}
 
 {% extends "govuk/template.njk" %}
@@ -8,7 +8,7 @@
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "language-select/macro.njk" import oneloginLanguageSelect %}
+{% from "language-toggle/macro.njk" import oneloginLanguageSelect %}
 
 {% block skipLink %}
   {{ govukSkipLink({ 
@@ -47,37 +47,25 @@
   },
   html:"general.govuk.phaseBanner.content" | translate | safe
 }) }}
+    {{ oneloginLanguageSelect({
+        ariaLabel:'Choose a language',
+        language: htmlLang,
+        class:'',
+        languages: [
+        { 
+          code: 'en',
+          text: 'English'
+        },
+        {
+          code:'cy',
+          text: 'Cymraeg'
+        }]
+      })
+    }}
     {% block backLink%}{% endblock %}
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          {{
-            oneloginLanguageSelect({
-              language: 'cy',
-              en: {
-                href: '?lng=en',
-              },
-              cy: {
-                href: '?lng=cy'
-              }
-            })
-          }}
-
-          {# WIP {{
-            oneloginLanguageSelect({
-              language: 'en', // first item is the active language
-              languages: [en: { // second item is an array of config
-                href: '?lng=en',
-                text: 'English',
-                ariaHiddenText: 'switch to english' 
-              },
-              cy: {
-                href: '?lng=cy',
-                text: 'ymraeg',
-                ariaHiddenText: 'Newid yr iaith ir Gymraeg'
-              }]
-            })
-          ]} #}
           {% block content %}{% endblock %}
         </div>
       </div>

@@ -1,0 +1,16 @@
+
+<nav class="language-select {{params.class}}" aria-label="{{params.ariaLabel}}">
+    <ul class="govuk-list language-select__list">
+        {% for lang in params.languages %}
+            <li class="language-select__list-item">
+                {% if params.language == lang.code %}
+                    <span aria-current="page">{{ lang.text }}</span>
+                {% else %}
+                    <a class="govuk-link govuk-link--no-visited-state language-select__link" href="?lng={{ lang.code }}">
+                        {{ lang.text }}
+                    </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

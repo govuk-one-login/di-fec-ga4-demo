@@ -1,20 +1,21 @@
 /* styles.css */
 
-.onelogin-language-select {
+.language-select {
   font-size: 16px;
+  padding-bottom: 10px;
 }
 
-.onelogin-language-select__list {
+.language-select__list {
   margin-top: 1em;
   float: right;
   text-align: right;
 }
 
-.onelogin-language-select__list-item {
+.language-select__list-item {
   display: inline-block;
 }
 
-.onelogin-language-select__list-item:first-child::after {
+.language-select__list-item:first-child::after {
   content: "";
   display: inline-block;
   position: relative;
@@ -23,7 +24,7 @@
   border-right: 0.09375em solid black;
 }
 
-.onelogin-language-select__list-item a,
-.onelogin-language-select__list-item [aria-current] {
+.language-select__list-item a,
+.language-select__list-item [aria-current] {
   padding: 0.3125em;
 }

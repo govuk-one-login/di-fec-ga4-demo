@@ -35,7 +35,8 @@ const APP_VIEWS = [
   path.join(__dirname, "views"),
   path.join(__dirname, "components"),
   path.resolve("node_modules/govuk-frontend/"),
-  path.resolve("node_modules/@govuk-prototype-kit/templates")
+  path.resolve("node_modules/@govuk-prototype-kit/templates"),
+  path.resolve("node_modules/one-login-language-toggle")
 ];
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
@@ -49,7 +50,6 @@ i18next
   );
 
 app.use(i18nextMiddleware.handle(i18next));
-app.use(cookieParser());
 
 app.use(
   "/assets",
@@ -58,13 +58,12 @@ app.use(
   )
 );
 
-// // Serve all files with a .css suffix from the 'public' directory
-// app.use(
-//   "/css",
-//   express.static(path.join(__dirname, "public"), {
-//     extensions: ["css"]
-//   })
-// );
+app.use(
+  "/language-select",
+  express.static(
+    path.join(__dirname, "../node_modules/one-login-language-toggle/language-toggle/stylesheet")
+  )
+)
 
 /** GA4 assets */
 app.use(
@@ -92,7 +91,7 @@ app.use((req, res, next) => {
     next();
   }
 });
-app.use(express.static("public"));
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(setGa4ContainerId);
