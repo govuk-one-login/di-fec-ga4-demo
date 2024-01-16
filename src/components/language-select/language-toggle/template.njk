@@ -1,7 +1,7 @@
 <nav class="language-select {{params.class}}" aria-label="{{params.ariaLabel}}">
     <ul class="govuk-list language-select__list">
-        {% for pageIndex,lang in params.languages.entries() %}
-            <li class="language-select__list-item" tabindex="{{pageIndex}}">
+        {% for lang in params.languages.entries() %}
+            <li class="language-select__list-item">
                 {% if params.language == lang.code %}
                     <span aria-current="language">{{ lang.text }}</span>
                 {% else %}
