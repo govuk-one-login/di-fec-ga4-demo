@@ -33,8 +33,10 @@ const port = 3000;
 
 const APP_VIEWS = [
   path.join(__dirname, "views"),
+  path.join(__dirname, "components"),
   path.resolve("node_modules/govuk-frontend/"),
-  path.resolve("node_modules/@govuk-prototype-kit/templates")
+  path.resolve("node_modules/@govuk-prototype-kit/templates"),
+  path.resolve("node_modules/one-login-language-toggle")
 ];
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
@@ -55,6 +57,13 @@ app.use(
     path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
   )
 );
+
+app.use(
+  "/language-select",
+  express.static(
+    path.join(__dirname, "../node_modules/one-login-language-toggle/language-toggle/stylesheet")
+  )
+)
 
 /** GA4 assets */
 app.use(
@@ -82,6 +91,7 @@ app.use((req, res, next) => {
     next();
   }
 });
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(setGa4ContainerId);
@@ -99,6 +109,7 @@ app.get("/welcome", (req, res) => {
 app.get("/enter-email", (req, res) => {
   res.render("enterEmail.njk");
 });
+
 app.get("/service-description", (req, res) => {
   res.render("serviceDescription.njk"); // free text
 });

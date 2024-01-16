@@ -5,6 +5,9 @@
       "menuLink2": "Menu link 2",
       "menuLink3": "Menu link 3"
     },
+    "languageSelect":{
+      "ariaLabel":"Select language"
+    },
     "buttons": {
       "startNow": "Start Now",
       "continue": "Continue",

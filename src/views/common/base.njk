@@ -1,6 +1,6 @@
 {% block head %}
   <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css"/>
-
+  <link rel="stylesheet" href="/language-select/styles.css"/>
 {% endblock %}
 
 {% extends "govuk/template.njk" %}
@@ -8,6 +8,7 @@
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "language-toggle/macro.njk" import oneloginLanguageSelect %}
 
 {% block skipLink %}
   {{ govukSkipLink({ 
@@ -46,6 +47,21 @@
   },
   html:"general.govuk.phaseBanner.content" | translate | safe
 }) }}
+    {{ oneloginLanguageSelect({
+        ariaLabel:'general.languageSelect.ariaLabel' | translate,
+        language: htmlLang,
+        class:'',
+        languages: [
+        { 
+          code: 'en',
+          text: 'English'
+        },
+        {
+          code:'cy',
+          text: 'Cymraeg'
+        }]
+      })
+    }}
     {% block backLink%}{% endblock %}
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
