@@ -19,7 +19,7 @@
     "i18next": "^23.7.7",
     "i18next-fs-backend": "^2.3.0",
     "i18next-http-middleware": "^3.5.0",
-    "one-login-language-toggle": "^0.0.3",
+    "one-login-language-toggle": "^0.0.6",
     "path": "^0.12.7"
   },
   "engines": {
