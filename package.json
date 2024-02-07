@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "start": "npm-run-all --parallel dev gulp-watch",
+    "start": "npm-run-all build-sass --parallel dev gulp-watch",
     "dev": "node src/app.js",
+    "build-sass": "rm -rf public/style.css && sass --no-source-map node_modules/one-login-language-toggle/language-toggle/stylesheet/styles.css  public/stylesheets/application.css --style compressed",
     "gulp-watch": "gulp watch",
     "format": "npx eslint src/**/*.js --fix",
     "serve": "nodemon serve",
@@ -19,8 +20,9 @@
     "i18next": "^23.7.7",
     "i18next-fs-backend": "^2.3.0",
     "i18next-http-middleware": "^3.5.0",
-    "one-login-language-toggle": "^0.0.6",
-    "path": "^0.12.7"
+    "one-login-language-toggle": "^0.0.5",
+    "path": "^0.12.7",
+    "sass": "^1.70.0"
   },
   "engines": {
     "node": "18.x"
