@@ -6,7 +6,7 @@
     "gulp-watch": "gulp watch",
     "format": "npx eslint src/**/*.js --fix",
     "serve": "nodemon serve",
-    "precommit": "npm run test format && git add .",
+    "precommit": "npm run test && npm run format && git add .",
     "test": "jest --config=jest.config.js"
   },
   "dependencies": {

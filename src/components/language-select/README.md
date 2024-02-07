@@ -63,56 +63,50 @@ The package is owned by the DI Frontend Capability team, part of the development
 2. Configure your node application's startup file (example: app.js or index.js) and add a new path view to your configureNunjucks viewspath parameter:
 
    ```js
-   path.resolve("node_modules/one-login-language-toggle")
+   path.resolve("node_modules/one-login-language-toggle");
    ```
 
    [!WARNING] Check if the path to your node module folder is the correct one. [!WARNING]
 
-3. Add a new asset folder:
-
-    ```js
-    app.use(
-        "/language-select",
-        express.static(
-            path.join(__dirname, "../node_modules/one-login-language-toggle/language-toggle/stylesheet")
-        )
-    )
-    ```
-
-[!NOTE] Different methods exist if you want to add stylesheet files. Feel free to use any of them. [!NOTE]
-
-4. Import this macro into your base nunjucks template:
+3. Import this macro into your base nunjucks template:
 
    ```js
     {% from "language-toggle/macro.njk" import oneloginLanguageSelect %}
    ```
 
-5. Add the nunjuck component where you need:
+4. Add the nunjuck component where you need:
 
-    ```js
-    {{ oneloginLanguageSelect({
-        ariaLabel:'Choose a language',
-        class:'',
-        language: htmlLang,
-        languages: [
-        { 
-          code: 'en',
-          text: 'English'
-        },
-        {
-          code:'cy',
-          text: 'Cymraeg'
-        }]
-      })
-    }}
-    ```
+   ```js
+   {
+     {
+       oneloginLanguageSelect({
+         ariaLabel: "Choose a language",
+         class: "",
+         activeLanguage: htmlLang,
+         languages: [
+           {
+             code: "en",
+             text: "English"
+           },
+           {
+             code: "cy",
+             text: "Cymraeg"
+           }
+         ]
+       });
+     }
+   }
+   ```
+
+5. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
 
 [!NOTE]
+
 - ariaLabel is a brief description of the purpose of the navigation, omitting the term "navigation", as the screen reader will read both the role and the contents of the label.
 - Language contains the code of your i18next active language
 - class lets you add any css class to the nunjuck component.
 - Languages is an array of all the languages you support in your application.
-[!NOTE]
+  [!NOTE]
 
 ### Prerequisites
 
