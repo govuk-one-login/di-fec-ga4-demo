@@ -13,7 +13,7 @@ nunjucks.configure(path.dirname(templatePath), { autoescape: true });
 describe("oneloginLanguageSelect Component", () => {
   const mockEnParams = {
     ariaLabel: "test-aria",
-    language: "en",
+    activeLanguage: "en",
     class: "test-class",
     languages: [
       {
@@ -61,7 +61,7 @@ describe("oneloginLanguageSelect Component", () => {
   it("renders the active language as a span, and inactive language as a link", () => {
     const mockCyParams = {
       ariaLabel: "test-aria",
-      language: "cy",
+      activeLanguage: "cy",
       class: "test-class",
       languages: [
         {
