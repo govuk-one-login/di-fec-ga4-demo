@@ -3,11 +3,11 @@ const fs = require("fs");
 const path = require("path");
 
 const { axe, toHaveNoViolations } = require("jest-axe");
-const { render } = require("../../../utils/jestHelpers");
+const { render } = require("../../utils/jestHelpers");
 
 expect.extend(toHaveNoViolations);
 
-const templatePath = "src/components/language-select/language-toggle";
+const templatePath = "src/components/language-toggle";
 nunjucks.configure(path.dirname(templatePath), { autoescape: true });
 
 describe("oneloginLanguageSelect Component", () => {

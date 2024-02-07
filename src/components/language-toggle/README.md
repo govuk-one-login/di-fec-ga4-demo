@@ -98,7 +98,18 @@ The package is owned by the DI Frontend Capability team, part of the development
    }
    ```
 
-5. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
+5. Ensure the config view engine is set up
+
+   ```js
+   app.set(
+     "view engine",
+     configureNunjucks(app, [
+       path.resolve("node_modules/one-login-language-toggle")
+     ])
+   );
+   ```
+
+6. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
 
 [!NOTE]
 

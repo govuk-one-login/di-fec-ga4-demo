@@ -2,7 +2,7 @@
   "scripts": {
     "start": "npm-run-all build-sass --parallel dev gulp-watch",
     "dev": "node src/app.js",
-    "build-sass": "rm -rf public/style.css && sass --no-source-map node_modules/one-login-language-toggle/language-toggle/stylesheet/styles.css  public/stylesheets/application.css --style compressed",
+    "build-sass": "rm -rf public/style.css && sass --no-source-map node_modules/one-login-language-toggle/stylesheet/styles.css  public/stylesheets/application.css --style compressed",
     "gulp-watch": "gulp watch",
     "format": "npx eslint src/**/*.js --fix",
     "serve": "nodemon serve",
