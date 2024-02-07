@@ -3,7 +3,7 @@
         {% for lang in params.languages %}
             <li class="language-select__list-item">
                 {% if params.activeLanguage == lang.code %}
-                    <span aria-current="activeLanguage">{{ lang.text }}</span>
+                    <span aria-current="language">{{ lang.text }}</span>
                 {% else %}
                     <a class="govuk-link govuk-link--no-visited-state language-select__link" href="?lng={{ lang.code }}">
                         {{ lang.text }}
