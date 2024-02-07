@@ -102,10 +102,10 @@ The package is owned by the DI Frontend Capability team, part of the development
 
 [!NOTE]
 
-- ariaLabel is a brief description of the purpose of the navigation, omitting the term "navigation", as the screen reader will read both the role and the contents of the label.
-- Language contains the code of your i18next active language
-- class lets you add any css class to the nunjuck component.
-- Languages is an array of all the languages you support in your application.
+- `ariaLabel` is a brief description of the purpose of the navigation, omitting the term "navigation", as the screen reader will read both the role and the contents of the label.
+- `activeLanguage` contains the language code of your i18next active language e.g 'en'
+- `class` lets you add any css class to the nunjuck component.
+- `languages` is an array of all the languages you support in your application.
   [!NOTE]
 
 ### Prerequisites
