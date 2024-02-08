@@ -38,7 +38,7 @@ describe("oneloginLanguageSelect Component", () => {
     expect(results).toHaveNoViolations();
   });
 
-  it("renders the aria-label from params", () => {
+  it("renders the class from params", () => {
     const renderedComponent = render(
       "language-toggle",
       "oneloginLanguageSelect",
@@ -48,7 +48,7 @@ describe("oneloginLanguageSelect Component", () => {
     expect(renderedNavElement.attr("class")).toContain("test-class");
   });
 
-  it("renders the class from params", () => {
+  it("renders the aria-label from params", () => {
     const renderedComponent = render(
       "language-toggle",
       "oneloginLanguageSelect",
