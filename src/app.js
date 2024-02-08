@@ -58,13 +58,6 @@ app.use(
   )
 );
 
-app.use(
-  "/language-select",
-  express.static(
-    path.join(__dirname, "../node_modules/one-login-language-toggle/language-toggle/stylesheet")
-  )
-)
-
 /** GA4 assets */
 app.use(
   "/ga4-assets",
