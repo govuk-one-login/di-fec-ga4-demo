@@ -2,7 +2,7 @@
   "scripts": {
     "start": "npm-run-all build-sass --parallel dev gulp-watch",
     "dev": "node src/app.js",
-    "build-sass": "rm -rf public/style.css && sass --no-source-map node_modules/one-login-language-toggle/stylesheet/styles.css  public/stylesheets/application.css --style compressed",
+    "build-sass": "rm -rf public/style.css && sass --no-source-map node_modules/@govuk-one-login/one-login-language-toggle/stylesheet/styles.css  public/stylesheets/application.css --style compressed",
     "gulp-watch": "gulp watch",
     "format": "npx eslint src/**/*.js --fix",
     "serve": "nodemon serve",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@govuk-one-login/one-login-analytics": "^0.0.3",
+    "@govuk-one-login/one-login-language-toggle": "^1.0.0",
     "@govuk-prototype-kit/common-templates": "1.2.2",
     "axe-core": "^4.8.3",
     "cheerio": "*",
@@ -20,7 +21,6 @@
     "i18next": "^23.7.7",
     "i18next-fs-backend": "^2.3.0",
     "i18next-http-middleware": "^3.5.0",
-    "one-login-language-toggle": "^0.0.5",
     "path": "^0.12.7",
     "sass": "^1.70.0"
   },
