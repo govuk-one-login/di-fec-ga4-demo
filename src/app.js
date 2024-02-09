@@ -36,7 +36,7 @@ const APP_VIEWS = [
   path.join(__dirname, "components"),
   path.resolve("node_modules/govuk-frontend/"),
   path.resolve("node_modules/@govuk-prototype-kit/templates"),
-  path.resolve("node_modules/one-login-language-toggle")
+  path.resolve("node_modules/@govuk-one-login")
 ];
 
 app.set("view engine", configureNunjucks(app, APP_VIEWS));
