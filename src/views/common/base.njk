@@ -1,6 +1,7 @@
 {% block head %}
   <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css"/>
   <link rel="stylesheet" href="/stylesheets/application.css"/>
+    <link rel="stylesheet" href="/stylesheets/custom.css"/>
 {% endblock %}
 
 {% extends "govuk/template.njk" %}
@@ -47,22 +48,33 @@
   },
   html:"general.govuk.phaseBanner.content" | translate | safe
 }) }}
-    {{ oneloginLanguageSelect({
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div>{% block backLink %}{% endblock %}</div>
+    </div>
+    <div class="govuk-grid-column-one-third last-item">
+      {{ oneloginLanguageSelect({
         ariaLabel:'general.languageSelect.ariaLabel' | translate,
         activeLanguage: htmlLang,
         class:'',
         languages: [
-        { 
-          code: 'en',
-          text: 'English'
-        },
-        {
-          code:'cy',
-          text: 'Cymraeg'
-        }]
+          { 
+            code: 'en',
+            text: 'English'
+          },
+          {
+            code:'cy',
+            text: 'Cymraeg'
+          }
+        ]
       })
-    }}
-    {% block backLink%}{% endblock %}
+      }}
+    </div>
+  </div>
+</div>
+
     <main id="main-content" class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
