@@ -1,5 +1,5 @@
 <nav class="language-select {{params.class}}" aria-label="{{params.ariaLabel}}" role="navigation">
-    <ul class="govuk-list language-select__list govuk-body-s" role="list">
+    <ul class="govuk-list language-select__list govuk-body-s govuk-!-margin-0" role="list">
         {% for lang in params.languages %}
             <li class="language-select__list-item" role="listitem">
                 {% if params.activeLanguage == lang.code %}
