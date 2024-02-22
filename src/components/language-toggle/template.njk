@@ -6,15 +6,15 @@
                     <span aria-current="language">{{ lang.text }}</span>
                 {% else %}
                     <a 
-                    class="govuk-link govuk-link--no-visited-state language-select__link" 
+                    class="govuk-link govuk-link--no-visited-state" 
                     href="?lng={{ lang.code }}" 
                     data-journey-click="link - click:lang-select:{{ lang.code }}"
                     rel="alternate" 
                     hreflang="{{ lang.code }}"
                     role="link"
                     >
+                        {{ lang.text }}
                         <span class="govuk-visually-hidden">{{ lang.visuallyHidden }}</span>
-                        <span aria-hidden="true">{{ lang.text }}</span>
                     </a>
                 {% endif %}
             </li>
