@@ -1,13 +1,18 @@
-<nav class="language-select {{params.class}}" aria-label="{{params.ariaLabel}}">
-    <ul class="govuk-list language-select__list govuk-body-s">
+<nav class="language-select {{params.class}}" aria-label="{{params.ariaLabel}}" role="navigation">
+    <ul class="govuk-list language-select__list govuk-body-s govuk-!-margin-0" role="list">
         {% for lang in params.languages %}
-            <li class="language-select__list-item">
+            <li class="language-select__list-item" role="listitem">
                 {% if params.activeLanguage == lang.code %}
                     <span aria-current="language">{{ lang.text }}</span>
                 {% else %}
-                    <a class="govuk-link govuk-link--no-visited-state language-select__link" href="?lng={{ lang.code }}">
-                        {{ lang.text }}
-                    </a>
+                    <a 
+                    class="govuk-link govuk-link--no-visited-state" 
+                    href="?lng={{ lang.code }}" 
+                    data-journey-click="link - click:lang-select:{{ lang.code }}"
+                    rel="alternate" 
+                    hreflang="{{ lang.code }}"
+                    role="link"
+                    >{{ lang.text }}<span class="govuk-visually-hidden">{{ lang.visuallyHidden }}</span></a>
                 {% endif %}
             </li>
         {% endfor %}

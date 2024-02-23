@@ -1,12 +1,11 @@
 /* styles.css */
 
 .language-select {
-  padding-bottom: 10px;
+  margin: 16px 0 16px 0;
 }
 
 .language-select__list {
   margin-top: 1em;
-  float: right;
   text-align: right;
 }
 
@@ -26,4 +25,13 @@
 .language-select__list-item a,
 .language-select__list-item [aria-current] {
   padding: 0.3125em;
+}
+
+@media screen and (max-width: 641px) {
+  .language-select__list {
+    float: none;
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #b1b4b6;
+  }
 }
