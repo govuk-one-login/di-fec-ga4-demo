@@ -86,11 +86,13 @@ The package is owned by the DI Frontend Capability team, part of the development
          languages: [
            {
              code: "en",
-             text: "English"
+             text: "English",
+              visuallyHidden: "Change to English"
            },
            {
              code: "cy",
-             text: "Cymraeg"
+             text: "Cymraeg",
+             visuallyHidden: "Newid yr iaith ir Gymraeg"
            }
          ]
        });
@@ -117,6 +119,7 @@ The package is owned by the DI Frontend Capability team, part of the development
 - `activeLanguage` contains the language code of your i18next active language e.g 'en'
 - `class` lets you add any css class to the nunjuck component.
 - `languages` is an array of all the languages you support in your application.
+- Language toggle to be placed above the back button.
   [!NOTE]
 
 ### Prerequisites

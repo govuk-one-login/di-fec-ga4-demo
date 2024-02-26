@@ -29,5 +29,9 @@ params:
         type: string
         required: true
         description: language text
+      - name: visuallyHidden
+        type: string
+        required: false
+        description: language text
 
 
