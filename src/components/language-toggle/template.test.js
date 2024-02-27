@@ -18,11 +18,13 @@ describe("oneloginLanguageSelect Component", () => {
     languages: [
       {
         code: "en",
-        text: "English"
+        text: "English",
+        visuallyHidden: "Change to English"
       },
       {
         code: "cy",
-        text: "Cymraeg"
+        text: "Cymraeg",
+        visuallyHidden: "Newid yr iaith ir Gymraeg"
       }
     ]
   };
@@ -67,11 +69,14 @@ describe("oneloginLanguageSelect Component", () => {
         languages: [
           {
             code: "en",
-            text: "English"
+            text: "English",
+            visuallyHidden: "Change to English"
+
           },
           {
             code: "cy",
-            text: "Cymraeg"
+            text: "Cymraeg",
+            visuallyHidden: "Newid yr iaith ir Gymraeg"
           }
         ]
       };
@@ -83,8 +88,12 @@ describe("oneloginLanguageSelect Component", () => {
       );
 
       // test span
-      const renderedSpan = renderedComponent("span").text();
-      expect(renderedSpan).toBe("Cymraeg");
+      const renderedSpan = renderedComponent("span")
+      expect(renderedSpan.text()).toBe("Cymraeg");
+
+      // test visually hidden
+      const renderedVisuallyHidden = renderedComponent(".govuk-visually-hidden");
+      expect(renderedVisuallyHidden.text()).toBe("Change to English");
 
       // test link
       const renderedLink = renderedComponent(".govuk-link");
@@ -106,6 +115,10 @@ describe("oneloginLanguageSelect Component", () => {
       // test span
       const renderedSpan = renderedComponent("span").text();
       expect(renderedSpan).toBe("English");
+
+      // test visually hidden
+      const renderedVisuallyHidden = renderedComponent(".govuk-visually-hidden");
+      expect(renderedVisuallyHidden.text()).toBe("Newid yr iaith ir Gymraeg");
 
       // test link
       const renderedLink = renderedComponent(".govuk-link");
