@@ -7,10 +7,11 @@
     "format": "npx eslint src/**/*.js --fix",
     "serve": "nodemon serve",
     "precommit": "npm run test && npm run format && git add .",
-    "test": "jest --config=jest.config.js"
+    "test": "jest --config=jest.config.js",
+    "test:integration": "cucumber-js test/browser/features/v1/analytics --require test/browser/support/setup.js --require test/browser/step_definitions/**/*.js cucumber --tags 'not @skip'"
   },
   "dependencies": {
-    "@govuk-one-login/one-login-analytics": "^0.0.3",
+    "@govuk-one-login/one-login-analytics": "^0.0.9",
     "@govuk-one-login/one-login-language-toggle": "^1.0.0",
     "@govuk-prototype-kit/common-templates": "1.2.2",
     "axe-core": "^4.8.3",
@@ -28,7 +29,13 @@
     "node": "18.x"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.6",
+    "@types/chai-as-promised": "^7.1.5",
     "browser-sync": "^2.29.3",
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "@cucumber/cucumber": "10.0.1",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "gulp": "^4.0.2",
@@ -39,6 +46,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "npm-run-all": "^4.1.5",
     "nunjucks": "^3.2.4",
+    "playwright": "1.36.2",
     "prettier": "^3.0.3"
   },
   "husky": {
