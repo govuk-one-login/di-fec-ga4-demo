@@ -12,4 +12,4 @@ Navigate to http://localhost:3000/welcome
 
 Run `npm run test:integration`
 
-Warning: If you run it locally, you nned to have an instance of demo app running also.
+Warning: If you want to run it locally, you need to have an instance of demo app running also.
