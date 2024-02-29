@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/one-login-language-toggle",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Reusable language toggle for GDS One Login",
   "main": "",
   "type": "module",
