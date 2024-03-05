@@ -44,12 +44,12 @@ The package is owned by the DI Frontend Capability team, part of the development
 
 2. Import middleware function
    ```js
-   const setOneLoginCommonHeader = require("@govuk-one-login/one-login-common-headers");
+   const commonHeader = require("@govuk-one-login/one-login-common-headers");
    ```
 
-3. Configure your node application's startup file (example: app.js or index.js) and add a new middleware function to your router:
+3. Configure your node application's startup file (example: app.js or index.js) and add a new middleware functions to your router:
    ```js
-   router.use(setOneLoginCommonHeader);
+   router.use(commonHeader.txmaAuditEncoded);
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

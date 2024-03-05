@@ -1,9 +1,8 @@
 {
     "name": "one-login-common-headers",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Middleware function to add common headers to the request.",
     "main": "",
-    "type": "module",
     "scripts": {
       "pub": "npm publish --access public",
       "test": "jest"
