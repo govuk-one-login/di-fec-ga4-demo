@@ -52,23 +52,6 @@ i18next
 app.use(i18nextMiddleware.handle(i18next));
 
 app.use(
-  "/assets",
-  express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
-  )
-);
-
-/** GA4 assets */
-app.use(
-  "/ga4-assets",
-  express.static(
-    path.join(
-      __dirname,
-      "../node_modules/@govuk-one-login/one-login-analytics/lib"
-    )
-  )
-);
-app.use(
   session({
     secret: sessionId, // Should I make this more secure?
     resave: false,
@@ -85,7 +68,8 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")))
+app.use("/public", express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({ extended: true }));
 app.use(setGa4ContainerId);
 app.use(setUaContainerId);
@@ -134,10 +118,6 @@ app.get(
   }
 );
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
 app.post("/validate-organisation-type", validateOrganisationType);
 
 app.post("/validate-help-with-hint", validateHelpWithHint);
@@ -149,3 +129,7 @@ app.post("/validate-choose-location", validateChooseLocation);
 app.post("/validate-enter-email", validateEnterEmail);
 
 app.post("/validate-feedback", validateFeedback);
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});

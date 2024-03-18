@@ -1,6 +1,6 @@
 {% block head %}
-  <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.7.0.min.css"/>
-  <link rel="stylesheet" href="/stylesheets/application.css"/>
+  <link rel="stylesheet" href="/public/stylesheets/govuk-frontend-4.7.0.min.@hash.css"/>
+  <link rel="stylesheet" href="/public/stylesheets/application.@hash.css"/>
 {% endblock %}
 
 {% extends "govuk/template.njk" %}
@@ -76,8 +76,8 @@
       </div>
     </main>
   </div>
-  <script src="/javascript/ua/init.js"></script>
-  <script src="/ga4-assets/analytics.js"></script>
+  <script src="/public/javascripts/init.@hash.js"></script>
+  <script src="/public/javascripts/analytics.@hash.js"></script>
   <script>
     window
       .DI

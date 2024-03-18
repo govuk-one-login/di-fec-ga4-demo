@@ -1,0 +1,106 @@
+$govuk-assets-path: "/public/";
+@import "../../../node_modules/govuk-frontend/govuk/all";
+
+.govuk-radios__item {
+  @include govuk-responsive-margin(6, $direction: "bottom", $important: false, $adjustment: false);
+}
+
+.govuk-heading-m, .hmpo-auto-submit h1, h2 {
+  @include govuk-responsive-margin(6, "bottom")
+}
+
+.govuk-fieldset__heading {
+  @include govuk-responsive-margin(4, "bottom")
+}
+
+.govuk-list--bullet>li, .govuk-list--number>li {
+  @include govuk-responsive-margin(0, "bottom");
+  @include govuk-responsive-margin(3, "left")
+}
+
+.govuk-input {
+  @include govuk-responsive-margin(2, "top")
+}
+
+.govuk-inset-text {
+  @include govuk-responsive-margin(0, "bottom");
+  @include govuk-responsive-margin(2, "top"); 
+  @include govuk-responsive-padding(3, "top");
+}
+
+.govuk-body, main p, .govuk-body-m {
+  @include govuk-responsive-margin(6, "bottom")
+}
+
+.govuk-button {
+  @include govuk-responsive-margin(6, "bottom");
+  @include govuk-responsive-margin(2, "top")
+}
+
+.govuk-body, main p, .govuk-body-m {
+  @include govuk-responsive-margin(1, "top")
+}
+
+.hint-with-margin {
+  @include govuk-responsive-margin(6, "top")
+}
+
+.govuk-summary-list .govuk-summary-list__key {
+  color: govuk-colour("black");
+  font-weight: bold;
+}
+
+.govuk-warning-text {
+  @include govuk-responsive-margin(0, "bottom")
+}
+
+#details-btn {
+  @include govuk-responsive-margin(0, "top");
+  @include govuk-responsive-padding(0, "top");
+}
+
+.govuk-warning-text {
+  @include govuk-responsive-margin(0, "bottom");
+}
+
+.govuk-date-input {
+  margin-bottom: govuk-spacing(-6);
+}
+
+.govuk-error-summary {
+  width: 66.6666%;
+}
+
+.govuk-cookie-banner h2, .govuk-cookie-banner p {
+  margin-top: 0; 
+  margin-bottom: 20px;
+}
+
+.govuk-cookie-banner .govuk-button {
+  margin-top: 0; 
+  margin-bottom: 20px;
+}
+
+.bav__instruction {
+  @include govuk-responsive-margin(4, "bottom");
+  @include govuk-responsive-margin(4, "top");
+}
+
+.govuk-summary-list {
+  @include govuk-responsive-margin(0, "top");
+}
+
+#check-details-header {
+  @include govuk-responsive-margin(3, "bottom");
+}
+
+#submitDetails {
+  @include govuk-responsive-margin(4, "top");
+}
+
+#couldNotMatchPrompt {
+  color: govuk-colour("black");
+  font-weight: bold;
+  @include govuk-responsive-margin(5, "top");
+  @include govuk-responsive-margin(4, "bottom");
+}
