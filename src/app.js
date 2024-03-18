@@ -12,7 +12,7 @@ const {
 const { validateChooseLocation } = require("./journeys/chooseLocationService");
 const { validateEnterEmail } = require("./journeys/enterEmailService");
 const { validateFeedback } = require("./journeys/feedbackService");
-
+var compression = require("compression")
 const crypto = require("crypto");
 const sessionId = crypto.randomBytes(16).toString("hex");
 const {
@@ -84,6 +84,9 @@ app.use((req, res, next) => {
     next();
   }
 });
+
+// compress all responses
+app.use(compression())
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
