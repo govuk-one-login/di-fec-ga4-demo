@@ -11,7 +11,7 @@
     "test:integration": "cucumber-js test/browser/features/v1/analytics --require test/browser/support/setup.js --require test/browser/step_definitions/**/*.js cucumber --tags 'not @skip'"
   },
   "dependencies": {
-    "@govuk-one-login/one-login-analytics": "^0.0.9",
+    "@govuk-one-login/one-login-analytics": "^0.0.10",
     "@govuk-one-login/one-login-language-toggle": "^2.0.0",
     "@govuk-prototype-kit/common-templates": "1.2.2",
     "axe-core": "^4.8.3",
