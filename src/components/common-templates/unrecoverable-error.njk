@@ -1,0 +1,42 @@
+{% extends "base-page.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set hmpoPageKey = "error.unrecoverable" %}
+
+{% block mainContent %}
+  <h1 data-id="error-title">{{ translate("error.unrecoverable.title") }}</h1>
+
+  <p>{{ translate("error.unrecoverable.subTitle") }}</p>
+
+  <h2>{{ translate("error.unrecoverable.subHeading") }}</h2>
+
+  <div class="govuk-text">
+    <p>{{ translate("error.unrecoverable.description") }}</p>
+  </div>
+
+  {{ govukButton({
+    text: translate("error.unrecoverable.buttonText"),
+    href: translate("error.unrecoverable.buttonLink")
+  }) }}
+
+  <div>
+      <p><a href="https://signin.account.gov.uk/contact-us" class="govuk-link" rel="noreferrer noopener" target="_blank">{{ translate("error.unrecoverable.contactMeLink") }}</a></p>
+  </div>
+  <script {% if cspNonce %} nonce="{{ cspNonce }}"{%  endif %}>
+    window.addEventListener('load', function () {
+      window
+      .DI
+      .analyticsGa4
+      .pageViewTracker
+      .trackOnPageLoad({
+        statusCode: '500', // Access status code
+        englishPageTitle: '{{ translate("error.unrecoverable.title") }}',
+        taxonomy_level1: 'CRI', // Access taxonomy level 1
+        taxonomy_level2: 'Error', // Access taxonomy level 2
+        content_id: '005',
+        logged_in_status: false,
+        dynamic: false,
+      });
+    });
+  </script>
+{% endblock %}
