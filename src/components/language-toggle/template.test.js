@@ -1,14 +1,21 @@
 const nunjucks = require("nunjucks");
 const fs = require("fs");
 const path = require("path");
-
 const { axe, toHaveNoViolations } = require("jest-axe");
 const { render } = require("../../utils/jestHelpers");
 
 expect.extend(toHaveNoViolations);
 
 const templatePath = "src/components/language-toggle";
-nunjucks.configure(path.dirname(templatePath), { autoescape: true });
+
+const nunjucksEnv = nunjucks.configure(path.dirname(templatePath), {
+  autoescape: true
+});
+
+nunjucksEnv.addGlobal(
+  "addLanguageParam",
+  jest.fn((language) => `/?lng=${language}`)
+);
 
 describe("oneloginLanguageSelect Component", () => {
   const mockParams = {
@@ -71,7 +78,6 @@ describe("oneloginLanguageSelect Component", () => {
             code: "en",
             text: "English",
             visuallyHidden: "Change to English"
-
           },
           {
             code: "cy",
@@ -88,11 +94,13 @@ describe("oneloginLanguageSelect Component", () => {
       );
 
       // test span
-      const renderedSpan = renderedComponent("span")
+      const renderedSpan = renderedComponent("span");
       expect(renderedSpan.text()).toBe("Cymraeg");
 
       // test visually hidden
-      const renderedVisuallyHidden = renderedComponent(".govuk-visually-hidden");
+      const renderedVisuallyHidden = renderedComponent(
+        ".govuk-visually-hidden"
+      );
       expect(renderedVisuallyHidden.text()).toBe("Change to English");
 
       // test link
@@ -117,7 +125,9 @@ describe("oneloginLanguageSelect Component", () => {
       expect(renderedSpan).toBe("English");
 
       // test visually hidden
-      const renderedVisuallyHidden = renderedComponent(".govuk-visually-hidden");
+      const renderedVisuallyHidden = renderedComponent(
+        ".govuk-visually-hidden"
+      );
       expect(renderedVisuallyHidden.text()).toBe("Newid yr iaith ir Gymraeg");
 
       // test link
