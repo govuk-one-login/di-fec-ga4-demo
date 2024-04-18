@@ -14,7 +14,6 @@ module.exports = {
     nunjucksEnv.addGlobal("addLanguageParam", function (language) {
       const parsedUrl = new URL(url);
       parsedUrl.searchParams.set("lng", language);
-      console.log(parsedUrl.pathname + parsedUrl.search);
       return parsedUrl.pathname + parsedUrl.search;
     });
 
