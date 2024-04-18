@@ -110,8 +110,16 @@ The package is owned by the DI Frontend Capability team, part of the development
      ])
    );
    ```
+6. Add a middleware function to pass the current URL as a parameter to the configuration of the Nunjucks environment
+   ```js
+   app.use((req, res, next) => {
+   const currentUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+   app.set("view engine", configureNunjucks(app, APP_VIEWS, currentUrl));
+   next();
+   });
+   ```
 
-6. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
+7. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
 
 [!NOTE]
 

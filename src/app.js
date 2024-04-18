@@ -28,6 +28,7 @@ const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const i18nextMiddleware = require("i18next-http-middleware");
 const { i18nextConfigurationOptions } = require("./config/i18next");
+
 const app = express();
 const port = 3000;
 
@@ -39,7 +40,12 @@ const APP_VIEWS = [
   path.resolve("node_modules/@govuk-one-login")
 ];
 
-app.set("view engine", configureNunjucks(app, APP_VIEWS));
+app.use((req, res, next) => {
+  const currentUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+  app.set("view engine", configureNunjucks(app, APP_VIEWS, currentUrl));
+  next();
+});
+
 i18next
   .use(Backend)
   .use(i18nextMiddleware.LanguageDetector)
@@ -96,7 +102,7 @@ app.use(setContentId);
 app.use(checkSessionAndRedirect);
 
 app.get("/welcome", (req, res) => {
-  res.render("home.njk");
+  res.render("home.njk", { req: req });
 });
 
 app.get("/enter-email", (req, res) => {
