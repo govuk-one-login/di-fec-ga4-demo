@@ -40,12 +40,7 @@ const APP_VIEWS = [
   path.resolve("node_modules/@govuk-one-login")
 ];
 
-app.use((req, res, next) => {
-  const currentUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
-  app.set("view engine", configureNunjucks(app, APP_VIEWS, currentUrl));
-  next();
-});
-
+app.set("view engine", configureNunjucks(app, APP_VIEWS));
 i18next
   .use(Backend)
   .use(i18nextMiddleware.LanguageDetector)
@@ -87,6 +82,8 @@ app.use((req, res, next) => {
     res.locals.htmlLang = req.i18n.language;
     res.locals.pageTitleLang = req.i18n.language;
     res.locals.mainLang = req.i18n.language;
+    res.locals.currentUrl =
+      req.protocol + "://" + req.get("host") + req.originalUrl;
     next();
   }
 });
@@ -102,7 +99,7 @@ app.use(setContentId);
 app.use(checkSessionAndRedirect);
 
 app.get("/welcome", (req, res) => {
-  res.render("home.njk", { req: req });
+  res.render("home.njk");
 });
 
 app.get("/enter-email", (req, res) => {

@@ -20,6 +20,7 @@ nunjucksEnv.addGlobal(
 describe("oneloginLanguageSelect Component", () => {
   const mockParams = {
     ariaLabel: "test-aria",
+    url: "http://localhost:3000/",
     activeLanguage: "en",
     class: "test-class",
     languages: [
@@ -71,6 +72,7 @@ describe("oneloginLanguageSelect Component", () => {
     it("displays cy active language as a span, and inactive language as a link", () => {
       const mockParams = {
         ariaLabel: "test-aria",
+        url: "http://localhost:3000/",
         activeLanguage: "cy",
         class: "test-class",
         languages: [

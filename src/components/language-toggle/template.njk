@@ -7,7 +7,7 @@
                 {% else %}
                     <a 
                     class="govuk-link govuk-link--no-visited-state" 
-                    href="{{ addLanguageParam(lang.code)}}" 
+                    href="{{ addLanguageParam(lang.code, params.url)}}" 
                     data-journey-click="link - click:lang-select:{{ lang.code }}"
                     rel="alternate" 
                     hreflang="{{ lang.code }}"

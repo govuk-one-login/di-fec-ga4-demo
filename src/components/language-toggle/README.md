@@ -81,6 +81,7 @@ The package is owned by the DI Frontend Capability team, part of the development
      {
        oneloginLanguageSelect({
          ariaLabel: "Choose a language",
+         url: currentUrl
          class: "",
          activeLanguage: htmlLang,
          languages: [
@@ -110,16 +111,31 @@ The package is owned by the DI Frontend Capability team, part of the development
      ])
    );
    ```
-6. Add a middleware function to pass the current URL as a parameter to the configuration of the Nunjucks environment
+
+6. Add local variable to set the current URL locally
+
    ```js
-   app.use((req, res, next) => {
-   const currentUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
-   app.set("view engine", configureNunjucks(app, APP_VIEWS, currentUrl));
-   next();
-   });
+  app.use((req, res, next) => {
+  if (req.i18n) {
+    res.locals.htmlLang = req.i18n.language;
+    res.locals.pageTitleLang = req.i18n.language;
+    res.locals.mainLang = req.i18n.language;
+    // New line to be added
+    res.locals.currentUrl =
+      req.protocol + "://" + req.get("host") + req.originalUrl;
+    next();
+  }
+  });
    ```
 
-7. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
+7. Import the addLanguageParam function into your Nunjucks configuration file (e.g. nunjucks.js) and make it accessible to Nunjucks views. It is used by the component to set the URL.
+
+   ```js
+   const addLanguageParam = require("@govuk-one-login/one-login-language-toggle/language-toggle");
+   nunjucksEnv.addGlobal("addLanguageParam", addLanguageParam);
+   ```
+
+8. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
 
 [!NOTE]
 
