@@ -28,6 +28,7 @@ const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const i18nextMiddleware = require("i18next-http-middleware");
 const { i18nextConfigurationOptions } = require("./config/i18next");
+
 const app = express();
 const port = 3000;
 
@@ -81,6 +82,8 @@ app.use((req, res, next) => {
     res.locals.htmlLang = req.i18n.language;
     res.locals.pageTitleLang = req.i18n.language;
     res.locals.mainLang = req.i18n.language;
+    res.locals.currentUrl =
+      req.protocol + "://" + req.get("host") + req.originalUrl;
     next();
   }
 });

@@ -1,5 +1,6 @@
 const nunjucks = require("nunjucks");
 const i18next = require("i18next");
+const addLanguageParam = require("@govuk-one-login/one-login-language-toggle/language-param-setter");
 
 module.exports = {
   configureNunjucks: (app, viewsPath) => {
@@ -8,6 +9,9 @@ module.exports = {
       express: app,
       noCache: true
     });
+
+    nunjucksEnv.addGlobal("addLanguageParam", addLanguageParam);
+
     nunjucksEnv.addFilter("translate", function (key, options) {
       const translate = i18next.getFixedT(this.ctx.i18n.language);
       return translate(key, options);

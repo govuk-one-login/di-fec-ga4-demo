@@ -1,18 +1,26 @@
 const nunjucks = require("nunjucks");
 const fs = require("fs");
 const path = require("path");
-
 const { axe, toHaveNoViolations } = require("jest-axe");
 const { render } = require("../../utils/jestHelpers");
 
 expect.extend(toHaveNoViolations);
 
 const templatePath = "src/components/language-toggle";
-nunjucks.configure(path.dirname(templatePath), { autoescape: true });
+
+const nunjucksEnv = nunjucks.configure(path.dirname(templatePath), {
+  autoescape: true
+});
+
+nunjucksEnv.addGlobal(
+  "addLanguageParam",
+  jest.fn((language) => `/?lng=${language}`)
+);
 
 describe("oneloginLanguageSelect Component", () => {
   const mockParams = {
     ariaLabel: "test-aria",
+    url: "http://localhost:3000/",
     activeLanguage: "en",
     class: "test-class",
     languages: [
@@ -64,6 +72,7 @@ describe("oneloginLanguageSelect Component", () => {
     it("displays cy active language as a span, and inactive language as a link", () => {
       const mockParams = {
         ariaLabel: "test-aria",
+        url: "http://localhost:3000/",
         activeLanguage: "cy",
         class: "test-class",
         languages: [
@@ -71,7 +80,6 @@ describe("oneloginLanguageSelect Component", () => {
             code: "en",
             text: "English",
             visuallyHidden: "Change to English"
-
           },
           {
             code: "cy",
@@ -88,11 +96,13 @@ describe("oneloginLanguageSelect Component", () => {
       );
 
       // test span
-      const renderedSpan = renderedComponent("span")
+      const renderedSpan = renderedComponent("span");
       expect(renderedSpan.text()).toBe("Cymraeg");
 
       // test visually hidden
-      const renderedVisuallyHidden = renderedComponent(".govuk-visually-hidden");
+      const renderedVisuallyHidden = renderedComponent(
+        ".govuk-visually-hidden"
+      );
       expect(renderedVisuallyHidden.text()).toBe("Change to English");
 
       // test link
@@ -117,7 +127,9 @@ describe("oneloginLanguageSelect Component", () => {
       expect(renderedSpan).toBe("English");
 
       // test visually hidden
-      const renderedVisuallyHidden = renderedComponent(".govuk-visually-hidden");
+      const renderedVisuallyHidden = renderedComponent(
+        ".govuk-visually-hidden"
+      );
       expect(renderedVisuallyHidden.text()).toBe("Newid yr iaith ir Gymraeg");
 
       // test link
