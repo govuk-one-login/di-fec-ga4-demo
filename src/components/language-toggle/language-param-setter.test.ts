@@ -1,4 +1,4 @@
-const testAddLanguageParam = require("./language-toggle");
+const testAddLanguageParam = require("./language-param-setter");
 
 describe("addLanguageParam function", () => {
   it("should add language parameter to URL", () => {
