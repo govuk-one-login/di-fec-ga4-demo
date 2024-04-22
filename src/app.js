@@ -84,6 +84,15 @@ app.use((req, res, next) => {
     next();
   }
 });
+//Middleware function for detecting if user is on the mobile app - customn user agent
+app.use((req, res, next) => {
+  if(req.get("User-Agent").includes("MobileApp-User")) {
+    res.locals.isMobileAppUser = true;
+  } else {
+    res.locals.isMobileAppUser = false;
+  }
+  next();
+});
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
