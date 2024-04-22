@@ -58,12 +58,12 @@ The package is owned by the DI Frontend Capability team, part of the development
 
 1. Install NPM package
    ```sh
-   npm install one-login-language-toggle
+   npm install language-toggle
    ```
 2. Configure your node application's startup file (example: app.js or index.js) and add a new path view to your configureNunjucks viewspath parameter:
 
    ```js
-   path.resolve("node_modules/one-login-language-toggle");
+   path.resolve("node_modules/frontend-language-toggle");
    ```
 
    [!WARNING] Check if the path to your node module folder is the correct one. [!WARNING]
@@ -71,7 +71,7 @@ The package is owned by the DI Frontend Capability team, part of the development
 3. Import this macro into your base nunjucks template:
 
    ```js
-    {% from "language-toggle/macro.njk" import oneloginLanguageSelect %}
+    {% from "frontend-language-toggle/macro.njk" import languageSelect %}
    ```
 
 4. Add the nunjuck component where you need:
@@ -79,7 +79,7 @@ The package is owned by the DI Frontend Capability team, part of the development
    ```js
    {
      {
-       oneloginLanguageSelect({
+       languageSelect({
          ariaLabel: "Choose a language",
          url: currentUrl
          class: "",
@@ -107,7 +107,7 @@ The package is owned by the DI Frontend Capability team, part of the development
    app.set(
      "view engine",
      configureNunjucks(app, [
-       path.resolve("node_modules/one-login-language-toggle")
+       path.resolve("node_modules/language-toggle")
      ])
    );
    ```
@@ -131,11 +131,11 @@ The package is owned by the DI Frontend Capability team, part of the development
 7. Import the addLanguageParam function into your Nunjucks configuration file (e.g. nunjucks.js) and make it accessible to Nunjucks views. It is used by the component to set the URL.
 
    ```js
-   const addLanguageParam = require("@govuk-one-login/one-login-language-toggle/language-param-setter");
+   const addLanguageParam = require("@govuk-one-login/frontend-language-toggle/language-param-setter");
    nunjucksEnv.addGlobal("addLanguageParam", addLanguageParam);
    ```
 
-8. Include the stylesheet from one-login-language-toggle/stylesheet/styles.css in your front-end application.
+8. Include the stylesheet from language-toggle/stylesheet/styles.css in your front-end application.
 
 [!NOTE]
 

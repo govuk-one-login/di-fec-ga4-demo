@@ -6,7 +6,7 @@ const { render } = require("../../utils/jestHelpers");
 
 expect.extend(toHaveNoViolations);
 
-const templatePath = "src/components/language-toggle";
+const templatePath = "src/components/frontend-language-toggle";
 
 const nunjucksEnv = nunjucks.configure(path.dirname(templatePath), {
   autoescape: true
@@ -17,7 +17,7 @@ nunjucksEnv.addGlobal(
   jest.fn((language) => `/?lng=${language}`)
 );
 
-describe("oneloginLanguageSelect Component", () => {
+describe("languageSelect Component", () => {
   const mockParams = {
     ariaLabel: "test-aria",
     url: "http://localhost:3000/",
@@ -39,8 +39,8 @@ describe("oneloginLanguageSelect Component", () => {
 
   it("has the appropriate accessibility testing", async () => {
     const renderedComponent = render(
-      "language-toggle",
-      "oneloginLanguageSelect",
+      "frontend-language-toggle",
+      "languageSelect",
       mockParams
     );
 
@@ -50,8 +50,8 @@ describe("oneloginLanguageSelect Component", () => {
 
   it("renders the class from params", () => {
     const renderedComponent = render(
-      "language-toggle",
-      "oneloginLanguageSelect",
+      "frontend-language-toggle",
+      "languageSelect",
       mockParams
     );
     const renderedNavElement = renderedComponent("nav");
@@ -60,8 +60,8 @@ describe("oneloginLanguageSelect Component", () => {
 
   it("renders the aria-label from params", () => {
     const renderedComponent = render(
-      "language-toggle",
-      "oneloginLanguageSelect",
+      "frontend-language-toggle",
+      "languageSelect",
       mockParams
     );
     const renderedNavElement = renderedComponent("nav");
@@ -90,8 +90,8 @@ describe("oneloginLanguageSelect Component", () => {
       };
 
       const renderedComponent = render(
-        "language-toggle",
-        "oneloginLanguageSelect",
+        "frontend-language-toggle",
+        "languageSelect",
         mockParams
       );
 
@@ -117,8 +117,8 @@ describe("oneloginLanguageSelect Component", () => {
 
     it("displays en as active language as a span, and inactive language as a link", () => {
       const renderedComponent = render(
-        "language-toggle",
-        "oneloginLanguageSelect",
+        "frontend-language-toggle",
+        "languageSelect",
         mockParams
       );
 

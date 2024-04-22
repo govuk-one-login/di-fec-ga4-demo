@@ -8,7 +8,7 @@
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "one-login-language-toggle/macro.njk" import oneloginLanguageSelect %}
+{% from "frontend-language-toggle/macro.njk" import languageSelect %}
 
 {% block skipLink %}
   {{ govukSkipLink({ 
@@ -47,7 +47,7 @@
   },
   html:"general.govuk.phaseBanner.content" | translate | safe
 }) }}
-    {{ oneloginLanguageSelect({
+    {{ languageSelect({
         ariaLabel:'general.languageSelect.ariaLabel' | translate,
         url: currentUrl,
         activeLanguage: htmlLang,
