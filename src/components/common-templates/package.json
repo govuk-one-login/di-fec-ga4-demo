@@ -1,0 +1,28 @@
+{
+  "name": "@govuk-one-login/common-templates",
+  "version": "1.0.0",
+  "description": "Reusable common njk templates for GDS One Login Identity frontend", 
+  "main": "",
+  "type": "module",
+  "scripts": {
+    "pub": "npm publish --access public",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/govuk-one-login/di-fec-ga4.git"
+  },
+  "keywords": [
+    "one-login",
+    "gds",
+    "templates",
+    "onelogin",
+    "one login"
+  ],
+  "author": "DI Frontend Capability Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/govuk-one-login/di-fec-ga4-demo/issues"
+  },
+  "homepage": "https://github.com/govuk-one-login/di-fec-ga4-demo#readme"
+}
