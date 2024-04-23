@@ -107,7 +107,7 @@ The package is owned by the DI Frontend Capability team, part of the development
    app.set(
      "view engine",
      configureNunjucks(app, [
-       path.resolve("node_modules/frontend-language-toggle")
+       path.resolve("node_modules/frontend-language-toggle"),
      ])
    );
    ```
@@ -115,17 +115,17 @@ The package is owned by the DI Frontend Capability team, part of the development
 6. Add local variable to set the current URL locally
 
    ```js
-  app.use((req, res, next) => {
-  if (req.i18n) {
-    res.locals.htmlLang = req.i18n.language;
-    res.locals.pageTitleLang = req.i18n.language;
-    res.locals.mainLang = req.i18n.language;
-    // New line to be added
-    res.locals.currentUrl =
-      req.protocol + "://" + req.get("host") + req.originalUrl;
-    next();
-  }
-  });
+   app.use((req, res, next) => {
+     if (req.i18n) {
+       res.locals.htmlLang = req.i18n.language;
+       res.locals.pageTitleLang = req.i18n.language;
+       res.locals.mainLang = req.i18n.language;
+       // New line to be added
+       res.locals.currentUrl =
+         req.protocol + "://" + req.get("host") + req.originalUrl;
+       next();
+     }
+   });
    ```
 
 7. Import the addLanguageParam function into your Nunjucks configuration file (e.g. nunjucks.js) and make it accessible to Nunjucks views. It is used by the component to set the URL.
