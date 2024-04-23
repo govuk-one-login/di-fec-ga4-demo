@@ -58,7 +58,7 @@ The package is owned by the DI Frontend Capability team, part of the development
 
 1. Install NPM package
    ```sh
-   npm install language-toggle
+   npm install @govuk-one-login/frontend-language-toggle
    ```
 2. Configure your node application's startup file (example: app.js or index.js) and add a new path view to your configureNunjucks viewspath parameter:
 
@@ -107,7 +107,7 @@ The package is owned by the DI Frontend Capability team, part of the development
    app.set(
      "view engine",
      configureNunjucks(app, [
-       path.resolve("node_modules/language-toggle")
+       path.resolve("node_modules/frontend-language-toggle")
      ])
    );
    ```
@@ -135,7 +135,7 @@ The package is owned by the DI Frontend Capability team, part of the development
    nunjucksEnv.addGlobal("addLanguageParam", addLanguageParam);
    ```
 
-8. Include the stylesheet from language-toggle/stylesheet/styles.css in your front-end application.
+8. Include the stylesheet from frontend-language-toggle/stylesheet/styles.css in your front-end application.
 
 [!NOTE]
 
