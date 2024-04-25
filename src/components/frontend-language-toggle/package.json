@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/frontend-language-toggle",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "Reusable language toggle for GDS One Login",
   "main": "cjs/index.cjs",
   "module": "esm/index.js",
