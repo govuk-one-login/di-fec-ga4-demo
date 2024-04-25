@@ -1,6 +1,6 @@
 const nunjucks = require("nunjucks");
 const i18next = require("i18next");
-const addLanguageParam = require("@govuk-one-login/frontend-language-toggle/language-param-setter");
+const addLanguageParam = require("@govuk-one-login/frontend-language-toggle/cjs/index.cjs");
 
 module.exports = {
   configureNunjucks: (app, viewsPath) => {
