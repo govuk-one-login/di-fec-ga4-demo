@@ -1,0 +1,9 @@
+# Build files
+cjs/
+esm/
+
+# Dependencies
+node_modules/
+
+# Generated Test Reports
+coverage/
