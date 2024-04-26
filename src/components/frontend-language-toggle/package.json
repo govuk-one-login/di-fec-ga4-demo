@@ -1,6 +1,6 @@
 {
   "name": "@govuk-one-login/frontend-language-toggle",
-  "version": "0.0.2-alpha",
+  "version": "0.0.3-alpha",
   "description": "Reusable language toggle for GDS One Login",
   "main": "build/cjs/index.cjs",
   "module": "build/esm/index.js",
@@ -10,6 +10,15 @@
     "test": "jest",
     "build": "rollup -c"
   },
+  "files": [
+    "build/",
+    "stylesheet/",
+    "macro.njk",
+    "template.njk",
+    "package.json",
+    "README.md",
+    "language-select.yaml"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/govuk-one-login/di-fec-ga4.git"
