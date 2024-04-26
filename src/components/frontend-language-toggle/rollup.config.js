@@ -4,11 +4,11 @@ export default {
   input: "language-param-setter.ts",
   output: [
     {
-      file: "cjs/index.cjs",
+      file: "build/cjs/index.cjs",
       format: "cjs"
     },
     {
-      file: "esm/index.js",
+      file: "build/esm/index.js",
       format: "es"
     }
   ],

@@ -1,6 +1,5 @@
 # Build files
-cjs/
-esm/
+build/
 
 # Dependencies
 node_modules/
