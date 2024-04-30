@@ -131,9 +131,17 @@ The package is owned by the DI Frontend Capability team, part of the development
 7. Import the addLanguageParam function into your Nunjucks configuration file (e.g. nunjucks.js) and make it accessible to Nunjucks views. It is used by the component to set the URL.
 
    ```js
-   const addLanguageParam = require("@govuk-one-login/frontend-language-toggle/language-param-setter");
+   const addLanguageParam = require("@govuk-one-login/frontend-language-toggle/build/cjs/language-param-setter.cjs");
    nunjucksEnv.addGlobal("addLanguageParam", addLanguageParam);
    ```
+
+   If using TypeScript:
+
+   ```js
+   import addLanguageParam from "@govuk-one-login/frontend-language-toggle/build/esm/language-param-setter"
+   ```
+
+
 
 8. Include the stylesheet from frontend-language-toggle/stylesheet/styles.css in your front-end application.
 
