@@ -1,14 +1,11 @@
-const nunjucks = require("nunjucks");
-const fs = require("fs");
-const path = require("path");
-const { axe, toHaveNoViolations } = require("jest-axe");
-const { render } = require("../../utils/jestHelpers");
+import nunjucks from "nunjucks";
+import path from "path";
+import { axe, toHaveNoViolations } from "jest-axe";
+import render from "./utils/jestHelpers";
 
 expect.extend(toHaveNoViolations);
 
-const templatePath = "src/components/language-toggle";
-
-const nunjucksEnv = nunjucks.configure(path.dirname(templatePath), {
+const nunjucksEnv = nunjucks.configure(path.dirname("frontend-language-toggle"), {
   autoescape: true
 });
 
@@ -17,7 +14,7 @@ nunjucksEnv.addGlobal(
   jest.fn((language) => `/?lng=${language}`)
 );
 
-describe("oneloginLanguageSelect Component", () => {
+describe("languageSelect Component", () => {
   const mockParams = {
     ariaLabel: "test-aria",
     url: "http://localhost:3000/",
@@ -39,8 +36,7 @@ describe("oneloginLanguageSelect Component", () => {
 
   it("has the appropriate accessibility testing", async () => {
     const renderedComponent = render(
-      "language-toggle",
-      "oneloginLanguageSelect",
+      "languageSelect",
       mockParams
     );
 
@@ -50,8 +46,7 @@ describe("oneloginLanguageSelect Component", () => {
 
   it("renders the class from params", () => {
     const renderedComponent = render(
-      "language-toggle",
-      "oneloginLanguageSelect",
+      "languageSelect",
       mockParams
     );
     const renderedNavElement = renderedComponent("nav");
@@ -60,8 +55,7 @@ describe("oneloginLanguageSelect Component", () => {
 
   it("renders the aria-label from params", () => {
     const renderedComponent = render(
-      "language-toggle",
-      "oneloginLanguageSelect",
+      "languageSelect",
       mockParams
     );
     const renderedNavElement = renderedComponent("nav");
@@ -90,8 +84,7 @@ describe("oneloginLanguageSelect Component", () => {
       };
 
       const renderedComponent = render(
-        "language-toggle",
-        "oneloginLanguageSelect",
+        "languageSelect",
         mockParams
       );
 
@@ -107,7 +100,7 @@ describe("oneloginLanguageSelect Component", () => {
 
       // test link
       const renderedLink = renderedComponent(".govuk-link");
-      expect(renderedLink.get(0).tagName).toEqual("a");
+      expect(renderedLink.get(0)?.tagName).toEqual("a");
       expect(renderedLink.attr("target")).toEqual(undefined);
       expect(renderedLink.attr("href")).toContain("?lng=en");
       expect(renderedLink.attr("class")).toContain(
@@ -117,8 +110,7 @@ describe("oneloginLanguageSelect Component", () => {
 
     it("displays en as active language as a span, and inactive language as a link", () => {
       const renderedComponent = render(
-        "language-toggle",
-        "oneloginLanguageSelect",
+        "languageSelect",
         mockParams
       );
 
@@ -134,7 +126,7 @@ describe("oneloginLanguageSelect Component", () => {
 
       // test link
       const renderedLink = renderedComponent(".govuk-link");
-      expect(renderedLink.get(0).tagName).toEqual("a");
+      expect(renderedLink.get(0)?.tagName).toEqual("a");
       expect(renderedLink.attr("target")).toEqual(undefined);
       expect(renderedLink.attr("href")).toContain("?lng=cy");
       expect(renderedLink.attr("class")).toContain(

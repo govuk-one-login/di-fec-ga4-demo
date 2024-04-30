@@ -13,11 +13,11 @@
     "url": "git+https://github.com/govuk-one-login/di-fec-ga4.git"
   },
   "keywords": [
-    "one-login",
+    "govuk-one-login",
     "gds",
     "templates",
-    "onelogin",
-    "one login"
+    "govukonelogin",
+    "govuk one login"
   ],
   "author": "DI Frontend Capability Team",
   "license": "ISC",
