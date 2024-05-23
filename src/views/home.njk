@@ -36,6 +36,26 @@
         <li>{{"pages.home.content.list5"| translate}}</li>
         <li>{{"pages.home.content.list6"| translate}}</li>
     </ul>
+    <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      First Details Component
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+  </div>
+</details>
+    <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Second Details Component
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+  </div>
+</details>
     {% from "govuk/components/button/macro.njk" import govukButton %}
     {{ govukButton({ text: "general.buttons.startNow"|translate, href:
 "/organisation-type", isStartButton: true }) }}
