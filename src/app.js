@@ -82,8 +82,8 @@ app.use((req, res, next) => {
     res.locals.htmlLang = req.i18n.language;
     res.locals.pageTitleLang = req.i18n.language;
     res.locals.mainLang = req.i18n.language;
-    res.locals.currentUrl =
-      req.protocol + "://" + req.get("host") + req.originalUrl;
+    res.locals.currentUrl = new URL(
+      req.protocol + "://" + req.get("host") + req.originalUrl);
     next();
   }
 });
