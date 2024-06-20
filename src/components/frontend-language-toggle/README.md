@@ -42,11 +42,11 @@
 
 ## About The Project
 
-The GDS One Login Language toggle node package is a shared, reusable nunjuck component created to facilitate the integration of a language toggle.
+The GDS One Login Language toggle node package is a shared, reusable nunjuck component created to enable users to change the language of the GOVUK One Login journey at their discretion.
 
-The purpose of this component is to make it as easy as possible for the various pods that make up the One Login journey to configure and add a configurable language toggle.
+The purpose of this component is to make it as easy as possible for this feature to be enabled in the numerous repositories that make up the journey in a straightforward and consistent manner.
 
-The package is owned by the DI Frontend Capability team, part of the development of this tool involves ongoing discovery with the pods responsible for maintaining the frontend repositories that make up the One Login journey. As more information is collated, the package and documentation will be updated. As such, it is considered a WIP and the pods will be notified when a stable release is ready.
+The package is maintained by the DI Frontend Capability team.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -81,8 +81,7 @@ The package is owned by the DI Frontend Capability team, part of the development
      {
        languageSelect({
          ariaLabel: "Choose a language",
-         url: currentUrl
-         class: "",
+         url: currentUrl,
          activeLanguage: htmlLang,
          languages: [
            {
