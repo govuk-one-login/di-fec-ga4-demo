@@ -35,7 +35,7 @@ const port = 3000;
 const APP_VIEWS = [
   path.join(__dirname, "views"),
   path.join(__dirname, "components"),
-  path.resolve("node_modules/govuk-frontend/"),
+  path.resolve("node_modules/govuk-frontend/dist/"),
   path.resolve("node_modules/@govuk-prototype-kit/templates"),
   path.resolve("node_modules/@govuk-one-login")
 ];
@@ -55,7 +55,7 @@ app.use(i18nextMiddleware.handle(i18next));
 app.use(
   "/assets",
   express.static(
-    path.join(__dirname, "../node_modules/govuk-frontend/govuk/assets")
+    path.join(__dirname, "../node_modules/govuk-frontend/dist/govuk/assets")
   )
 );
 
@@ -140,6 +140,8 @@ app.get(
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+
 
 app.post("/validate-organisation-type", validateOrganisationType);
 
