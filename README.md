@@ -1,3 +1,5 @@
+> ⚠️ **This repository has been archived.** The code for this testing app has been moved to the monorepo so that it's alongside the packages it is designed to test: [https://github.com/govuk-one-login/govuk-one-login-frontend](https://github.com/govuk-one-login/govuk-one-login-frontend).
+
 # di-fec-ga4-demo
 
 Demonstrate how to implement GA4 library into your frontend app.
